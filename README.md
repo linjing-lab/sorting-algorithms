@@ -1,4 +1,5 @@
 # 排序算法的实现与对比🎢
+
 <div align="center">
     <img src="./images/排序算法对比.webp" width="50%">
 </div>
@@ -65,6 +66,7 @@ def quick_sort(array, l, r):
 ```
 
 ### 排序时间对比
+
 ```python
 from collection.quick_sort import Lambda, Recursion, Stack
 def test_Quicksort(array, l=0, r=9999):
@@ -99,6 +101,7 @@ shape: (1, 3)
 ```
 
 ## 归并排序（merge_sort)
+
 `基本思想`：归并排序采用分治法，先递归拆分数组，再合并数组，一种非原地排序方法。
 
 ### 递归实现（Recursion）
@@ -129,6 +132,7 @@ def merge(l, r):
 ```
 
 ### 非递归实现（Stack）
+
 非递归版本不需要额外的空间。直接在原数组上进行切割合并。
 
 ```python
@@ -161,6 +165,7 @@ def merge_sort(array):
             low += 2 * i
         i *= 2
 ```
+
 ### 排序时间对比
 
 ```python
@@ -199,4 +204,5 @@ shape: (1, 2)
 ```
 
 ## LICENSE
+
 [MIT LICENSE](./LICENSE)
