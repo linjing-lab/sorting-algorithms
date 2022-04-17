@@ -1,7 +1,7 @@
 # 排序算法的实现与对比🎢
 
 <div align="center">
-    <img src="./images/排序算法对比.webp" width="50%">
+    <img src="./images/排序算法对比.webp" width="60%">
 </div>
 
 ## 快速排序（quick_sort）
