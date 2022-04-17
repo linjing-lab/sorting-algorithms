@@ -1,0 +1,1 @@
+from galley import quick_sort
