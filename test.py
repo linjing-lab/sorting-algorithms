@@ -17,7 +17,7 @@ def test_Quicksort(array, l=0, r=9999):
 	    function = eval(method)
 	    arr = copy.deepcopy(array) # 深度复制
 	    if method == "Lambda":
-	    	function(arr) 
+		    function(arr)
 	    else:
 	    	function(arr, l, r)
 	    timee = time.time()
@@ -27,3 +27,24 @@ def test_Quicksort(array, l=0, r=9999):
 	df = pl.DataFrame(dictionary)
 	return df
 print(test_Quicksort(data))
+
+# 归并排序算法的对比
+from galley.merge_sort import Recursion, Stack
+def test_Mergesort(array):
+	method_list = ["Recursion", "Stack"]
+	dictionary = {}
+	for method in method_list:
+	    times = time.time()
+	    function = eval(method)
+	    if method == "Recursion":
+	    	function(array)
+	    else:
+	    	arr = copy.deepcopy(array) # 深度复制
+	    	function(arr)
+	    timee = time.time()
+	    gap = round(timee - times, 2)
+	    gap_list = [gap]
+	    dictionary[method] = gap_list
+	df = pl.DataFrame(dictionary)
+	return df
+print(test_Mergesort(data))
