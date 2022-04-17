@@ -62,7 +62,7 @@ def quick_sort(array, l, r):
         stack.extend([low, index, index+2, high])
 ```
 
-## 快速排序实现算法的对比
+### 算法的对比
 ```python
 from galley.quick_sort import Lambda, Recursion, Stack
 def test_Quicksort(array, l=0, r=9999):
