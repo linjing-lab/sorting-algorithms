@@ -38,7 +38,7 @@ def partition(array, l, r):
     return index + 1
 ```
 
-## 非递归实现（Stack）
+### 非递归实现（Stack）
 
 ```python
 def quick_sort(array, l, r):
