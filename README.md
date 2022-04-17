@@ -73,14 +73,16 @@ def test_Quicksort(array, l=0, r=9999):
     method_list = ["Lambda", "Recursion", "Stack"]
     dictionary = {}
     for method in method_list:
-        times = time.time()
         function = eval(method)
         arr = copy.deepcopy(array) # 深度复制
         if method == "Lambda":
-            function(arr) 
+            times = time.time()
+            function(arr)
+            timee = time.time()
         else:
+            times = time.time()
             function(arr, l, r)
-        timee = time.time()
+            timee = time.time()
         gap = round(timee - times, 2)
         gap_list = [gap]
         dictionary[method] = gap_list
@@ -96,7 +98,7 @@ shape: (1, 3)
 │ ---    ┆ ---       ┆ ---   │
 │ f64    ┆ f64       ┆ f64   │
 ╞════════╪═══════════╪═══════╡
-│ 0.11   ┆ 0.16      ┆ 0.16  │
+│ 0.1    ┆ 0.14      ┆ 0.15  │
 └────────┴───────────┴───────┘
 ```
 
@@ -175,15 +177,16 @@ def test_Mergesort(array):
     method_list = ["Recursion", "Stack"]
     dictionary = {}
     for method in method_list:
-        times = time.time()
         function = eval(method)
-        print(array)
         if method == "Recursion":
+            times = time.time()
             function(array)
+            timee = time.time()
         else:
             arr = copy.deepcopy(array) # 深度复制
+            times = time.time()
             function(arr)
-        timee = time.time()
+            timee = time.time()
         gap = round(timee - times, 2)
         gap_list = [gap]
         dictionary[method] = gap_list
@@ -199,7 +202,7 @@ shape: (1, 2)
 │ ---       ┆ ---   │
 │ f64       ┆ f64   │
 ╞═══════════╪═══════╡
-│ 0.06      ┆ 0.07  │
+│ 0.07      ┆ 0.07  │
 └───────────┴───────┘
 ```
 
