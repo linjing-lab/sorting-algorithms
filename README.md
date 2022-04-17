@@ -64,7 +64,7 @@ def quick_sort(array, l, r):
         stack.extend([low, index, index+2, high])
 ```
 
-### 算法的对比
+### 排序时间对比
 ```python
 from galley.quick_sort import Lambda, Recursion, Stack
 def test_Quicksort(array, l=0, r=9999):
@@ -161,7 +161,7 @@ def merge_sort(array):
             low += 2 * i
         i *= 2
 ```
-### 算法的对比
+### 排序时间对比
 
 ```python
 # 归并排序算法的对比
