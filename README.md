@@ -3,7 +3,7 @@
     <img src="./images/排序算法对比.webp" width="50%">
 </div>
 
-## 快速排序（Quicksort）
+## 快速排序（quick_sort）
 
 `基本思想`：本质上是一种分而治之的思想，原地排序。
 
