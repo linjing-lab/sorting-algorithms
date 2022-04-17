@@ -1,8 +1,7 @@
-# 数组排序算法的实现与对比🎢
-
-## 前言
-
-<img title="" src="./images/排序算法对比.webp" alt="" data-align="center" width="463">
+# 排序算法的实现与对比🎢
+<div align="center">
+    <img src="./images/排序算法对比.webp">
+</div>
 
 ## 快速排序（Quicksort）
 
