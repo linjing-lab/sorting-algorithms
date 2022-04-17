@@ -8,7 +8,7 @@ import copy
 data = [random.randint(0, 100) for i in range(10000)]
 
 # 快速排序算法对比
-from galley.quick_sort import Lambda, Recursion, Stack
+from collection.quick_sort import Lambda, Recursion, Stack
 def test_Quicksort(array, l=0, r=9999):
 	method_list = ["Lambda", "Recursion", "Stack"]
 	dictionary = {}
@@ -29,7 +29,7 @@ def test_Quicksort(array, l=0, r=9999):
 print(test_Quicksort(data))
 
 # 归并排序算法的对比
-from galley.merge_sort import Recursion, Stack
+from collection.merge_sort import Recursion, Stack
 def test_Mergesort(array):
 	method_list = ["Recursion", "Stack"]
 	dictionary = {}
