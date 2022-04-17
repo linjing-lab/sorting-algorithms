@@ -15,9 +15,9 @@ def test_Quicksort(array, l=0, r=9999):
 	for method in method_list:
 	    times = time.time()
 	    function = eval(method)
-	    arr = copy.deepcopy(array)
+	    arr = copy.deepcopy(array) # 深度复制
 	    if method == "Lambda":
-	    	function(arr) # 深度复制
+	    	function(arr) 
 	    else:
 	    	function(arr, l, r)
 	    timee = time.time()
