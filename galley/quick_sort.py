@@ -1,7 +1,7 @@
 # lambda实现
-def Lambda(array):
+def Lambda(arr):
 	quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if item <= array[0]]) + [array[0]] + quick_sort([item for item in array[1:] if item > array[0]])
-	quick_sort(array)
+	return quick_sort(arr)
 
 # 递归实现
 def Recursion(array, l, r):
