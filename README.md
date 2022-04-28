@@ -1,4 +1,4 @@
-# 排序算法的实现与对比🎢
+# sorting-algorithms🎢
 
 <div align="center">
     <img src="./asserts/compare.webp" width="70%">
