@@ -1,8 +1,8 @@
 # sorting-algorithms🎢
 
-<div align="center">
+<p align="center">
     <img src="./asserts/compare.webp" width="70%">
-</div>
+</p>
 
 ## 快速排序（quick_sort）
 
