@@ -29,18 +29,50 @@
 
 ## 五、算法实现
 
+### 普通版本（Doubleloop）
+
 ```python
-def bubbleSort(array):
+def bubble_sort(array):
   # loop to access each array element
-  for i in range(len(array)):
+  for i in range(len(array) - 1):
     # loop to compare array elements
     for j in range(0, len(array) - i - 1):
-      # compare two adjacent elements
-      # change > to < to sort in descending order
+      # compare two adjacent elements and change > to < to sort in descending order
       if array[j] > array[j + 1]:
-        # swapping elements if elements
-        # are not in the intended order
-        temp = array[j]
-        array[j] = array[j+1]
-        array[j+1] = temp
+        # swapping elements if elements are not in the intended order
+        array[j], array[j+1] = array[j+1], array[j]
+```
+
+### 添加"旗帜"（Flag）
+
+```python
+def bubble_sort(array):
+    for i in range(len(array) - 1):
+        flag = False # 旗帜
+        for j in range(len(array) - i - 1):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+                flag = True
+        if not flag:
+            break
+```
+
+### 双向排序（Bidirection）
+
+```python
+def bubble_sort(array):
+    for i in range(len(array) - 1):
+        flag = False
+        for j in range(len(array) - 1 - i):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+                flag = True
+        if flag: # 反向排序
+            flag = False
+            for j in range(len(array) - 2 - i, 0, -1):  
+                if array[j - 1] > array[j]:
+                    array[j], array[j - 1] = array[j - 1], array[j]
+                    flag = True
+        if not flag:
+            break
 ```
