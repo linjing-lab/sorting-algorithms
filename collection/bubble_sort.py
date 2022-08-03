@@ -5,7 +5,7 @@ def Doubleloop(array):
       # loop to access each array element
   for i in range(len(array) - 1):
     # loop to compare array elements
-    for j in range(0, len(array) - i - 1):
+    for j in range(len(array) - i - 1):
       # compare two adjacent elements and change > to < to sort in descending order
       if array[j] > array[j + 1]:
         # swapping elements if elements are not in the intended order
@@ -36,7 +36,3 @@ def Bidirection(array):
                     flag = True
         if not flag:
             break
-
-a = [1, 4, 11, 7, 8, 2, 5, 3]
-bidirection(a)
-print(a)
