@@ -16,7 +16,7 @@
 |Shell Sort|$\Omega(n \log (n))$|$\Theta(n(\log (n))^2)$|$O(n(\log (n))^2)$|$O(1)$|
 |Bucket Sort|$\Omega(n + k)$|$\Theta(n + k)$|$O(n^2)$|$O(n)$|
 |Radix Sort|$\Omega(nk)$|$\Theta(nk)$|$O(nk)$|$O(n+k)$|
-|Counting Sort|$\Omega(n + k)$|$\Theta(n + k)$|$O(n + k)$|$O(k)$|
+|[Counting Sort](./docs/Countingsort.md)|$\Omega(n + k)$|$\Theta(n + k)$|$O(n + k)$|$O(k)$|
 |Cubesort|$\Omega(n)$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
 
 </div>
