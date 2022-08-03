@@ -6,20 +6,20 @@ def Lambda(arr):
 # 递归实现
 def Recursion(array, l, r):
 	def quick_sort(array, l, r):
-	    if l < r:
-	        mid = partition(array, l, r)
-	        quick_sort(array, l, mid - 1)
-	        quick_sort(array, mid + 1, r)
-
+		if l < r:
+			mid = partition(array, l, r)
+			quick_sort(array, l, mid - 1)
+			quick_sort(array, mid + 1, r)
+	
 	def partition(array, l, r):
-	    value = array[r]
-	    index = l - 1
-	    for ind in range(l, r):
-	        if array[ind] <= value:
-	            index += 1
-	            array[index], array[ind] = array[ind], array[index]
-	    array[index + 1], array[r] = array[r], array[index + 1]
-	    return index + 1
+		value = array[r]
+		index = l - 1
+		for ind in range(l, r):
+			if array[ind] <= value:
+				index += 1
+				array[index], array[ind] = array[ind], array[index]
+		array[index + 1], array[r] = array[r], array[index + 1]
+		return index + 1
 	quick_sort(array, l, r)
 
 # 非递归实现

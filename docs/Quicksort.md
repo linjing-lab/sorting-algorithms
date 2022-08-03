@@ -71,10 +71,10 @@ quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for it
 
 ```python
 def quick_sort(array, l, r):
-        if l < r:
-            mid = partition(array, l, r)
-            quick_sort(array, l, mid - 1)
-            quick_sort(array, mid + 1, r)
+    if l < r:
+        mid = partition(array, l, r)
+        quick_sort(array, l, mid - 1)
+        quick_sort(array, mid + 1, r)
 
 def partition(array, l, r):
     value = array[r]
@@ -91,22 +91,22 @@ def partition(array, l, r):
 
 ```python
 def quick_sort(array, l, r):
-    if l >= r:
-        return
-    stack = []
-    stack.append(l)
-    stack.append(r)
-    while stack:
-        low = stack.pop(0)
-        high = stack.pop(0)
-        if high - low <= 0:
-            continue
-        value = array[high]
-        index = low - 1
-        for ind in range(low, high):
-            if array[ind] <= value:
-                index += 1
-                array[index], array[ind] = array[ind], array[index]
-        array[index + 1], array[high] = array[high], array[index + 1]
-        stack.extend([low, index, index+2, high])
+	if l >= r:
+		return
+	stack = []
+	stack.append(l)
+	stack.append(r)
+	while stack:
+		low = stack.pop(0)
+		high = stack.pop(0)
+		if high - low <= 0:
+			continue
+		value = array[high]
+		index = low - 1
+		for ind in range(low, high):
+			if array[ind] <= value:
+				index += 1
+				array[index], array[ind] = array[ind], array[index]
+		array[index + 1], array[high] = array[high], array[index + 1]
+		stack.extend([low, index, index+2, high])
 ```

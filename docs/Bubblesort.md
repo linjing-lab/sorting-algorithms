@@ -33,14 +33,14 @@
 
 ```python
 def bubble_sort(array):
-  # loop to access each array element
-  for i in range(len(array) - 1):
-    # loop to compare array elements
-    for j in range(len(array) - i - 1):
-      # compare two adjacent elements and change > to < to sort in descending order
-      if array[j] > array[j + 1]:
-        # swapping elements if elements are not in the intended order
-        array[j], array[j+1] = array[j+1], array[j]
+    # loop to access each array element
+    for i in range(len(array) - 1):
+        # loop to compare array elements
+        for j in range(len(array) - i - 1): 
+        # compare two adjacent elements and change > to < to sort in descending order
+            if array[j] > array[j + 1]:
+                # swapping elements if elements are not in the intended order
+                array[j], array[j + 1] = array[j + 1], array[j]
 ```
 
 ### 添加"旗帜"（Flag）
