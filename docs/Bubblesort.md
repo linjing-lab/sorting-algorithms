@@ -63,13 +63,13 @@ def bubble_sort(array):
 def bubble_sort(array):
     for i in range(len(array) - 1):
         flag = False
-        for j in range(len(array) - 1 - i):
+        for j in range(len(array) - i - 1):
             if array[j] > array[j + 1]:
                 array[j], array[j + 1] = array[j + 1], array[j]
                 flag = True
         if flag: # 反向排序
             flag = False
-            for j in range(len(array) - 2 - i, 0, -1):  
+            for j in range(len(array) - i - 2, 0, -1):  
                 if array[j - 1] > array[j]:
                     array[j], array[j - 1] = array[j - 1], array[j]
                     flag = True
