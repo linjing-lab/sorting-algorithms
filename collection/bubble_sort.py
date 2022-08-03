@@ -1,6 +1,4 @@
-from regex import D
-
-
+# 普通版本
 def Doubleloop(array):
       # loop to access each array element
   for i in range(len(array) - 1):
@@ -11,6 +9,7 @@ def Doubleloop(array):
         # swapping elements if elements are not in the intended order
         array[j], array[j+1] = array[j+1], array[j]
 
+# 添加旗帜
 def Flag(array):
     for i in range(len(array) - 1):
         flag = False # 旗帜
@@ -21,6 +20,7 @@ def Flag(array):
         if not flag:
             break
 
+# 双向排序
 def Bidirection(array):
     for i in range(len(array) - 1):
         flag = False
