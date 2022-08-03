@@ -4,6 +4,8 @@ import polars as pl
 import random
 import copy
 
+from sklearn.decomposition import DictionaryLearning
+
 # 生成测试数据
 data = [random.randint(0, 100) for i in range(10000)]
 
@@ -14,14 +16,13 @@ def test_Quicksort(array, l=0, r=9999):
 	dictionary = {}
 	for method in method_list:
 	    function = eval(method)
-	    arr = copy.deepcopy(array) # 深度复制
 	    if method == "Lambda":
 		    times = time.time()
-		    function(arr)
+		    function(copy.deepcopy(array))
 		    timee = time.time()
 	    else:
 	    	times = time.time()
-	    	function(arr, l, r)
+	    	function(copy.deepcopy(array), l, r)
 	    	timee = time.time()
 	    gap = round(timee - times, 2)
 	    gap_list = [gap]
@@ -42,9 +43,8 @@ def test_Mergesort(array):
 	    	function(array)
 	    	timee = time.time()
 	    else:
-	    	arr = copy.deepcopy(array) # 深度复制
 	    	times = time.time()
-	    	function(arr)
+	    	function(copy.deepcopy(array))
 	    	timee = time.time()
 	    gap = round(timee - times, 2)
 	    gap_list = [gap]
@@ -52,3 +52,20 @@ def test_Mergesort(array):
 	df = pl.DataFrame(dictionary)
 	return df
 print(test_Mergesort(data))
+
+# 冒泡排序算法的对比
+from collection.bubble_sort import Doubleloop, Flag, Bidirection
+def test_Bubblesort(array):
+	method_list = ["Doubleloop", "Flag", "Bidirection"]
+	dictionary = {}
+	for method in method_list:
+		function = eval(method)
+		times = time.time()
+		function(copy.deepcopy(array))
+		timee = time.time()
+		gap = round(timee - times, 2)
+		gap_list = [gap]
+		dictionary[method] = gap_list
+	df = pl.DataFrame(dictionary)
+	return df
+print(test_Bubblesort(data))
