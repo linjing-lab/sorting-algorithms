@@ -1,106 +1,25 @@
 # sorting-algorithms🎢
 
-<p align="center">
-    <img src="./asserts/compare.webp" width="70%">
-</p>
+<div align="center">
 
-## 快速排序（quick_sort）
+|Algorithm||Time Complexity||Space Complexity|
+|--|--|--|--|--|
+|---|Best|Average|Worst|Worst|
+|[Quicksort](./docs/Quicksort.md)|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n^2)$|$O(\log(n))$|
+|[Mergesort](./docs/Mergesort.md)|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
+|Timsort|$\Omega(n)$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
+|Heapsort|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(1)$|
+|Bubble Sort|$\Omega(n)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
+|Insertion Sort|$\Omega(n)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
+|Selection Sort|$\Omega(n^2)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
+|Tree Sort|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n^2)$|$O(n)$|
+|Shell Sort|$\Omega(n \log (n))$|$\Theta(n(\log (n))^2)$|$O(n(\log (n))^2)$|$O(1)$|
+|Bucket Sort|$\Omega(n + k)$|$\Theta(n + k)$|$O(n^2)$|$O(n)$|
+|Radix Sort|$\Omega(nk)$|$\Theta(nk)$|$O(nk)$|$O(n+k)$|
+|Counting Sort|$\Omega(n + k)$|$\Theta(n + k)$|$O(n + k)$|$O(k)$|
+|Cubesort|$\Omega(n)$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
 
-`基本思想`：本质上是一种分而治之的思想。
-
-1. 选定Pivot中心轴
-2. 将大于Pivot的数字放在Pivot的右边
-3. 将小于Pivot的数字放在Pivot的左边
-4. 分别对左右子序列重复前三步操作，直到各子序列中的元素个数为1
-
-### 一行实现（Lambda）
-
-> 并非原地排序
-
-```python
-quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if item <= array[0]]) + [array[0]] + quick_sort([item for item in array[1:] if item > array[0]])
-```
-
-### 递归实现（Recursion）
-
-```python
-def quick_sort(array, l, r):
-        if l < r:
-            mid = partition(array, l, r)
-            quick_sort(array, l, mid - 1)
-            quick_sort(array, mid + 1, r)
-
-def partition(array, l, r):
-    value = array[r]
-    index = l - 1
-    for ind in range(l, r):
-        if array[ind] <= value:
-            index += 1
-            array[index], array[ind] = array[ind], array[index]
-    array[index + 1], array[r] = array[r], array[index + 1]
-    return index + 1
-```
-
-### 非递归实现（Stack）
-
-```python
-def quick_sort(array, l, r):
-    if l >= r:
-        return
-    stack = []
-    stack.append(l)
-    stack.append(r)
-    while stack:
-        low = stack.pop(0)
-        high = stack.pop(0)
-        if high - low <= 0:
-            continue
-        value = array[high]
-        index = low - 1
-        for ind in range(low, high):
-            if array[ind] <= value:
-                index += 1
-                array[index], array[ind] = array[ind], array[index]
-        array[index + 1], array[high] = array[high], array[index + 1]
-        stack.extend([low, index, index+2, high])
-```
-
-### 排序时间对比
-
-```python
-from collection.quick_sort import Lambda, Recursion, Stack
-def test_Quicksort(array, l=0, r=9999):
-    method_list = ["Lambda", "Recursion", "Stack"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        arr = copy.deepcopy(array) # 深度复制
-        if method == "Lambda":
-            times = time.time()
-            function(arr)
-            timee = time.time()
-        else:
-            times = time.time()
-            function(arr, l, r)
-            timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-print(test_Quicksort(data))
-```
-
-```textile
-shape: (1, 3)
-┌────────┬───────────┬───────┐
-│ Lambda ┆ Recursion ┆ Stack │
-│ ---    ┆ ---       ┆ ---   │
-│ f64    ┆ f64       ┆ f64   │
-╞════════╪═══════════╪═══════╡
-│ 0.1    ┆ 0.14      ┆ 0.15  │
-└────────┴───────────┴───────┘
-```
+</div>
 
 ## 归并排序（merge_sort)
 
