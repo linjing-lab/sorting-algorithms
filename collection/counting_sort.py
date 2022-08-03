@@ -23,7 +23,7 @@ def Forenumerate(array: List[int]):
         count[value - arrmin] += 1
     array.clear()
     for index, val in enumerate(count):
-        for i in range(val):
+        for _ in range(val):
             array.append(index + arrmin)
 
 # 反向填充
