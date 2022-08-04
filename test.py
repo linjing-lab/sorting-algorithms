@@ -1,9 +1,11 @@
-# 导包
+# 算法模块
 from collection.insertion_sort import Direct, Binary
 from collection.counting_sort import Whiledivide, Forenumerate, Reversefill
 from collection.bubble_sort import Doubleloop, Flag, Bidirection
 from collection.merge_sort import Recursion, Stack
 from collection.quick_sort import Lambda, Recursion, Stack
+
+# 其他模块
 import time
 from numpy import array
 import polars as pl
@@ -14,8 +16,6 @@ import copy
 data = [random.randint(0, 100) for i in range(10000)]
 
 # 快速排序算法对比
-
-
 def Quicksort(array, l=0, r=9999):
     method_list = ["Lambda", "Recursion", "Stack"]
     dictionary = {}
@@ -35,12 +35,9 @@ def Quicksort(array, l=0, r=9999):
     df = pl.DataFrame(dictionary)
     return df
 
-
 print(Quicksort(data))
 
 # 归并排序算法的对比
-
-
 def Mergesort(array):
     method_list = ["Recursion", "Stack"]
     dictionary = {}
@@ -60,12 +57,9 @@ def Mergesort(array):
     df = pl.DataFrame(dictionary)
     return df
 
-
 print(Mergesort(data))
 
 # 冒泡排序算法的对比
-
-
 def Bubblesort(array):
     method_list = ["Doubleloop", "Flag", "Bidirection"]
     dictionary = {}
@@ -80,12 +74,9 @@ def Bubblesort(array):
     df = pl.DataFrame(dictionary)
     return df
 
-
 print(Bubblesort(data))
 
 # 计数排序算法的对比
-
-
 def Countingsort(array):
     method_list = ["Whiledivide", "Forenumerate", "Reversefill"]
     dictionary = {}
@@ -100,12 +91,9 @@ def Countingsort(array):
     df = pl.DataFrame(dictionary)
     return df
 
-
 print(Countingsort(data))
 
 # 插入排序算法的对比
-
-
 def Insertionsort(array):
     method_list = ["Direct", "Binary"]
     dictionary = {}
@@ -119,6 +107,5 @@ def Insertionsort(array):
         dictionary[method] = gap_list
     df = pl.DataFrame(dictionary)
     return df
-
 
 print(Insertionsort(data))
