@@ -10,7 +10,7 @@ data = [random.randint(0, 100) for i in range(10000)]
 
 # 快速排序算法对比
 def Quicksort(array: List, l: int=0, r: int=9999):
-    from sortings.quick import lamb, recursion, stack
+    from sortingx.quick import lamb, recursion, stack
     method_list = ["lamb", "recursion", "stack"]
     dictionary = {}
     for method in method_list:
@@ -33,7 +33,7 @@ print(Quicksort(data))
 
 # 归并排序算法的对比
 def Mergesort(array: List):
-    from sortings.merge import recursion, stack
+    from sortingx.merge import recursion, stack
     method_list = ["recursion", "stack"]
     dictionary = {}
     for method in method_list:
@@ -56,7 +56,7 @@ print(Mergesort(data))
 
 # 冒泡排序算法的对比
 def Bubblesort(array: List):
-    from sortings.bubble import normal, flag, bidirection
+    from sortingx.bubble import normal, flag, bidirection
     method_list = ["normal", "flag", "bidirection"]
     dictionary = {}
     for method in method_list:
@@ -74,7 +74,7 @@ print(Bubblesort(data))
 
 # 计数排序算法的对比
 def Countingsort(array: List):
-    from sortings.counting import whilediv, forenum, reverfill
+    from sortingx.counting import whilediv, forenum, reverfill
     method_list = ["whilediv", "forenum", "reverfill"]
     dictionary = {}
     for method in method_list:
@@ -92,7 +92,7 @@ print(Countingsort(data))
 
 # 插入排序算法的对比
 def Insertionsort(array: List):
-    from sortings.insertion import direct, binary
+    from sortingx.insertion import direct, binary
     method_list = ["direct", "binary"]
     dictionary = {}
     for method in method_list:
