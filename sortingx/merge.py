@@ -1,7 +1,7 @@
 from typing import List
 
 # 递归实现
-def recursion(array: List) -> List:
+def recur(array: List) -> List:
     def merge_sort(array: List) -> List:
         if len(array) <= 1:
             return array

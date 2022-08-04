@@ -6,7 +6,7 @@ def lamb(array: List) -> List:
 	return quick_sort(array)
 
 # 递归实现
-def recursion(array: List, l: int, r: int) -> None:
+def recur(array: List, l: int, r: int) -> None:
 	def quick_sort(array: List, l: int, r: int) -> None:
 		if l < r:
 			mid = partition(array, l, r)

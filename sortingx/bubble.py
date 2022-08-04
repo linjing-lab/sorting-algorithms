@@ -21,7 +21,7 @@ def flag(array: List) -> None:
             break
 
 # 双向排序
-def bidirection(array: List) -> None:
+def bidirect(array: List) -> None:
     for i in range(len(array) - 1):
         flag = False
         for j in range(len(array) - i - 1):
