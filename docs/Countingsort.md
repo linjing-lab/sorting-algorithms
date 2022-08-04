@@ -28,6 +28,8 @@
 
 ```python
 def counting_sort(array: List[int]) -> None:
+    if not array:
+        return None
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -45,6 +47,8 @@ def counting_sort(array: List[int]) -> None:
 
 ```python
 def counting_sort(array: List[int]) -> None:
+    if not array:
+        return None
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -62,6 +66,8 @@ def counting_sort(array: List[int]) -> None:
 
 ```python
 def counting_sort(array: List[int]) -> List[int]:
+    if not array:
+        return array
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
