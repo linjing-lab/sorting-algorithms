@@ -1,5 +1,5 @@
 # 直接插入
-def Direct(array):
+def direct(array):
     for index in range(1, len(array)):
         key = array[index]
         pre = index - 1
@@ -9,7 +9,7 @@ def Direct(array):
         array[pre + 1] = key
 
 # 折半插入
-def Binary(array):
+def binary(array):
     for index in range(1, len(array)):
         key = array[index]
         low, high = 0, index - 1

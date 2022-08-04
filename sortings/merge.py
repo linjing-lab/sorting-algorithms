@@ -1,5 +1,5 @@
 # 递归实现
-def Recursion(array):
+def recursion(array):
     def merge_sort(array):
         if len(array) <= 1:
             return array
@@ -25,7 +25,7 @@ def Recursion(array):
     return merge_sort(array)
 
 # 非递归实现
-def Stack(array):
+def stack(array):
     def merge(array, low, mid, high):
         left = array[low: mid]
         right = array[mid: high]
