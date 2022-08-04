@@ -1,9 +1,9 @@
 # 算法模块
-from collection.insertion_sort import Direct, Binary
-from collection.counting_sort import Whiledivide, Forenumerate, Reversefill
-from collection.bubble_sort import Doubleloop, Flag, Bidirection
-from collection.merge_sort import Recursion, Stack
-from collection.quick_sort import Lambda, Recursion, Stack
+from sortings.insertion import Direct, Binary
+from sortings.counting import Whiledivide, Forenumerate, Reversefill
+from sortings.bubble import Doubleloop, Flag, Bidirection
+from sortings.merge import Recursion, Stack
+from sortings.quick import Lambda, Recursion, Stack
 
 # 其他模块
 import time
