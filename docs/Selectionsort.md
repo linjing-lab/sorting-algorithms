@@ -39,7 +39,7 @@ def selection_sort(array: List) -> None:
 ### 标记最大值
 
 ```python
-def withmax(array: List) -> None:
+def selection_sort(array: List) -> None:
     length = len(array)
     scope = length // 2
     for index in range(scope):
