@@ -1,5 +1,7 @@
+from typing import List
+
 # 普通版本
-def normal(array):
+def normal(array: List) -> None:
     # loop to access each array element
     for i in range(len(array) - 1):
         # loop to compare array elements
@@ -10,7 +12,7 @@ def normal(array):
                 array[j], array[j + 1] = array[j + 1], array[j]
 
 # 添加旗帜
-def flag(array):
+def flag(array: List) -> None:
     for i in range(len(array) - 1):
         flag = False # 旗帜
         for j in range(len(array) - i - 1):
@@ -21,7 +23,7 @@ def flag(array):
             break
 
 # 双向排序
-def bidirection(array):
+def bidirection(array: List) -> None:
     for i in range(len(array) - 1):
         flag = False
         for j in range(len(array) - i - 1):

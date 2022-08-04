@@ -1,5 +1,7 @@
+from typing import List
+
 # 直接插入
-def direct(array):
+def direct(array: List) -> None:
     for index in range(1, len(array)):
         key = array[index]
         pre = index - 1
@@ -9,7 +11,7 @@ def direct(array):
         array[pre + 1] = key
 
 # 折半插入
-def binary(array):
+def binary(array: List) -> None:
     for index in range(1, len(array)):
         key = array[index]
         low, high = 0, index - 1

@@ -1,7 +1,7 @@
 from typing import List
 
 # while循环
-def whilediv(array: List[int]):
+def whilediv(array: List[int]) -> None:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -15,7 +15,7 @@ def whilediv(array: List[int]):
             pos += 1
 
 # enumerate方法
-def forenum(array: List[int]):
+def forenum(array: List[int]) -> None:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -27,7 +27,7 @@ def forenum(array: List[int]):
             array.append(index + arrmin)
 
 # 反向填充
-def reverfill(array: List[int]):
+def reverfill(array: List[int]) -> List[int]:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)

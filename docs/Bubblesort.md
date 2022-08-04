@@ -32,7 +32,7 @@
 ### 普通版本
 
 ```python
-def bubble_sort(array):
+def bubble_sort(array: List) -> None:
     # loop to access each array element
     for i in range(len(array) - 1):
         # loop to compare array elements
@@ -46,7 +46,7 @@ def bubble_sort(array):
 ### 添加"旗帜"
 
 ```python
-def bubble_sort(array):
+def bubble_sort(array: List) -> None:
     for i in range(len(array) - 1):
         flag = False # 旗帜
         for j in range(len(array) - i - 1):
@@ -60,7 +60,7 @@ def bubble_sort(array):
 ### 双向排序
 
 ```python
-def bubble_sort(array):
+def bubble_sort(array: List) -> None:
     for i in range(len(array) - 1):
         flag = False
         for j in range(len(array) - i - 1):

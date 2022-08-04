@@ -1,6 +1,8 @@
+from typing import List
+
 # 递归实现
-def recursion(array):
-    def merge_sort(array):
+def recursion(array: List) -> List:
+    def merge_sort(array: List) -> List:
         if len(array) <= 1:
             return array
         mid = len(array) // 2
@@ -8,7 +10,7 @@ def recursion(array):
         right = merge_sort(array[mid:])
         return merge(left, right)
 
-    def merge(l, r):
+    def merge(l: int, r: int) -> List:
         result = []
         i = 0
         j = 0
@@ -25,8 +27,8 @@ def recursion(array):
     return merge_sort(array)
 
 # 非递归实现
-def stack(array):
-    def merge(array, low, mid, high):
+def stack(array: List) -> None:
+    def merge(array: List, low: int, mid: int, high: int) -> None:
         left = array[low: mid]
         right = array[mid: high]
         i = 0
@@ -43,7 +45,7 @@ def stack(array):
         result += right[j:]
         array[low: high] = result
 
-    def merge_sort(array):
+    def merge_sort(array: List) -> None:
         i = 1
         while i < len(array):
             low = 0

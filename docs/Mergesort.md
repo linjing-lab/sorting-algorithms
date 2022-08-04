@@ -42,7 +42,7 @@
 ### 递归实现
 
 ```python
-def merge_sort(array):
+def merge_sort(array: List) -> List:
     if len(array) <= 1:
         return array
     mid = len(array) // 2
@@ -50,7 +50,7 @@ def merge_sort(array):
     right = merge_sort(array[mid:])
     return merge(left, right)
 
-def merge(l, r):
+def merge(l: int, r: int) -> List:
     result = []
     i = 0
     j = 0
@@ -69,7 +69,7 @@ def merge(l, r):
 ### 非递归实现
 
 ```python
-def merge(array, low, mid, high):
+def merge(array: List, low: int, mid: int, high: int) -> None:
     left = array[low: mid]
     right = array[mid: high]
     i = 0
@@ -86,7 +86,7 @@ def merge(array, low, mid, high):
     result += right[j:]
     array[low: high] = result
 
-def merge_sort(array):
+def merge_sort(array: List) -> None:
     i = 1
     while i < len(array):
         low = 0

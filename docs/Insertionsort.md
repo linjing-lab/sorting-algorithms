@@ -34,7 +34,7 @@
 ### 直接插入
 
 ```python
-def insertion_sort(array):
+def insertion_sort(array: List) -> None:
     for index in range(1, len(array)):
         key = array[index]
         pre = index - 1
@@ -47,7 +47,7 @@ def insertion_sort(array):
 ### 折半插入
 
 ```python
-def insertion_sort(array):
+def insertion_sort(array: List) -> None:
     for index in range(1, len(array)):
         key = array[index]
         low, high = 0, index - 1

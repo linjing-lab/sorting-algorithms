@@ -27,7 +27,7 @@
 ### while循环
 
 ```python
-def counting_sort(array: List[int]):
+def counting_sort(array: List[int]) -> None:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -44,7 +44,7 @@ def counting_sort(array: List[int]):
 ### enumerate函数
 
 ```python
-def counting_sort(array: List[int]):
+def counting_sort(array: List[int]) -> None:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
@@ -61,7 +61,7 @@ def counting_sort(array: List[int]):
 反向填充是为了维持排序算法的稳定性：
 
 ```python
-def counting_sort(array: List[int]):
+def counting_sort(array: List[int]) -> List[int]:
     arrmin = min(array)
     arrmax = max(array)
     count = [0] * (arrmax - arrmin + 1)
