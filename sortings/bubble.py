@@ -1,5 +1,5 @@
 # 普通版本
-def doubleloop(array):
+def normal(array):
     # loop to access each array element
     for i in range(len(array) - 1):
         # loop to compare array elements

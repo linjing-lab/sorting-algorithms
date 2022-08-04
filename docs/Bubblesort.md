@@ -29,7 +29,7 @@
 
 ## 五、算法实现
 
-### 普通版本（Doubleloop）
+### 普通版本
 
 ```python
 def bubble_sort(array):
@@ -43,7 +43,7 @@ def bubble_sort(array):
                 array[j], array[j + 1] = array[j + 1], array[j]
 ```
 
-### 添加"旗帜"（Flag）
+### 添加"旗帜"
 
 ```python
 def bubble_sort(array):
@@ -57,7 +57,7 @@ def bubble_sort(array):
             break
 ```
 
-### 双向排序（Bidirection）
+### 双向排序
 
 ```python
 def bubble_sort(array):

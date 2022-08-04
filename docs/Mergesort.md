@@ -39,7 +39,7 @@
 
 ## 五、算法实现
 
-### 递归实现（Recursion）
+### 递归实现
 
 ```python
 def merge_sort(array):
@@ -66,7 +66,7 @@ def merge(l, r):
     return result
 ```
 
-### 非递归实现（Stack）
+### 非递归实现
 
 ```python
 def merge(array, low, mid, high):

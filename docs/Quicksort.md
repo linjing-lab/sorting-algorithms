@@ -61,13 +61,13 @@ $$
 
 ## 五、算法实现
 
-### 一行实现（Lambda）
+### 一行实现
 
 ```python
 quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if item <= array[0]]) + [array[0]] + quick_sort([item for item in array[1:] if item > array[0]])
 ```
 
-### 递归实现（Recursion）
+### 递归实现
 
 ```python
 def quick_sort(array, l, r):
@@ -87,7 +87,7 @@ def partition(array, l, r):
     return index + 1
 ```
 
-### 非递归实现（Stack）
+### 非递归实现
 
 ```python
 def quick_sort(array, l, r):

@@ -24,7 +24,7 @@
 
 ## 五、算法实现
 
-### while循环（Whiledivide）
+### while循环
 
 ```python
 def counting_sort(array: List[int]):
@@ -41,7 +41,7 @@ def counting_sort(array: List[int]):
             pos += 1
 ```
 
-### enumerate函数（Forenumerate）
+### enumerate函数
 
 ```python
 def counting_sort(array: List[int]):
@@ -56,7 +56,7 @@ def counting_sort(array: List[int]):
             array.append(index + arrmin)
 ```
 
-### 反向填充（Reversefill）
+### 反向填充
 
 反向填充是为了维持排序算法的稳定性：
 

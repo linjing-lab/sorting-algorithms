@@ -56,7 +56,7 @@ print(Mergesort(data))
 
 # 冒泡排序算法的对比
 def Bubblesort(array):
-    from sortings.bubble import doubleloop, flag, bidirection
+    from sortings.bubble import normal, flag, bidirection
     method_list = ["doubleloop", "flag", "bidirection"]
     dictionary = {}
     for method in method_list:
