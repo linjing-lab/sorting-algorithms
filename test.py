@@ -107,3 +107,19 @@ def Insertionsort(array: List):
     return df
 
 print(Insertionsort(data))
+
+# 选择排序算法的对比
+def Selectionsort(array: List):
+    from sortingx.selection import normal, withmax
+    method_list = ["normal", "withmax"]
+    dictionary = {}
+    for method in method_list:
+        function = eval(method)
+        times = time.time()
+        function(copy.deepcopy(array))
+        timee = time.time()
+        gap = round(timee - times, 2)
+        gap_list = [gap]
+        dictionary[method] = gap_list
+    df = pl.DataFrame(dictionary)
+    return df
