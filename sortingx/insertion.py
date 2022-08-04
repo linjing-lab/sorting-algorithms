@@ -23,4 +23,4 @@ def binary(array: List) -> None:
                 high = mid - 1
         for pre in range(index, low, -1): # 从后往前
             array[pre] = array[pre - 1]
-        array[low] = key 
+        array[low] = key
