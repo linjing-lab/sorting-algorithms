@@ -39,7 +39,6 @@ def selection_sort(array: List) -> None:
 ### 标记最大值
 
 ```python
-# 标记最大值
 def selection_sort(array: List) -> None:
     length = len(array)
     for index in range(length // 2):
