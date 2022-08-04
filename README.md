@@ -10,7 +10,7 @@
 |Timsort|$\Omega(n)$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
 |Heapsort|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(1)$|
 |[Bubble Sort](./docs/Bubblesort.md)|$\Omega(n)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
-|Insertion Sort|$\Omega(n)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
+|[Insertion Sort](./docs/Insertionsort.md)|$\Omega(n)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
 |Selection Sort|$\Omega(n^2)$|$\Theta(n^2)$|$O(n^2)$|$O(1)$|
 |Tree Sort|$\Omega(n \log(n))$|$\Theta(n \log(n))$|$O(n^2)$|$O(n)$|
 |Shell Sort|$\Omega(n \log (n))$|$\Theta(n(\log (n))^2)$|$O(n(\log (n))^2)$|$O(1)$|

@@ -68,8 +68,6 @@ def merge(l, r):
 
 ### 非递归实现（Stack）
 
-非递归版本不需要额外的空间，直接在原数组上进行切割合并。
-
 ```python
 def merge(array, low, mid, high):
     left = array[low: mid]
