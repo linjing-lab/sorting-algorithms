@@ -34,7 +34,7 @@
 ```python
 def bubble_sort(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     for i in range(len(array) - 1): # loop to access each array element
         for j in range(len(array) - i - 1): # loop to compare array elements
@@ -49,7 +49,7 @@ def bubble_sort(array: List) -> None:
 ```python
 def bubble_sort(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     for i in range(len(array) - 1):
         flag = False # 旗帜
@@ -66,7 +66,7 @@ def bubble_sort(array: List) -> None:
 ```python
 def bubble_sort(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     for i in range(len(array) - 1):
         flag = False
