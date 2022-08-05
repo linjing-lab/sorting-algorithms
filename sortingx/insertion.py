@@ -3,7 +3,7 @@ from typing import List
 # 直接插入
 def direct(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     for index in range(1, len(array)):
         key = array[index]
@@ -16,7 +16,7 @@ def direct(array: List) -> None:
 # 折半插入
 def binary(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     for index in range(1, len(array)):
         key = array[index]
