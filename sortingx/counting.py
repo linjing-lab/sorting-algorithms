@@ -1,7 +1,7 @@
 from typing import List
 
 # while循环
-def whilediv(array: List[int]) -> None:
+def whilediv(array: List[int], reverse: bool=False) -> None:
     '''
     仅支持全为整数类型的数据。
     '''
@@ -12,12 +12,12 @@ def whilediv(array: List[int]) -> None:
     count = [0] * (arrmax - arrmin + 1)
     for value in array:
         count[value - arrmin] += 1
-    pos = 0 # 游标
+    pos = len(array) - 1 if reverse else 0 # 游标
     for index in range(arrmin, arrmax + 1): # 从最小的数开始
         while count[index - arrmin] >= 1:
             array[pos] = index
             count[index - arrmin] -= 1
-            pos += 1
+            pos = pos - 1 if reverse else pos + 1
 
 # enumerate方法
 def forenum(array: List[int]) -> None:
