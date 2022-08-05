@@ -2,6 +2,9 @@ from typing import List
 
 # 普通版本
 def normal(array: List) -> None:
+    '''
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     for i in range(len(array) - 1): # loop to access each array element
         for j in range(len(array) - i - 1): # loop to compare array elements
         # compare two adjacent elements and change > to < to sort in descending order
@@ -11,6 +14,9 @@ def normal(array: List) -> None:
 
 # 添加旗帜
 def flag(array: List) -> None:
+    '''
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     for i in range(len(array) - 1):
         flag = False # 旗帜
         for j in range(len(array) - i - 1):
@@ -22,6 +28,9 @@ def flag(array: List) -> None:
 
 # 双向排序
 def bidirect(array: List) -> None:
+    '''
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     for i in range(len(array) - 1):
         flag = False
         for j in range(len(array) - i - 1):
