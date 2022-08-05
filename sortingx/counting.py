@@ -2,6 +2,9 @@ from typing import List
 
 # while循环
 def whilediv(array: List[int]) -> None:
+    '''
+    原址排序：仅支持全为整数类型的数据。
+    '''
     if not array:
         return None
     arrmin = min(array)
@@ -18,6 +21,9 @@ def whilediv(array: List[int]) -> None:
 
 # enumerate方法
 def forenum(array: List[int]) -> None:
+    '''
+    原址排序：仅支持全为整数类型的数据。
+    '''
     if not array:
         return None
     arrmin = min(array)
@@ -32,6 +38,9 @@ def forenum(array: List[int]) -> None:
 
 # 反向填充
 def reverfill(array: List[int]) -> List[int]:
+    '''
+    非原址排序：仅支持全为整数类型的数据。
+    '''
     if not array:
         return array
     arrmin = min(array)
