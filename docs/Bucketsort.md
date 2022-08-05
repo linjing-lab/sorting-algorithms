@@ -33,7 +33,7 @@
 ```python
 def bucket_sort(array: List[float]) -> None:
     '''
-    支持数值型数据，如整型与浮点型混合；不支持含有字符串类型元素的数据。
+    支持数值型数据，如整型与浮点型混合；不支持含有字符串类型的数据。
     '''
     if not array:
         return None
@@ -56,7 +56,7 @@ def bucket_sort(array: List[float]) -> None:
 ```python
 def bucket_sort(array: List[float], base: int=5) -> None:
     '''
-    支持数值型数据，如整型与浮点型混合；不支持含有字符串类型元素的数据。
+    支持数值型数据，如整型与浮点型混合；不支持含有字符串类型的数据。
     base: 根据需要调节，base 越小，桶数越大。
     '''
     if not array:
