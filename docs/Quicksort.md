@@ -72,7 +72,7 @@ quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for it
 ```python
 def quick_sort(array: List, l: int, r: int) -> None:
 	'''
-	原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
 	assert l >= 0
@@ -101,7 +101,7 @@ def partition(array: List, l: int, r: int) -> int:
 ```python
 def quick_sort(array: List, l: int, r: int) -> None:
 	'''
-	原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
 	assert l >= 0
