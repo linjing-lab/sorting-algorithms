@@ -3,7 +3,7 @@ from typing import List
 # lambda实现
 def lamb(array: List) -> List:
 	'''
-	基于lambda函数实现的非原址排序: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	'''
 	quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if item <= array[0]]) + [array[0]] + quick_sort([item for item in array[1:] if item > array[0]])
 	return quick_sort(array)
