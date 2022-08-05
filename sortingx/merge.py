@@ -2,6 +2,9 @@ from typing import List
 
 # 递归实现
 def recur(array: List) -> List:
+    '''
+    非原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     def merge_sort(array: List) -> List:
         if len(array) <= 1:
             return array
@@ -11,6 +14,9 @@ def recur(array: List) -> List:
         return merge(left, right)
 
     def merge(l: int, r: int) -> List:
+        '''
+        l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+        '''
         result = []
         i = 0
         j = 0
@@ -28,7 +34,13 @@ def recur(array: List) -> List:
 
 # 非递归实现
 def stack(array: List) -> None:
+    '''
+    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     def merge(array: List, low: int, mid: int, high: int) -> None:
+        '''
+        low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
+        '''
         left = array[low: mid]
         right = array[mid: high]
         i = 0
