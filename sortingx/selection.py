@@ -4,6 +4,9 @@ from cv2 import norm
 
 # 普通版本
 def normal(array: List) -> None:
+    '''
+    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     length = len(array)
     for index in range(length - 1):
         mind = index # 标记最小关键字位置
@@ -14,6 +17,9 @@ def normal(array: List) -> None:
 
 # 标记最大值
 def withmax(array: List) -> None:
+    '''
+    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    '''
     length = len(array)
     scope = length // 2
     for index in range(scope):
