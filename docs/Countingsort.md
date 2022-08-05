@@ -29,7 +29,7 @@
 ```python
 def counting_sort(array: List[int]) -> None:
     '''
-    原址排序：仅支持全为整数类型的数据。
+    仅支持全为整数类型的数据。
     '''
     if not array:
         return None
