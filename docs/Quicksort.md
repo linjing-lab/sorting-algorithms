@@ -75,6 +75,8 @@ def quick_sort(array: List, l: int, r: int) -> None:
 	原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
+	assert l >= 0
+	assert r >= 0
 	if l < r:
 		mid = partition(array, l, r)
 		quick_sort(array, l, mid - 1)
@@ -102,6 +104,8 @@ def quick_sort(array: List, l: int, r: int) -> None:
 	原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
+	assert l >= 0
+	assert r >= 0
 	if l >= r:
 		return
 	stack = []
