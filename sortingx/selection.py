@@ -1,7 +1,5 @@
 from typing import List
 
-from cv2 import norm
-
 # 普通版本
 def normal(array: List) -> None:
     '''
