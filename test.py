@@ -6,7 +6,7 @@ import copy
 from typing import List
 
 # 生成测试数据
-data = [random.randint(0, 100) for i in range(10000)]
+data = [random.randint(0, 100) for _ in range(10000)]
 
 # 快速排序算法对比
 def Quicksort(array: List, l: int=0, r: int=9999):
