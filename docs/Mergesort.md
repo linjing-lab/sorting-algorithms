@@ -44,7 +44,7 @@
 ```python
 def merge_sort(array: List) -> List:
     '''
-    非原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     if len(array) <= 1:
         return array
@@ -97,7 +97,7 @@ def merge(array: List, low: int, mid: int, high: int) -> None:
 
 def merge_sort(array: List) -> None:
     '''
-    原址排序：支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     '''
     i = 1
     while i < len(array):
