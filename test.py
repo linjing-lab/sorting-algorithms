@@ -123,3 +123,23 @@ def Selectionsort(array: List):
         dictionary[method] = gap_list
     df = pl.DataFrame(dictionary)
     return df
+
+print(Selectionsort(data))
+
+# 桶排序算法的对比
+def Bucketsort(array: List):
+    from sortingx.bucket import numeric, mobase
+    method_list = ["numeric", "mobase"]
+    dictionary = {}
+    for method in method_list:
+        function = eval(method)
+        times = time.time()
+        function(copy.deepcopy(array))
+        timee = time.time()
+        gap = round(timee - times, 2)
+        gap_list = [gap]
+        dictionary[method] = gap_list
+    df = pl.DataFrame(dictionary)
+    return df
+
+print(Bucketsort(data))
