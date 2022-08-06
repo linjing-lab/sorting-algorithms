@@ -16,11 +16,10 @@ def numeric(array: List[float], reverse: bool=False) -> None:
     for value in array:
         bucket[int(value - arrmin) // length].append(value)
     array.clear()
-    bucket = bucket[::-1] if reverse else bucket
     for index in bucket:
         if index:
-            for value in sorted(index, reverse=reverse): # TimSort
-                array.append(value)
+            for value in sorted(index): # TimSort
+                _ = array.insert(0, value) if reverse else array.append(value)
 
 # 基数越大，桶数越小
 def mobase(array: List[float], base: int=5, reverse: bool=False) -> None:
@@ -39,8 +38,7 @@ def mobase(array: List[float], base: int=5, reverse: bool=False) -> None:
     for value in array:
         bucket[int(value - arrmin) // base].append(value)
     array.clear()
-    bucket = bucket[::-1] if reverse else bucket
     for index in bucket:
         if index:
-            for value in sorted(index, reverse=reverse): # TimSort
-                array.append(value)
+            for value in sorted(index): # TimSort
+                _ = array.insert(0, value) if reverse else array.append(value)
