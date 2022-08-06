@@ -1,4 +1,3 @@
-from array import array
 from typing import List
 
 # lambda实现
