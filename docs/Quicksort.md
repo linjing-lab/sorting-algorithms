@@ -64,32 +64,33 @@ $$
 ### 一行实现
 
 ```python
-quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if item <= array[0]]) + [array[0]] + quick_sort([item for item in array[1:] if item > array[0]])
+quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if (item > array[0] if reverse else item <= array[0])]) + [array[0]] + quick_sort([item for item in array[1:] if (item <= array[0] if reverse else item > array[0])])
 ```
 
 ### 递归实现
 
 ```python
-def quick_sort(array: List, l: int, r: int) -> None:
+def quick_sort(array: List, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+	reverse: 是否降序, 默认采用升序。
 	'''
 	assert l >= 0
 	assert r >= 0
 	if l < r:
-		mid = partition(array, l, r)
+		mid = partition(array, l, r, reverse=reverse)
 		quick_sort(array, l, mid - 1)
 		quick_sort(array, mid + 1, r)
 
-def partition(array: List, l: int, r: int) -> int:
+def partition(array: List, l: int, r: int, reverse: bool=False) -> int:
 	'''
 	array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
 	value = array[r]
 	index = l - 1
 	for ind in range(l, r):
-		if array[ind] <= value:
+		if array[ind] > value if reverse else array[ind] <= value:
 			index += 1
 			array[index], array[ind] = array[ind], array[index]
 	array[index + 1], array[r] = array[r], array[index + 1]
@@ -99,10 +100,11 @@ def partition(array: List, l: int, r: int) -> int:
 ### 非递归实现
 
 ```python
-def quick_sort(array: List, l: int, r: int) -> None:
+def quick_sort(array: List, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+	reverse: 是否降序, 默认采用升序。
 	'''
 	assert l >= 0
 	assert r >= 0
@@ -119,7 +121,7 @@ def quick_sort(array: List, l: int, r: int) -> None:
 		value = array[high]
 		index = low - 1
 		for ind in range(low, high):
-			if array[ind] <= value:
+			if array[ind] > value if reverse else array[ind] <= value:
 				index += 1
 				array[index], array[ind] = array[ind], array[index]
 		array[index + 1], array[high] = array[high], array[index + 1]
