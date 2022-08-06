@@ -15,8 +15,7 @@ def numeric(array: List[float], reverse: bool=False) -> None:
     bucket = [[] for _ in range(capacity)] # Construct buckets
     for value in array:
         pos = int(value - arrmin) // length
-        place = capacity - pos - 1 if reverse else pos
-        bucket[place].append(value)
+        bucket[capacity - pos - 1 if reverse else pos].append(value)
     array.clear()
     for index in bucket:
         if index:
@@ -39,8 +38,7 @@ def mobase(array: List[float], base: int=5, reverse: bool=False) -> None:
     bucket = [[] for _ in range(capacity)]
     for value in array:
         pos = int(value - arrmin) // base
-        place = capacity - pos - 1 if reverse else pos
-        bucket[place].append(value)
+        bucket[capacity - pos - 1 if reverse else pos].append(value)
     array.clear()
     for index in bucket:
         if index:
