@@ -44,12 +44,14 @@ def bucket_sort(array: List[float], reverse: bool=False) -> None:
     capacity = int(arrmax - arrmin + 1) // length + 1
     bucket = [[] for _ in range(capacity)] # Construct buckets
     for value in array:
-        bucket[int(value - arrmin) // length].append(value)
+        pos = int(value - arrmin) // length
+        place = capacity - pos - 1 if reverse else pos
+        bucket[place].append(value)
     array.clear()
     for index in bucket:
         if index:
-            for value in sorted(index): # TimSort
-                _ = array.insert(0, value) if reverse else array.append(value)
+            for value in sorted(index, reverse=reverse): # TimSort
+                array.append(value)
 ```
 
 ### 优化基数
@@ -69,10 +71,12 @@ def bucket_sort(array: List[float], base: int=5, reverse: bool=False) -> None:
     capacity = int(arrmax - arrmin + 1) // base + 1
     bucket = [[] for _ in range(capacity)]
     for value in array:
-        bucket[int(value - arrmin) // base].append(value)
+        pos = int(value - arrmin) // base
+        place = capacity - pos - 1 if reverse else pos
+        bucket[place].append(value)
     array.clear()
     for index in bucket:
         if index:
-            for value in sorted(index): # TimSort
-                _ = array.insert(0, value) if reverse else array.append(value)
+            for value in sorted(index, reverse=reverse): # TimSort
+                array.append(value)
 ```
