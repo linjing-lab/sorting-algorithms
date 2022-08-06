@@ -11,8 +11,7 @@ def standard(array: List, reverse: bool=False) -> None:
     while gap >= 1:
         for index in range(length):
             next = index
-            compare = array[next - gap] < array[next] if reverse else array[next - gap] > array[next]
-            while next >= gap and compare: # insertion sort
+            while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]: # insertion sort
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap
         gap //= 2 # renew
