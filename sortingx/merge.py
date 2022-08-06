@@ -1,9 +1,10 @@
 from typing import List
 
 # 递归实现
-def recur(array: List) -> List:
+def recur(array: List, reverse: bool=False) -> List:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     def merge_sort(array: List) -> List:
         '''
@@ -24,7 +25,7 @@ def recur(array: List) -> List:
         i = 0
         j = 0
         while i < len(l) and j < len(r):
-            if(l[i] <= r[j]):
+            if l[i] > r[j] if reverse else l[i] <= r[j]:
                 result.append(l[i])
                 i += 1
             else:
@@ -36,9 +37,10 @@ def recur(array: List) -> List:
     return merge_sort(array)
 
 # 非递归实现
-def stack(array: List) -> None:
+def stack(array: List, reverse: bool=False) -> None:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     def merge(array: List, low: int, mid: int, high: int) -> None:
         '''
@@ -50,7 +52,7 @@ def stack(array: List) -> None:
         j = 0
         result = []
         while i < len(left) and j < len(right):
-            if left[i] <= right[j]:
+            if left[i] > right[j] if reverse else left[i] <= right[j]:
                 result.append(left[i])
                 i += 1
             else:

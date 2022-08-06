@@ -42,18 +42,19 @@
 ### 递归实现
 
 ```python
-def merge_sort(array: List) -> List:
+def merge_sort(array: List, reverse: bool=False) -> List:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     if len(array) <= 1:
         return array
     mid = len(array) // 2
     left = merge_sort(array[:mid])
     right = merge_sort(array[mid:])
-    return merge(left, right)
+    return merge(left, right, reverse=reverse)
 
-def merge(l: int, r: int) -> List:
+def merge(l: int, r: int, reverse: bool=False) -> List:
     '''
     l: 数据左侧游标(整型), r: 数据右侧游标(整型)
     '''
@@ -61,7 +62,7 @@ def merge(l: int, r: int) -> List:
     i = 0
     j = 0
     while i < len(l) and j < len(r):
-        if(l[i] <= r[j]):
+        if l[i] > r[j] if reverse else l[i] <= r[j]:
             result.append(l[i])
             i += 1
         else:
@@ -75,7 +76,7 @@ def merge(l: int, r: int) -> List:
 ### 非递归实现
 
 ```python
-def merge(array: List, low: int, mid: int, high: int) -> None:
+def merge(array: List, low: int, mid: int, high: int, reverse: bool=False) -> None:
     '''
     low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
     '''
@@ -85,7 +86,7 @@ def merge(array: List, low: int, mid: int, high: int) -> None:
     j = 0
     result = []
     while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
+        if left[i] > right[j] if reverse else left[i] <= right[j]:
             result.append(left[i])
             i += 1
         else:
@@ -95,9 +96,10 @@ def merge(array: List, low: int, mid: int, high: int) -> None:
     result += right[j:]
     array[low: high] = result
 
-def merge_sort(array: List) -> None:
+def merge_sort(array: List, reverse: bool=False) -> None:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     i = 1
     while i < len(array):
@@ -106,7 +108,7 @@ def merge_sort(array: List) -> None:
             mid = low + i
             high = min(low + 2 * i, len(array))
             if mid < high:
-                merge(array, low, mid, high)
+                merge(array, low, mid, high, reverse=reverse)
             low += 2 * i
         i *= 2
 ```
