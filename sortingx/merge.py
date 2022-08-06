@@ -3,7 +3,7 @@ from typing import List
 # 递归实现
 def recur(array: List, reverse: bool=False) -> List:
     '''
-    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
     def merge_sort(array: List) -> List:
@@ -39,7 +39,7 @@ def recur(array: List, reverse: bool=False) -> List:
 # 非递归实现
 def stack(array: List, reverse: bool=False) -> None:
     '''
-    支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
     def merge(array: List, low: int, mid: int, high: int) -> None:

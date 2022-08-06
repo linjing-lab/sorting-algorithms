@@ -29,7 +29,7 @@
 ```python
 def counting_sort(array: List[int], reverse: bool=False) -> None:
     '''
-    仅支持全为整数类型的数据。
+    array: 仅支持全为整数类型的数据。
     reverse: 是否降序, 默认采用升序。
     '''
     if not array:
@@ -53,7 +53,7 @@ def counting_sort(array: List[int], reverse: bool=False) -> None:
 ```python
 def counting_sort(array: List[int], reverse: bool=False) -> None:
     '''
-    仅支持全为整数类型的数据。
+    array: 仅支持全为整数类型的数据。
     reverse: 是否降序, 默认采用升序。
     '''
     if not array:
@@ -76,7 +76,7 @@ def counting_sort(array: List[int], reverse: bool=False) -> None:
 ```python
 def counting_sort(array: List[int], reverse: bool=False) -> List[int]:
     '''
-    仅支持全为整数类型的数据。
+    array: 仅支持全为整数类型的数据。
     reverse: 是否降序, 默认采用升序。
     '''
     if not array:

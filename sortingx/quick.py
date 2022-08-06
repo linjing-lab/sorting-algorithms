@@ -4,7 +4,7 @@ from typing import List
 # lambda实现
 def lamb(array: List, reverse: bool=False) -> List:
 	'''
-	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	reverse: 是否降序, 默认采用升序。
 	'''
 	quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for item in array[1:] if (item > array[0] if reverse else item <= array[0])]) + [array[0]] + quick_sort([item for item in array[1:] if (item <= array[0] if reverse else item > array[0])])
@@ -13,7 +13,7 @@ def lamb(array: List, reverse: bool=False) -> List:
 # 递归实现
 def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
 	'''
-	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	reverse: 是否降序, 默认采用升序。
 	'''
@@ -45,7 +45,7 @@ def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
 # 非递归实现
 def stack(array: List, l: int, r: int, reverse: bool=False) -> None:
 	'''
-	支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	reverse: 是否降序, 默认采用升序。
 	'''

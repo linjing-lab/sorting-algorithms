@@ -9,7 +9,7 @@ def normal(array: List, reverse: bool=False) -> None:
     for i in range(len(array) - 1): # loop to access each array element
         for j in range(len(array) - i - 1): # loop to compare array elements
         # compare two adjacent elements and change > to < to sort in descending order
-            if array[j] < array[j + 1] if reverse else array[j] > array[j + 1]: # 此处增加cmp、key
+            if array[j] < array[j + 1] if reverse else array[j] > array[j + 1]:
                 # swapping elements if elements are not in the intended order
                 array[j], array[j + 1] = array[j + 1], array[j]
 

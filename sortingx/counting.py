@@ -3,7 +3,7 @@ from typing import List
 # while循环
 def whilediv(array: List[int], reverse: bool=False) -> None:
     '''
-    仅支持全为整数类型的数据。
+    array: 仅支持全为整数类型的数据。
     reverse: 是否降序, 默认采用升序。
     '''
     if not array:
@@ -24,7 +24,7 @@ def whilediv(array: List[int], reverse: bool=False) -> None:
 # enumerate方法
 def forenum(array: List[int], reverse: bool=False) -> None:
     '''
-    仅支持全为整数类型的数据。
+    array: 仅支持全为整数类型的数据。
     reverse: 是否降序, 默认采用升序。
     '''
     if not array:
