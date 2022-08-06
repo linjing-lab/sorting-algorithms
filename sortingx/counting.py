@@ -1,4 +1,3 @@
-from re import A
 from typing import List
 
 # while循环
@@ -16,9 +15,10 @@ def whilediv(array: List[int], reverse: bool=False) -> None:
         count[value - arrmin] += 1
     pos = len(array) - 1 if reverse else 0 # 游标
     for index in range(arrmin, arrmax + 1): # 从最小的数开始
-        while count[index - arrmin] >= 1:
+        amount = count[index - arrmin]
+        while amount >= 1:
             array[pos] = index
-            count[index - arrmin] -= 1
+            amount -= 1
             pos = pos - 1 if reverse else pos + 1
 
 # enumerate方法
@@ -57,7 +57,8 @@ def reverfill(array: List[int], reverse: bool=False) -> List[int]:
     for index in range(1, arrmax - arrmin + 1):
         count[index] += count[index - 1]
     for index in range(len(array) - 1, -1, -1):
-        place = length - count[array[index] - arrmin] if reverse else count[array[index] - arrmin] - 1
+        pos = count[array[index] - arrmin]
+        place = length - pos if reverse else pos - 1
         result[place] = array[index]
-        count[array[index] - arrmin] -= 1
+        pos -= 1
     return result
