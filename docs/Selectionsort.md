@@ -26,15 +26,16 @@ $n$ 个记录的数组可经过 $n-1$ 轮选择排序得到有序结果。
 ### 普通版本
 
 ```python
-def selection_sort(array: List) -> None:
+def selection_sort(array: List, reverse: bool=False) -> None:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     length = len(array)
     for index in range(length - 1):
-        mind = index # 标记最小关键字位置
+        mind = index # 标记关键字位置
         for next in range(index + 1, length): # 搜索
-            if array[mind] > array[next]:
+            if array[mind] < array[next] if reverse else array[mind] > array[next]:
                 mind = next
         array[index], array[mind] = array[mind], array[index]
 ```
@@ -42,18 +43,19 @@ def selection_sort(array: List) -> None:
 ### 标记最大值
 
 ```python
-def selection_sort(array: List) -> None:
+def selection_sort(array: List, reverse: bool=False) -> None:
     '''
     支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    reverse: 是否降序, 默认采用升序。
     '''
     length = len(array)
     scope = length // 2
     for index in range(scope):
         mind, maxd = index, index # 从一个方向搜索来保证单调性
         for next in range(index + 1, length - index):
-            if array[mind] > array[next]:
+            if array[mind] < array[next] if reverse else array[mind] > array[next]:
                 mind = next
-            if array[maxd] < array[next]:
+            if array[maxd] > array[next] if reverse else array[maxd] < array[next]:
                 maxd = next
         array[mind], array[index] = array[index], array[mind]
         maxd = mind if index == maxd else maxd
