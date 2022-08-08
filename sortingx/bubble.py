@@ -1,7 +1,7 @@
 from typing import List
 
 # 普通版本
-def normal(array: List, reverse: bool=False) -> None:
+def normal(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
@@ -14,7 +14,7 @@ def normal(array: List, reverse: bool=False) -> None:
                 array[j], array[j + 1] = array[j + 1], array[j]
 
 # 添加旗帜
-def flag(array: List, reverse: bool=False) -> None:
+def flag(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
@@ -29,7 +29,7 @@ def flag(array: List, reverse: bool=False) -> None:
             break
 
 # 双向排序
-def bidirect(array: List, reverse: bool=False) -> None:
+def bidirect(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
