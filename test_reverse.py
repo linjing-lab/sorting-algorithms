@@ -4,9 +4,6 @@ import sortingx
 import random
 from typing import List
 
-from sortingx.bucket import numeric
-from sortingx.insertion import binary
-
 # 测试
 class Reverser:
     def __init__(self, genre: str, method: List[str], part: List[bool]=None, ret: List[bool]=None):

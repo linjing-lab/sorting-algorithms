@@ -1,5 +1,4 @@
 # 导包
-from tkinter.tix import Select
 import sortingx
 import time
 import polars as pl
