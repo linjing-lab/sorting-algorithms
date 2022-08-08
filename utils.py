@@ -1,4 +1,4 @@
-def cmp(array1, array2, reverse) -> bool:
+def cmp(array1: tuple or list, array2: tuple or list, reverse: bool) -> bool:
     for index in range(0, len(array1)):
         if array1[index] > array2[index] and reverse:
             return False
