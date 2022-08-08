@@ -15,7 +15,7 @@ class Timer:
             assert len(part) == len(method)
         self.method = 'sortingx.' + genre
         self.call = method # genre.def
-        self.part = part # 
+        self.part = part
         self.dict = {} # 训练日志 
 
     def generate(self, left: int=0, right: int=100, size: int=10000, seed: int=0) -> str:
