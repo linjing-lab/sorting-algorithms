@@ -6,9 +6,11 @@ def donald(array: list, reverse: bool=False) -> None:
     '''
     length = len(array)
     gap = length // 2 # set gap
+    print(gap)
     while gap >= 1:
         for index in range(gap, length):
             next = index
+            print(next - gap)
             while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]: # insertion sort
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap

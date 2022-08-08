@@ -1,4 +1,5 @@
 # 导包
+from tkinter.tix import Select
 import sortingx
 import time
 import polars as pl
@@ -52,10 +53,12 @@ class Timer:
         return 'The Time Record of {0} is: \n{1}'.format(self.method, pl.DataFrame(self.dict))
 
 # 测试实例1
+'''
 Counting = Timer('counting', ['whilediv', 'forenum', 'reverfill'])
 print(Counting.generate(0, 100, 10000, 1))
 print(Counting.collect(3))
 print(Counting.ouput())
+'''
 
 # 输出样例
 '''
@@ -73,10 +76,12 @@ shape: (1, 3)
 '''
 
 # 测试实例2
+'''
 Quick = Timer('quick', ['lamb', 'recur', 'stack'], [False, True, True])
 print(Quick.generate(0, 100, 10000, 1))
 print(Quick.collect(3))
 print(Quick.ouput())
+'''
 
 # 输出样例
 '''
@@ -92,3 +97,119 @@ shape: (1, 3)
 │ 0.117 ┆ 0.146 ┆ 12.033 │
 └───────┴───────┴────────┘
 '''
+
+# 测试实例3
+'''
+Bubble = Timer('bubble', ['normal', 'flag', 'bidirect'])
+print(Bubble.generate(0, 100, 10000, 1))
+print(Bubble.collect(3))
+print(Bubble.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.bubble is: 
+shape: (1, 3)
+┌────────┬──────┬──────────┐
+│ normal ┆ flag ┆ bidirect │
+│ ---    ┆ ---  ┆ ---      │
+│ f64    ┆ f64  ┆ f64      │
+╞════════╪══════╪══════════╡
+│ 10.219 ┆ 0.0  ┆ 0.0      │
+└────────┴──────┴──────────┘
+'''
+
+# 测试实例4
+'''
+Bucket = Timer('bucket', ['numeric', 'mobase'])
+print(Bucket.generate(0, 100, 10000, 1))
+print(Bucket.collect(3))
+print(Bucket.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.bucket is:
+shape: (1, 2)
+┌─────────┬────────┐
+│ numeric ┆ mobase │
+│ ---     ┆ ---    │
+│ f64     ┆ f64    │
+╞═════════╪════════╡
+│ 0.005   ┆ 0.004  │
+└─────────┴────────┘
+'''
+
+# 测试实例5
+'''
+Insertion = Timer('insertion', ['direct', 'binary'])
+print(Insertion.generate(0, 100, 10000, 1))
+print(Insertion.collect(3))
+print(Insertion.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.insertion is: 
+shape: (1, 2)
+┌────────┬────────┐
+│ direct ┆ binary │
+│ ---    ┆ ---    │
+│ f64    ┆ f64    │
+╞════════╪════════╡
+│ 4.95   ┆ 0.193  │
+└────────┴────────┘
+'''
+
+# 测试实例6
+'''
+Merge = Timer('merge', ['recur', 'stack'])
+print(Merge.generate(0, 100, 10000, 1))
+print(Merge.collect(3))
+print(Merge.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.merge is: 
+shape: (1, 2)
+┌───────┬───────┐
+│ recur ┆ stack │
+│ ---   ┆ ---   │
+│ f64   ┆ f64   │
+╞═══════╪═══════╡
+│ 0.061 ┆ 0.06  │
+└───────┴───────┘
+'''
+
+# 测试实例7
+'''
+Selection = Timer('selection', ['normal', 'withmax'])
+print(Selection.generate(0, 100, 10000, 1))
+print(Selection.collect(3))
+print(Selection.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.selection is: 
+shape: (1, 2)
+┌────────┬─────────┐
+│ normal ┆ withmax │
+│ ---    ┆ ---     │
+│ f64    ┆ f64     │
+╞════════╪═════════╡
+│ 5.349  ┆ 4.801   │
+└────────┴─────────┘
+'''
+
+# 测试实例8
+Shell = Timer('shell', ['donald', 'knuth', 'hibbard', 'sedgewick'])
+print(Shell.generate(0, 100, 10000, 1))
+print(Shell.collect(3))
+print(Shell.ouput())
