@@ -1,7 +1,5 @@
-from typing import List
-
 # 普通版本
-def normal(array: List, reverse: bool=False) -> None:
+def normal(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
@@ -15,7 +13,7 @@ def normal(array: List, reverse: bool=False) -> None:
         array[index], array[mind] = array[mind], array[index]
 
 # 标记最大值
-def withmax(array: List, reverse: bool=False) -> None:
+def withmax(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
