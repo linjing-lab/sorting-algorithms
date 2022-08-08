@@ -1,145 +1,55 @@
 # 导包
+import sortingx
 import time
 import polars as pl
 import random
-import copy
-from typing import List
 
-# 生成测试数据
-data = [random.randint(0, 100) for _ in range(10000)]
+# 测试函数
+class Timer:
+    def __init__(self, genre: str, method: list, part: bool=False):
+        '''
+        genre: 类型名称; method: 方法列表; part: 分区控制;
+        '''
+        self.method = 'sortingx.' + genre
+        self.call = method # genre.def
+        self.part = part # 分区 l, r
+        self.dict = {} # 训练日志
 
-# 快速排序算法对比
-def Quicksort(array: List, l: int=0, r: int=9999):
-    from sortingx.quick import lamb, recur, stack
-    method_list = ["lamb", "recur", "stack"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        if method == "lamb":
-            times = time.time()
-            function(copy.deepcopy(array))
-            timee = time.time()
-        else:
-            times = time.time()
-            function(copy.deepcopy(array), l, r)
-            timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
+    def generate(self, left: int=0, right: int=100, size: int=10000, seed: int=0) -> str:
+        '''
+        left: 数值范围左限, 默认值为0; right: 数值范围右限, 默认值为100; size: 数据大小, 默认值为10000; seed: 随机数种子, 默认值为0
+        '''
+        if seed != None:
+            random.seed(seed)
+        self.data = [random.randint(left, right) for _ in range(size)]
+        self.testing = [self.data for _ in range(len(self.call))]
+        return 'The Test Data Is Generated!'
+    
+    def collect(self) -> str:
+        '''
+        函数运行时间收集
+        '''
+        for index, value in enumerate(self.call):
+            func = eval(self.method + '.' + value)
+            if not self.part:
+                times = time.time()
+                func(self.testing[index])
+                timee = time.time()
+            else:
+                times = time.time()
+                func(self.testing[index], 0, len(self.data) - 1)
+                timee = time.time()
+            gap = round(timee-times, 3)
+            self.dict[value] = [gap]
+        return 'The Process of Collection Is Over!'
+    
+    def ouput(self) -> str:
+        '''
+        测试日志
+        '''
+        return 'The Time Record of {0} is: \n{1}'.format(self.method, pl.DataFrame(self.dict))
 
-print(Quicksort(data))
-
-# 归并排序算法的对比
-def Mergesort(array: List):
-    from sortingx.merge import recur, stack
-    method_list = ["recur", "stack"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        if method == "recursion":
-            times = time.time()
-            function(array)
-            timee = time.time()
-        else:
-            times = time.time()
-            function(copy.deepcopy(array))
-            timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Mergesort(data))
-
-# 冒泡排序算法的对比
-def Bubblesort(array: List):
-    from sortingx.bubble import normal, flag, bidirect
-    method_list = ["normal", "flag", "bidirect"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        times = time.time()
-        function(copy.deepcopy(array))
-        timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Bubblesort(data))
-
-# 计数排序算法的对比
-def Countingsort(array: List):
-    from sortingx.counting import whilediv, forenum, reverfill
-    method_list = ["whilediv", "forenum", "reverfill"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        times = time.time()
-        function(copy.deepcopy(array))
-        timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Countingsort(data))
-
-# 插入排序算法的对比
-def Insertionsort(array: List):
-    from sortingx.insertion import direct, binary
-    method_list = ["direct", "binary"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        times = time.time()
-        function(copy.deepcopy(array))
-        timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Insertionsort(data))
-
-# 选择排序算法的对比
-def Selectionsort(array: List):
-    from sortingx.selection import normal, withmax
-    method_list = ["normal", "withmax"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        times = time.time()
-        function(copy.deepcopy(array))
-        timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Selectionsort(data))
-
-# 桶排序算法的对比
-def Bucketsort(array: List):
-    from sortingx.bucket import numeric, mobase
-    method_list = ["numeric", "mobase"]
-    dictionary = {}
-    for method in method_list:
-        function = eval(method)
-        times = time.time()
-        function(copy.deepcopy(array))
-        timee = time.time()
-        gap = round(timee - times, 2)
-        gap_list = [gap]
-        dictionary[method] = gap_list
-    df = pl.DataFrame(dictionary)
-    return df
-
-print(Bucketsort(data))
+Counting = Timer('counting', ['whilediv', 'forenum', 'reverfill'])
+print(Counting.generate(0, 100, 10000, 1))
+print(Counting.collect())
+print(Counting.ouput())
