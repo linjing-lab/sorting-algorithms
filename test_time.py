@@ -43,12 +43,6 @@ class Timer:
                 func(self.testing[index], 0, len(self.data) - 1)
                 timee = time.time()
             self.dict[value] = [round(timee-times, digit)]
-        return 'The Process of Collection Is Over!'
-    
-    def ouput(self) -> str:
-        '''
-        测试日志
-        '''
         return 'The Time Record of {0} is: \n{1}'.format(self.method, pl.DataFrame(self.dict))
 
 # 测试实例1
@@ -56,13 +50,11 @@ class Timer:
 Counting = Timer('counting', ['whilediv', 'forenum', 'reverfill'])
 print(Counting.generate(0, 100, 10000, 1))
 print(Counting.collect(3))
-print(Counting.ouput())
 '''
 
 # 输出样例
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.counting is: 
 shape: (1, 3)
 ┌──────────┬─────────┬───────────┐
@@ -79,13 +71,11 @@ shape: (1, 3)
 Quick = Timer('quick', ['lamb', 'recur', 'stack'], [False, True, True])
 print(Quick.generate(0, 100, 10000, 1))
 print(Quick.collect(3))
-print(Quick.ouput())
 '''
 
 # 输出样例
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.quick is: 
 shape: (1, 3)
 ┌───────┬───────┬────────┐
@@ -102,12 +92,10 @@ shape: (1, 3)
 Bubble = Timer('bubble', ['normal', 'flag', 'bidirect'])
 print(Bubble.generate(0, 100, 10000, 1))
 print(Bubble.collect(3))
-print(Bubble.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.bubble is: 
 shape: (1, 3)
 ┌────────┬───────┬──────────┐
@@ -122,14 +110,11 @@ shape: (1, 3)
 # 测试实例4
 '''
 Bucket = Timer('bucket', ['numeric', 'mobase'])
-print(Bucket.generate(0, 100, 10000, 1))
 print(Bucket.collect(3))
-print(Bucket.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.bucket is:
 shape: (1, 2)
 ┌─────────┬────────┐
@@ -146,12 +131,10 @@ shape: (1, 2)
 Insertion = Timer('insertion', ['direct', 'binary'])
 print(Insertion.generate(0, 100, 10000, 1))
 print(Insertion.collect(3))
-print(Insertion.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.insertion is: 
 shape: (1, 2)
 ┌────────┬────────┐
@@ -168,12 +151,10 @@ shape: (1, 2)
 Merge = Timer('merge', ['recur', 'stack'])
 print(Merge.generate(0, 100, 10000, 1))
 print(Merge.collect(3))
-print(Merge.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.merge is: 
 shape: (1, 2)
 ┌───────┬───────┐
@@ -190,12 +171,10 @@ shape: (1, 2)
 Selection = Timer('selection', ['normal', 'withmax'])
 print(Selection.generate(0, 100, 10000, 1))
 print(Selection.collect(3))
-print(Selection.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.selection is: 
 shape: (1, 2)
 ┌────────┬─────────┐
@@ -212,12 +191,10 @@ shape: (1, 2)
 Shell = Timer('shell', ['donald', 'knuth', 'hibbard', 'sedgewick'])
 print(Shell.generate(0, 100, 10000, 1))
 print(Shell.collect(3))
-print(Shell.ouput())
 '''
 
 '''
 The Test Data Is Generated!
-The Process of Collection Is Over!
 The Time Record of sortingx.shell is: 
 shape: (1, 4)
 ┌────────┬───────┬─────────┬───────────┐
