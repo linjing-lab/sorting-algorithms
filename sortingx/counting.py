@@ -56,7 +56,8 @@ def reverfill(array: List[int], reverse: bool=False) -> List[int]:
         count[value - arrmin] += 1
     for index in range(1, arrmax - arrmin + 1):
         count[index] += count[index - 1]
-    for index in range(len(array) - 1, -1, -1):
+    print(count)
+    for index in range(length - 1, -1, -1):
         pos = count[array[index] - arrmin]
         result[length - pos if reverse else pos - 1] = array[index]
         pos -= 1

@@ -14,6 +14,8 @@ def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	reverse: 是否降序, 默认采用升序。
 	'''
+	if l >= r:
+		return None
 	assert l >= 0
 	assert r >= 0
 	def quick_sort(array: list, l: int, r: int) -> None:
@@ -46,10 +48,10 @@ def stack(array: list, l: int, r: int, reverse: bool=False) -> None:
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	reverse: 是否降序, 默认采用升序。
 	'''
+	if l >= r:
+		return None
 	assert l >= 0
 	assert r >= 0
-	if l >= r:
-		return
 	stack = []
 	stack.append(l)
 	stack.append(r)
