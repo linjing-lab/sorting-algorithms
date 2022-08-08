@@ -1,12 +1,10 @@
-from typing import List
-
 # 递归实现
-def recur(array: List, reverse: bool=False) -> List:
+def recur(array: list, reverse: bool=False) -> list:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
-    def merge_sort(array: List) -> List:
+    def merge_sort(array: list) -> list:
         '''
         算法主体
         '''
@@ -17,7 +15,7 @@ def recur(array: List, reverse: bool=False) -> List:
         right = merge_sort(array[mid:])
         return merge(left, right)
 
-    def merge(l: int, r: int) -> List:
+    def merge(l: int, r: int) -> list:
         '''
         l: 数据左侧游标(整型), r: 数据右侧游标(整型)
         '''
@@ -37,12 +35,12 @@ def recur(array: List, reverse: bool=False) -> List:
     return merge_sort(array)
 
 # 非递归实现
-def stack(array: List, reverse: bool=False) -> None:
+def stack(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
-    def merge(array: List, low: int, mid: int, high: int) -> None:
+    def merge(array: list, low: int, mid: int, high: int) -> None:
         '''
         low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
         '''
@@ -62,7 +60,7 @@ def stack(array: List, reverse: bool=False) -> None:
         result += right[j:]
         array[low: high] = result
 
-    def merge_sort(array: List) -> None:
+    def merge_sort(array: list) -> None:
         '''
         算法主体
         '''

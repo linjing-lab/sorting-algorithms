@@ -42,7 +42,7 @@
 ### 递归实现
 
 ```python
-def merge_sort(array: List, reverse: bool=False) -> List:
+def merge_sort(array: list, reverse: bool=False) -> list:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
@@ -54,7 +54,7 @@ def merge_sort(array: List, reverse: bool=False) -> List:
     right = merge_sort(array[mid:])
     return merge(left, right, reverse=reverse)
 
-def merge(l: int, r: int, reverse: bool=False) -> List:
+def merge(l: int, r: int, reverse: bool=False) -> list:
     '''
     l: 数据左侧游标(整型), r: 数据右侧游标(整型)
     '''
@@ -76,7 +76,7 @@ def merge(l: int, r: int, reverse: bool=False) -> List:
 ### 非递归实现
 
 ```python
-def merge(array: List, low: int, mid: int, high: int, reverse: bool=False) -> None:
+def merge(array: list, low: int, mid: int, high: int, reverse: bool=False) -> None:
     '''
     low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
     '''
@@ -96,7 +96,7 @@ def merge(array: List, low: int, mid: int, high: int, reverse: bool=False) -> No
     result += right[j:]
     array[low: high] = result
 
-def merge_sort(array: List, reverse: bool=False) -> None:
+def merge_sort(array: list, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
