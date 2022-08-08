@@ -1,5 +1,4 @@
 # 导包
-from platform import python_branch
 import sortingx
 import random
 from typing import List
@@ -20,7 +19,7 @@ class Reverser:
         self.ret = ret
 
     def __data(self):
-        with open('test_data.txt', 'rt', encoding='utf-8') as fout:
+        with open('./data/test.txt', 'rt', encoding='utf-8') as fout:
             strings = fout.readlines()
             self.data = [string.strip('\n') for string in strings]
         self.testing = [self.data for _ in range(len(self.call))]
@@ -59,68 +58,36 @@ class Reverser:
             self.__compare(func, index, nopart, noret)
             if self.count == len(self.data):
                 self.success += 1
-        return 'The Design of Reverse Is Correct!' if self.success == len(self.call) else 'Error!'
+        return 'The Design of Reverse of ' + self.method + ' Is Correct!' if self.success == len(self.call) else 'Error!'
 
 # 测试实例1
 Bubble = Reverser('bubble', ['normal', 'flag', 'bidirect'])
 print(Bubble.collect())
 
-'''
-The Design of Reverse Is Correct!
-'''
-
 # 测试实例2
 Counting = Reverser('counting', ['whilediv', 'forenum', 'reverfill'], ret=[False, False, True])
 print(Counting.collect())
-
-'''
-The Design of Reverse Is Correct!
-'''
 
 # 测试实例3
 Bucket = Reverser('bucket', ['numeric', 'mobase'])
 print(Bucket.collect())
 
-'''
-The Design of Reverse Is Correct!
-'''
-
 # 测试实例4
 Insertion = Reverser('insertion', ['direct', 'binary'])
 print(Insertion.collect())
-
-'''
-The Design of Reverse Is Correct!
-'''
 
 # 测试实例5
 Merge = Reverser('merge', ['recur', 'stack'], ret=[True, False])
 print(Merge.collect())
 
-'''
-The Design of Reverse Is Correct!
-'''
-
 # 测试实例6
 Quick = Reverser('quick', ['lamb', 'recur', 'stack'], part=[False, True, True], ret=[True, False, False])
 print(Quick.collect())
-
-'''
-The Design of Reverse Is Correct!
-'''
 
 # 测试实例7
 Selection = Reverser('selection', ['normal', 'withmax'])
 print(Selection.collect())
 
-'''
-The Design of Reverse Is Correct!
-'''
-
 # 测试实例8
 Shell = Reverser('shell', ['donald', 'knuth', 'hibbard', 'sedgewick'])
 print(Shell.collect())
-
-'''
-The Design of Reverse Is Correct!
-'''
