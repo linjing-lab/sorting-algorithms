@@ -1,7 +1,5 @@
-from typing import List
-
 # lambda实现
-def lamb(array: List, reverse: bool=False) -> List:
+def lamb(array: list, reverse: bool=False) -> list:
 	'''
 	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	reverse: 是否降序, 默认采用升序。
@@ -10,7 +8,7 @@ def lamb(array: List, reverse: bool=False) -> List:
 	return quick_sort(array)
 
 # 递归实现
-def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
+def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
@@ -18,7 +16,7 @@ def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	assert l >= 0
 	assert r >= 0
-	def quick_sort(array: List, l: int, r: int) -> None:
+	def quick_sort(array: list, l: int, r: int) -> None:
 		'''
 		算法主体
 		'''
@@ -27,7 +25,7 @@ def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
 			quick_sort(array, l, mid - 1)
 			quick_sort(array, mid + 1, r)
 	
-	def partition(array: List, l: int, r: int) -> int:
+	def partition(array: list, l: int, r: int) -> int:
 		'''
 		array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 		'''
@@ -42,7 +40,7 @@ def recur(array: List, l: int, r: int, reverse: bool=False) -> None:
 	quick_sort(array, l, r)
 
 # 非递归实现
-def stack(array: List, l: int, r: int, reverse: bool=False) -> None:
+def stack(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)

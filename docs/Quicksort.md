@@ -70,7 +70,7 @@ quick_sort = lambda array: array if len(array) <= 1 else quick_sort([item for it
 ### 递归实现
 
 ```python
-def quick_sort(array: List, l: int, r: int, reverse: bool=False) -> None:
+def quick_sort(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
@@ -83,7 +83,7 @@ def quick_sort(array: List, l: int, r: int, reverse: bool=False) -> None:
 		quick_sort(array, l, mid - 1)
 		quick_sort(array, mid + 1, r)
 
-def partition(array: List, l: int, r: int, reverse: bool=False) -> int:
+def partition(array: list, l: int, r: int, reverse: bool=False) -> int:
 	'''
 	array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 	'''
@@ -100,7 +100,7 @@ def partition(array: List, l: int, r: int, reverse: bool=False) -> int:
 ### 非递归实现
 
 ```python
-def quick_sort(array: List, l: int, r: int, reverse: bool=False) -> None:
+def quick_sort(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
 	l: 数据左侧游标(整型), r: 数据右侧游标(整型)
