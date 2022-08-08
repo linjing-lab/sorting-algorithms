@@ -1,5 +1,3 @@
-from typing import List
-
 # 普通版本
 def normal(array: list, reverse: bool=False) -> None:
     '''
