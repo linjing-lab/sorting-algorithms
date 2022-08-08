@@ -34,7 +34,7 @@ def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 		value = array[r]
 		index = l - 1
 		for ind in range(l, r):
-			if array[ind] > value if reverse else array[ind] <= value:
+			if (array[ind] > value if reverse else array[ind] <= value):
 				index += 1
 				array[index], array[ind] = array[ind], array[index]
 		array[index + 1], array[r] = array[r], array[index + 1]
@@ -63,7 +63,7 @@ def stack(array: list, l: int, r: int, reverse: bool=False) -> None:
 		value = array[high]
 		index = low - 1
 		for ind in range(low, high):
-			if array[ind] > value if reverse else array[ind] <= value:
+			if (array[ind] > value if reverse else array[ind] <= value):
 				index += 1
 				array[index], array[ind] = array[ind], array[index]
 		array[index + 1], array[high] = array[high], array[index + 1]

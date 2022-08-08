@@ -42,7 +42,7 @@ def insertion_sort(array: list, reverse: bool=False) -> None:
     for index in range(1, len(array)):
         key = array[index]
         pre = index - 1
-        while pre >= 0 and key > array[pre] if reverse else key < array[pre]:
+        while pre >= 0 and (key > array[pre] if reverse else key < array[pre]):
             array[pre + 1] = array[pre]
             pre -= 1
         array[pre + 1] = key
@@ -61,7 +61,7 @@ def insertion_sort(array: list, reverse: bool=False) -> None:
         low, high = 0, index - 1
         while low <= high: # 符合单调性的序列
             mid = (low + high) // 2
-            if key < array[mid] if reverse else key > array[mid]:
+            if (key < array[mid] if reverse else key > array[mid]):
                 low = mid + 1
             else:
                 high = mid - 1

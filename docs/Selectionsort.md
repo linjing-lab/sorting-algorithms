@@ -35,7 +35,7 @@ def selection_sort(array: list, reverse: bool=False) -> None:
     for index in range(length - 1):
         mind = index # 标记关键字位置
         for next in range(index + 1, length): # 搜索
-            if array[mind] < array[next] if reverse else array[mind] > array[next]:
+            if (array[mind] < array[next] if reverse else array[mind] > array[next]):
                 mind = next
         array[index], array[mind] = array[mind], array[index]
 ```
@@ -53,9 +53,9 @@ def selection_sort(array: list, reverse: bool=False) -> None:
     for index in range(scope):
         mind, maxd = index, index # 从一个方向搜索来保证单调性
         for next in range(index + 1, length - index):
-            if array[mind] < array[next] if reverse else array[mind] > array[next]:
+            if (array[mind] < array[next] if reverse else array[mind] > array[next]):
                 mind = next
-            if array[maxd] > array[next] if reverse else array[maxd] < array[next]:
+            if (array[maxd] > array[next] if reverse else array[maxd] < array[next]):
                 maxd = next
         array[mind], array[index] = array[index], array[mind]
         maxd = mind if index == maxd else maxd

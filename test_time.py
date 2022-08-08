@@ -209,7 +209,23 @@ shape: (1, 2)
 '''
 
 # 测试实例8
+'''
 Shell = Timer('shell', ['donald', 'knuth', 'hibbard', 'sedgewick'])
 print(Shell.generate(0, 100, 10000, 1))
 print(Shell.collect(3))
 print(Shell.ouput())
+'''
+
+'''
+The Test Data Is Generated!
+The Process of Collection Is Over!
+The Time Record of sortingx.shell is: 
+shape: (1, 4)
+┌────────┬───────┬─────────┬───────────┐
+│ donald ┆ knuth ┆ hibbard ┆ sedgewick │
+│ ---    ┆ ---   ┆ ---     ┆ ---       │
+│ f64    ┆ f64   ┆ f64     ┆ f64       │
+╞════════╪═══════╪═════════╪═══════════╡
+│ 0.061  ┆ 0.011 ┆ 0.012   ┆ 0.012     │
+└────────┴───────┴─────────┴───────────┘
+'''

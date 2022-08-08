@@ -37,7 +37,7 @@ def shell_sort(array: list, reverse: bool=False) -> None:
     while gap >= 1:
         for index in range(gap, length):
             next = index
-            while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]: # insertion sort
+            while next >= gap and (array[next - gap] < array[next] if reverse else array[next - gap] > array[next]): # insertion sort
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap
         gap //= 2 # renew
@@ -58,7 +58,7 @@ def shell_sort(array: list, reverse: bool=False) -> None:
     while gap >= 1:
         for index in range(gap, length):
             next = index
-            while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]:
+            while next >= gap and (array[next - gap] < array[next] if reverse else array[next - gap] > array[next]):
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap
         gap = int(gap / 3)
@@ -83,7 +83,7 @@ def shell_sort(array: list, reverse: bool=False) -> None:
     for gap in reversed(sequence):
         for index in range(gap, length):
             next = index
-            while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]:
+            while next >= gap and (array[next - gap] < array[next] if reverse else array[next - gap] > array[next]):
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap  
 ```
@@ -108,7 +108,7 @@ def shell_sort(array: list, reverse: bool=False) -> None:
     for gap in reversed(sequence):
         for index in range(gap, length):
             next = index
-            while next >= gap and array[next - gap] < array[next] if reverse else array[next - gap] > array[next]:
+            while next >= gap and (array[next - gap] < array[next] if reverse else array[next - gap] > array[next]):
                 array[next], array[next - gap] = array[next - gap], array[next]
                 next -= gap
 ```

@@ -23,7 +23,7 @@ def recur(array: list, reverse: bool=False) -> list:
         i = 0
         j = 0
         while i < len(l) and j < len(r):
-            if l[i] > r[j] if reverse else l[i] <= r[j]:
+            if (l[i] > r[j] if reverse else l[i] <= r[j]):
                 result.append(l[i])
                 i += 1
             else:
@@ -50,7 +50,7 @@ def stack(array: list, reverse: bool=False) -> None:
         j = 0
         result = []
         while i < len(left) and j < len(right):
-            if left[i] > right[j] if reverse else left[i] <= right[j]:
+            if (left[i] > right[j] if reverse else left[i] <= right[j]):
                 result.append(left[i])
                 i += 1
             else:
