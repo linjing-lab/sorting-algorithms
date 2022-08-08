@@ -42,8 +42,7 @@ class Timer:
                 times = time.time()
                 func(self.testing[index], 0, len(self.data) - 1)
                 timee = time.time()
-            gap = round(timee-times, digit)
-            self.dict[value] = [gap]
+            self.dict[value] = [round(timee-times, digit)]
         return 'The Process of Collection Is Over!'
     
     def ouput(self) -> str:
