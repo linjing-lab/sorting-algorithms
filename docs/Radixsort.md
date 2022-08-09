@@ -17,7 +17,11 @@
 
 ## 三、时间复杂度的分析
 
+单从LSD算法的角度分析，外层循环产生了 $\Omega(k)$ 、 $\Theta(k)$ 、 $O(k)$。其中 `k = 最大位数`，内层遍历数组产生了 $\Omega(n)$ 、 $\Theta(n)$ 、 $O(n)$，故时间复杂度为：$\Omega(nk)$ 、 $\Theta(nk)$ 、 $O(nk)$。若引入反向填充计数排序，内层产生的时间复杂度会减小；若不引入，那么内层会额外产生 $\Omega(r)$ 、 $\Theta(r)$ 、 $O(r)$，其中 `r=10r`，r 为容器内数据的个数。故时间复杂度为：$\Omega((n+r)k)$ 、 $\Theta((n+r)k)$ 、 $O((n+r)k)$
+
 ## 四、空间复杂度的分析
+
+LSD算法中，由于逐次清理 array 中数据，外层每一循环会开辟大小为 10 的桶，那么空间复杂度为：$O(k)$，或者记为：$O(n+k)$
 
 ## 五、算法实现
 
@@ -36,7 +40,7 @@ def radix_sort(array: List[int], reverse: bool=False) -> List[int]:
             pos = value // (10 ** step) % 10
             container[9 - pos if reverse else pos].append(value) # 取个位
         array.clear()
-        array = [value for index in container for value in index]
+        array = [value for index in container for value in index] # 未引入反向填充
     return array
 ```
 
@@ -53,7 +57,7 @@ def radix_sort(array: List[int], radix: int=6, reverse: bool=False) -> List[int]
     for value in array:
         pos = value // k % 10
         container[pos].append(value)
-        num[pos] += 1 # 计数器
+        num[pos] += 1 # 基于计数排序
     array.clear()
     for index in range(10):
         if num[index] == 1:
