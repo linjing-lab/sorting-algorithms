@@ -50,7 +50,7 @@ def radix_sort(array: List[int], reverse: bool=False) -> List[int]:
 def radix_sort(array: List[int], radix: int=6, reverse: bool=False) -> List[int]:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
-    radix: 基数大小, 最好取用最大数的位数
+    radix: 基数大小, 最好取用最大数的位数。
     reverse: 是否降序, 默认采用升序。
     '''
     container, num, k = [[] for _ in range(10)], [0] * 10, pow(10, radix - 1)
