@@ -121,5 +121,7 @@ print(Heap.collect())
 '''
 
 # 测试实例11
+'''
 Tim = Reverser('tim', ['normal', 'binary'])
 print(Tim.collect())
+'''
