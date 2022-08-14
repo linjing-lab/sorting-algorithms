@@ -83,7 +83,7 @@ def heap_sort(array: list, reverse: bool=False) -> None:
     
     length = len(array)
     for root in range(length // 2 - 1, -1, -1):
-        build(array, root, length - 1)
+        build(array, root, length)
     for end in range(length - 1, 0, -1):
         array[0], array[end] = array[end], array[0]
         build(array, 0, end)

@@ -39,7 +39,7 @@ def recur(array: list, reverse: bool=False) -> None:
         array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
         root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
         '''
-        piv = root
+        piv = root # 根据reverse
         left = 2 * root + 1
         right = 2 * root + 2
         if left < end and (array[root] > array[left] if reverse else array[root] < array[left]):
@@ -51,8 +51,8 @@ def recur(array: list, reverse: bool=False) -> None:
             build(array, piv, end)
     
     length = len(array)
-    for root in range(length // 2 - 1, -1, -1):
-        build(array, root, length - 1)
+    for root in range(length // 2 - 1 , -1, -1):
+        build(array, root, length)
     for end in range(length - 1, 0, -1):
         array[0], array[end] = array[end], array[0]
         build(array, 0, end)
