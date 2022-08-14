@@ -4,9 +4,8 @@ def normal(array: list, reverse: bool=False) -> None:
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序（小顶堆）, 默认采用升序（大顶堆）。
     '''
-    def build(array: list, root: int, end: int) -> None:
+    def build(root: int, end: int) -> None:
         '''
-        array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
         root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
         '''
         while 1:
@@ -23,10 +22,10 @@ def normal(array: list, reverse: bool=False) -> None:
 
     length = len(array)
     for root in range(length // 2 - 1, -1, -1):
-        build(array, root, length - 1)
+        build(root, length - 1)
     for end in range(length - 1, 0, -1):
         array[0], array[end] = array[end], array[0] # 交换堆顶与待排序数组末尾位置
-        build(array, 0, end - 1)
+        build(0, end - 1)
 
 # 递归
 def recur(array: list, reverse: bool=False) -> None:
@@ -34,9 +33,8 @@ def recur(array: list, reverse: bool=False) -> None:
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序（小顶堆）, 默认采用升序（大顶堆）。
     '''
-    def build(array: list, root: int, end: int) -> None:
+    def build(root: int, end: int) -> None:
         '''
-        array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
         root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
         '''
         piv = root # 根据reverse
@@ -48,11 +46,11 @@ def recur(array: list, reverse: bool=False) -> None:
             piv = right
         if piv != root:
             array[root], array[piv] = array[piv], array[root]
-            build(array, piv, end)
+            build(piv, end)
     
     length = len(array)
     for root in range(length // 2 - 1 , -1, -1):
-        build(array, root, length)
+        build(root, length)
     for end in range(length - 1, 0, -1):
         array[0], array[end] = array[end], array[0]
-        build(array, 0, end)
+        build(0, end)
