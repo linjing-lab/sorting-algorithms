@@ -47,4 +47,4 @@ def recur(array: list, reverse: bool=False) -> None:
         build(array, root, length - 1)
     for end in range(length - 1, 0, -1):
         array[0], array[end] = array[end], array[0]
-        build(array, 0, end - 1)
+        build(array, 0, end)

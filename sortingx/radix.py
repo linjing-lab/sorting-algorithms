@@ -42,6 +42,3 @@ def msd(array: List[int], radix: int=6, reverse: bool=False) -> List[int]:
     if reverse:
         array.reverse()
     return array
-
-a = [1, 2, 3, 4, 5, 6, 5]
-print(msd(a, 6, reverse=True))

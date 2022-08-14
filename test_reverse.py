@@ -91,3 +91,11 @@ print(Selection.collect())
 # 测试实例8
 Shell = Reverser('shell', ['donald', 'knuth', 'hibbard', 'sedgewick'])
 print(Shell.collect())
+
+# 测试实例9
+Radix = Reverser('radix', ['lsd', 'msd'], ret=[True, True])
+print(Radix.collect())
+
+# 测试实例10
+Heap = Reverser('heap', ['normal', 'recur'])
+print(Heap.collect())

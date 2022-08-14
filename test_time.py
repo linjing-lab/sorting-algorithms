@@ -205,3 +205,43 @@ shape: (1, 4)
 │ 0.098  ┆ 0.014 ┆ 0.029   ┆ 0.017     │
 └────────┴───────┴─────────┴───────────┘
 '''
+
+# 测试实例9
+'''
+Radix = Timer('radix', ['lsd', 'msd'])
+print(Radix.generate(0, 100, 10000, 1))
+print(Radix.collect(3))
+'''
+
+'''
+The Test Data Is Generated!
+The Time Record of sortingx.radix is: 
+shape: (1, 2)
+┌──────┬─────┐
+│ lsd  ┆ msd │
+│ ---  ┆ --- │
+│ f64  ┆ f64 │
+╞══════╪═════╡
+│ 0.02 ┆ 0.0 │
+└──────┴─────┘
+'''
+
+# 测试实例10
+'''
+Heap = Timer('heap', ['normal', 'recur'])
+print(Heap.generate(0, 100, 10000, 1))
+print(Heap.collect(3))
+'''
+
+'''
+The Test Data Is Generated!
+The Time Record of sortingx.heap is: 
+shape: (1, 2)
+┌────────┬───────┐
+│ normal ┆ recur │
+│ ---    ┆ ---   │
+│ f64    ┆ f64   │
+╞════════╪═══════╡
+│ 0.072  ┆ 0.073 │
+└────────┴───────┘
+'''
