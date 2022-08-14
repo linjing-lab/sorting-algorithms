@@ -5,6 +5,10 @@ def normal(array: list, reverse: bool=False) -> None:
     reverse: 是否降序（小顶堆）, 默认采用升序（大顶堆）。
     '''
     def build(array: list, root: int, end: int) -> None:
+        '''
+        array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+        root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
+        '''
         while 1:
             child = 2 * root + 1 # 左子节点的位置
             if child > end: # 若左子节点超过了最后一个节点，则终止循环
@@ -31,6 +35,10 @@ def recur(array: list, reverse: bool=False) -> None:
     reverse: 是否降序（小顶堆）, 默认采用升序（大顶堆）。
     '''
     def build(array: list, root: int, end: int) -> None:
+        '''
+        array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+        root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
+        '''
         piv = root
         left = 2 * root + 1
         right = 2 * root + 2
