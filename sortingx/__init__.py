@@ -1,3 +1,4 @@
+from operator import imod
 from sortingx import quick
 from sortingx import merge
 from sortingx import counting
@@ -8,3 +9,4 @@ from sortingx import bucket
 from sortingx import shell
 from sortingx import radix
 from sortingx import heap
+from sortingx import tim

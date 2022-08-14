@@ -242,6 +242,26 @@ shape: (1, 2)
 │ ---    ┆ ---   │
 │ f64    ┆ f64   │
 ╞════════╪═══════╡
-│ 0.068  ┆ 0.083 │
+│ 0.086  ┆ 0.084 │
 └────────┴───────┘
+'''
+
+# 测试实例11
+'''
+Tim = Timer('tim', ['normal', 'binary'])
+print(Tim.generate(0, 100, 10000, 1))
+print(Tim.collect(3))
+'''
+
+'''
+The Test Data Is Generated!
+The Time Record of sortingx.tim is: 
+shape: (1, 2)
+┌────────┬────────┐
+│ normal ┆ binary │
+│ ---    ┆ ---    │
+│ f64    ┆ f64    │
+╞════════╪════════╡
+│ 0.063  ┆ 0.05   │
+└────────┴────────┘
 '''
