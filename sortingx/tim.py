@@ -1,7 +1,8 @@
 # 标准版本
-def normal(array: list, reverse: bool=False) -> None:
+def normal(array: list, run: int=32, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    run: 运行大小, 默认是32, 最好是2的幂数。
     reverse: 是否降序, 默认采用升序。
     '''
     def inser(l: int, r: int) -> None:
@@ -38,9 +39,8 @@ def normal(array: list, reverse: bool=False) -> None:
     
     # choose run
     length = len(array)
-    run = 32
     for index in range(0, length, run):
-        inser(index, min(index + 31, length - 1))
+        inser(index, min(index + run - 1, length - 1))
 
     # merge run
     size = run
@@ -52,9 +52,10 @@ def normal(array: list, reverse: bool=False) -> None:
         size = 2 * size
 
 # binary
-def binary(array: list, reverse: bool=False) -> None:
+def binary(array: list, run: int=32, reverse: bool=False) -> None:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    run: 运行大小, 默认是32, 最好是2的幂数。
     reverse: 是否降序, 默认采用升序。
     '''
     def inser(l: int, r: int) -> None:
@@ -96,9 +97,8 @@ def binary(array: list, reverse: bool=False) -> None:
     
     # choose run
     length = len(array)
-    run = 32
     for index in range(0, length, run):
-        inser(index, min(index + 31, length - 1))
+        inser(index, min(index + run - 1, length - 1))
 
     # merge run
     size = run
