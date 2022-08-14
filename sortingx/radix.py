@@ -6,6 +6,8 @@ def lsd(array: List[int], reverse: bool=False) -> List[int]:
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
+    if not array:
+        return array
     numbers = len(str(max(array))) # note the length of the biggest num
     for step in range(numbers):
         container = [[] for _ in range(10)] # 0~9
@@ -23,6 +25,8 @@ def msd(array: List[int], radix: int=6, reverse: bool=False) -> List[int]:
     radix: 基数大小, 最好取用最大数的位数。
     reverse: 是否降序, 默认采用升序。
     '''
+    if not array or radix <= 0:
+        return array
     container, num, k = [[] for _ in range(10)], [0] * 10, pow(10, radix - 1)
     for value in array:
         pos = value // k % 10
@@ -38,3 +42,6 @@ def msd(array: List[int], radix: int=6, reverse: bool=False) -> List[int]:
     if reverse:
         array.reverse()
     return array
+
+a = [1, 2, 3, 4, 5, 6, 5]
+print(msd(a, 6, reverse=True))

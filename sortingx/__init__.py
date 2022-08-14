@@ -6,3 +6,5 @@ from sortingx import bubble
 from sortingx import selection
 from sortingx import bucket
 from sortingx import shell
+from sortingx import radix
+from sortingx import heap
