@@ -77,7 +77,7 @@ def heap_sort(array: list, reverse: bool=False) -> None:
             piv = right
         if piv != root:
             array[root], array[piv] = array[piv], array[root]
-            build(array, piv, end)
+            build(piv, end)
     
     length = len(array)
     for root in range(length // 2 - 1, -1, -1):
