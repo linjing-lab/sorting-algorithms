@@ -125,3 +125,9 @@ print(Heap.collect())
 Tim = Reverser('tim', ['normal', 'binary'])
 print(Tim.collect())
 '''
+
+# 测试实例12
+'''
+Tree = Reverser('tree', ['tree'], ret=[True])
+print(Tree.collect())
+'''

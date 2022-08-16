@@ -10,3 +10,4 @@ from sortingx import shell
 from sortingx import radix
 from sortingx import heap
 from sortingx import tim
+from sortingx import tree

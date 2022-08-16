@@ -265,3 +265,23 @@ shape: (1, 2)
 │ 0.063  ┆ 0.05   │
 └────────┴────────┘
 '''
+
+# 测试实例12
+'''
+Tree = Timer('tree', ['tree'])
+print(Tree.generate(0, 100, 10000, 1))
+print(Tree.collect(3))
+'''
+
+'''
+The Test Data Is Generated!
+The Time Record of sortingx.tree is: 
+shape: (1, 1)
+┌───────┐
+│ tree  │
+│ ---   │
+│ f64   │
+╞═══════╡
+│ 0.212 │
+└───────┘
+'''
