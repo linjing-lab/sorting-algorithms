@@ -65,7 +65,7 @@ def inorder(root: node, result: list) -> None:
         result.append(root.val)
         inorder(root.right, result)        
 
-def tree(array: list, reverse: bool=False) -> list:
+def tree_sort(array: list, reverse: bool=False) -> list:
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
