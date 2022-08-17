@@ -16,8 +16,6 @@ def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	if l >= r:
 		return None
-	assert l >= 0
-	assert r >= 0
 	def quick_sort(array: list, l: int, r: int) -> None:
 		'''
 		算法主体
@@ -50,8 +48,6 @@ def stack(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	if l >= r:
 		return None
-	assert l >= 0
-	assert r >= 0
 	stack = []
 	stack.append(l)
 	stack.append(r)

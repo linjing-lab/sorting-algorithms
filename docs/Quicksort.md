@@ -78,8 +78,6 @@ def quick_sort(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	if l >= r:
 		return None
-	assert l >= 0
-	assert r >= 0
 	if l < r:
 		mid = partition(array, l, r, reverse=reverse)
 		quick_sort(array, l, mid - 1)
@@ -110,8 +108,6 @@ def quick_sort(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	if l >= r:
 		return None
-	assert l >= 0
-	assert r >= 0
 	stack = []
 	stack.append(l)
 	stack.append(r)
