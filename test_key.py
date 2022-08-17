@@ -34,3 +34,16 @@ reverse=False:
 reverse=True:
 [('Alex', 100, 90, 98, 95), ('Jack', 97, 89, 92, 99), ('Li', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96)]
 '''
+
+string = ['Lin', 'Min', 'Max', 'Jack']
+Sorted = sorted(string, key=str.lower, reverse=True)
+bubble_sort(string, key=str.lower, reverse=True)
+print(string == Sorted)
+
+'''
+reverse=False:
+['Jack', 'Lin', 'Max', 'Min']
+
+reverse=True:
+['Min', 'Max', 'Lin', 'Jack']
+'''
