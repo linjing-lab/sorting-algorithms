@@ -29,7 +29,7 @@ For example, If I use the `bubble` sorting algorithm to sort a real data set in 
 ```python
 import random 
 data = [random.randint(0, 100) for _ in range(10000)]
-sx.bubble(data, reverse=True)
+sx.bubble.flag(data, reverse=True)
 print(data)
 ```
 
