@@ -1,5 +1,42 @@
 # sorting-algorithms🎢
 
+常见数组排序算法的原理分析与代码实现。
+
+Theory analysis and code implementation of common array sorting algorithms.
+
+## How to Use
+
+First, You need to click the `fork` button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
+
+```git
+git clone /path/to/repository 
+```
+
+For example, If I want to participate in the translation of [polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
+
+```git
+git clone https://github.com/linjing-lab/pola-rs/polars-book-cn
+```
+
+Second, I have put different implemented versions of various sorting algorithms in the `sortingx` folder, everyone can import it with the underlying command:
+
+```python
+import sortingx as sx
+```
+
+For example, If I use the `bubble` sorting algorithm to sort a real data set in reverse order, use the following commands:
+
+```python
+import random 
+data = [random.randint(0, 100) for _ in range(10000)]
+sx.bubble(data, reverse=False)
+print(data)
+```
+
+Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to this point during the study, so that you can distinguish between `print(data)` and `print(method)`.
+
+## Sheet
+
 <div align="center">
 
 |Algorithm||Time Complexity||Space Complexity|
