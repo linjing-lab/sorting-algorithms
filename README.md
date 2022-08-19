@@ -24,7 +24,7 @@ Second, I have put different implemented versions of various sorting algorithms 
 import sortingx as sx
 ```
 
-For example, If I use the `bubble` sorting algorithm to sort a real data set in reverse order, use the following commands:
+For example, If I use the `bubble` sorting algorithm to sort a real data in reverse, use the following commands:
 
 ```python
 import random 
@@ -60,9 +60,9 @@ Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you s
 
 ## Test Description
 
-I test the performance of the sorting algorithm after adding the keyword sorting parameter in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the sorting time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse order parameters of the sorting algorithm are designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of the algorithm.
+I test the performance of the sorting algorithm after adding the keyword sorting parameter in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the sorting time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse parameters of the sorting algorithm are designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of the algorithm.
 
-The design of reverse order sorting of all methods is completely correct, and the design of keyword sorting based on bubble sorting optimized is feasible, which is consistent with the usage of *sorted* parameter officially released by Python.
+The design of reverse sorting of all methods is completely correct, and the design of keyword sorting based on bubble sorting optimized is feasible, which is consistent with the usage of *sorted* parameter officially released by Python.
 
 ## LICENSE
 
