@@ -4,7 +4,7 @@
 
 Theory analysis and code implementation of common array sorting algorithms.
 
-## How to Use
+## Two Step to Start
 
 First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
 
