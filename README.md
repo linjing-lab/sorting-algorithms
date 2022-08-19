@@ -35,7 +35,7 @@ print(data)
 
 Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to this point during the study, so that you can distinguish between `print(data)` and `print(method)`.
 
-## Index Sheet
+## Sheet of Sorting Complexity
 
 <div align="center">
 
