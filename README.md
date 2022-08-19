@@ -58,7 +58,7 @@ Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you s
 
 </div>
 
-## Test Description
+## Brief Description of Testing
 
 I test the performance of the sorting algorithm after adding the keyword sorting parameter in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse parameter of the sorting algorithms is designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of these.
 
