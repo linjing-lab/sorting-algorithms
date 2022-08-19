@@ -6,7 +6,7 @@ Theory analysis and code implementation of common array sorting algorithms.
 
 ## How to Use
 
-First, You need to click the `fork` button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
+First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
 
 ```git
 git clone /path/to/repository 
@@ -15,10 +15,10 @@ git clone /path/to/repository
 For example, If I want to participate in the translation of [polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
 
 ```git
-git clone https://github.com/linjing-lab/pola-rs/polars-book-cn
+git clone https://github.com/linjing-lab/polars-book-cn
 ```
 
-Second, I have put different implemented versions of various sorting algorithms in the `sortingx` folder, everyone can import it with the underlying command:
+Second, I have put different implemented versions of various sorting algorithms in the [`sortingx`](./sortingx/) folder, everyone can import it with the underlying command:
 
 ```python
 import sortingx as sx
@@ -35,7 +35,7 @@ print(data)
 
 Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to this point during the study, so that you can distinguish between `print(data)` and `print(method)`.
 
-## Sheet
+## Index Sheet
 
 <div align="center">
 
