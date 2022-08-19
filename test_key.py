@@ -1,7 +1,6 @@
-from typing import List
 from utils import cmp
 
-def bubble_sort(array: List, key=None, reverse: bool=False) -> None:
+def bubble_sort(array: list, key=None, reverse: bool=False) -> None:
     '''
     array: 同一数据维度下，支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])

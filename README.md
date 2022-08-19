@@ -64,6 +64,24 @@ I test the performance of the sorting algorithm after adding the keyword sorting
 
 The design of reverse sorting of all methods is completely correct, and the design of keyword sorting based on bubble sorting optimized is feasible, which is consistent with the usage of *sorted* parameter officially released by Python.
 
+The examples of keyword sorting are underlying:
+
+```python
+data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 89, 92, 99), ('Peter', 92, 95, 92, 96), ('Li', 97, 88, 98, 92)]
+bubble_sort(data, key=lambda x:(x[1], x[2]), reverse=True)
+print(data)
+
+'''
+reverse=False:
+[('Peter', 92, 95, 92, 96), ('Li', 97, 88, 98, 92), ('Jack', 97, 89, 92, 99), ('Alex', 100, 90, 98, 95)]
+
+reverse=True:
+[('Alex', 100, 90, 98, 95), ('Jack', 97, 89, 92, 99), ('Li', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96)]
+'''
+```
+
+you can see more examples in [*test_key*](./test_key.py) file.
+
 ## LICENSE
 
 [MIT LICENSE](./LICENSE)
