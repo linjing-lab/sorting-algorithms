@@ -12,7 +12,7 @@ First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-alg
 git clone [url]
 ```
 
-For example, If I want to participate in the translation of [polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
+For example, If I want to participate in the translation of [pola-rs/polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
 
 ```git
 git clone https://github.com/linjing-lab/polars-book-cn
