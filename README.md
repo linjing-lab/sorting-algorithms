@@ -9,7 +9,7 @@ Theory analysis and code implementation of common array sorting algorithms.
 First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
 
 ```git
-git clone /path/to/repository 
+git clone [url]
 ```
 
 For example, If I want to participate in the translation of [polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
