@@ -29,11 +29,11 @@ For example, If I use the `bubble` sorting algorithm to sort a real data set in 
 ```python
 import random 
 data = [random.randint(0, 100) for _ in range(10000)]
-sx.bubble(data, reverse=False)
+sx.bubble(data, reverse=True)
 print(data)
 ```
 
-Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to this point during the study, so that you can distinguish between `print(data)` and `print(method)`.
+Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to it during the study, so that you can distinguish between `print(data)` and `print(method)`.
 
 ## Sheet of Sorting Complexity
 
@@ -57,6 +57,10 @@ Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you s
 |Cubesort|$\Omega(n)$|$\Theta(n \log(n))$|$O(n \log(n))$|$O(n)$|
 
 </div>
+
+## Test Description
+
+I test the performance of the sorting algorithm after adding the keyword sorting parameter in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core comparison function for multi keyword sorting), test the sorting time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse order parameters of the sorting algorithm are designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of the algorithm.
 
 ## LICENSE
 
