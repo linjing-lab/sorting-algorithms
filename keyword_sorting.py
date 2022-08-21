@@ -12,7 +12,7 @@ def bubble_sort(array: list, key=None, reverse: bool=False) -> None:
         flag = False # 旗帜
         for j in range(len(array) - i - 1): # loop to compare array elements
         # compare two adjacent elements and change > to < to sort in descending order
-            if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j + 1]) if not key else core(compare[j], compare[j + 1], reverse):
+            if core(compare[j], compare[j + 1], key, reverse):
                 # swapping elements if elements are not in the intended order
                 array[j], array[j + 1] = array[j + 1], array[j]
                 flag = True # 旗帜
@@ -34,7 +34,7 @@ def insertion_sort(array: list, key=None, reverse: bool=False) -> None:
         low, high = 0, index - 1
         while low <= high: # 符合单调性的序列
             mid = (low + high) // 2
-            if (keyc < compare[mid] if reverse else keyc > compare[mid]) if not keyc else core(keyc, compare[mid], reverse):
+            if core(keyc, compare[mid], key, reverse):
                 low = mid + 1
             else:
                 high = mid - 1
@@ -61,7 +61,7 @@ def shell_sort(array: list, key=None, reverse: bool=False) -> None:
     while gap >= 1:
         for index in range(gap, length):
             next = index
-            while next >= gap and ((compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]) if not key else core(compare[next - gap], compare[next], reverse)):
+            while next >= gap and core(compare[next - gap], compare[next], key, reverse):
                 array[next], array[next - gap] = array[next - gap], array[next]
                 if key != None:
                     compare[next], compare[next - gap] = compare[next - gap], compare[next]
