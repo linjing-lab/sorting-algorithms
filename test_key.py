@@ -1,4 +1,3 @@
-from sre_constants import SUCCESS
 from keyword_sorting import bubble_sort, insertion_sort
 
 '''
@@ -26,4 +25,28 @@ reverse=False:
 
 reverse=True: 
 [('Alex', 100, 90, 98, 95), ('Li', 97, 89, 98, 92), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96)]
+'''
+
+data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
+insertion_sort(data, key=lambda x: x[2], reverse=True)
+print(data)
+
+'''
+reverse=False:
+[('Jack', 97, 88, 98, 92), ('Li', 97, 89, 98, 92), ('Alex', 100, 90, 98, 95), ('Peter', 92, 95, 92, 96)]
+
+reverse=True:
+[('Peter', 92, 95, 92, 96), ('Alex', 100, 90, 98, 95), ('Li', 97, 89, 98, 92), ('Jack', 97, 88, 98, 92)]
+'''
+
+data = ['Lin', 'Min', 'Max', 'Jack']
+insertion_sort(data, key=str.lower, reverse=True)
+print(data)
+
+'''
+reverse=False:
+['Jack', 'Lin', 'Max', 'Min']
+
+reverse=True:
+['Min', 'Max', 'Lin', 'Jack']
 '''
