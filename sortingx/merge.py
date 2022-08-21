@@ -40,7 +40,7 @@ def stack(array: list, reverse: bool=False) -> None:
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     reverse: 是否降序, 默认采用升序。
     '''
-    def merge(array: list, low: int, mid: int, high: int) -> None:
+    def merge(low: int, mid: int, high: int) -> None:
         '''
         low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
         '''
@@ -60,7 +60,7 @@ def stack(array: list, reverse: bool=False) -> None:
         result += right[j:]
         array[low: high] = result
 
-    def merge_sort(array: list) -> None:
+    def merge_sort() -> None:
         '''
         算法主体
         '''
@@ -71,7 +71,7 @@ def stack(array: list, reverse: bool=False) -> None:
                 mid = low + i
                 high = min(low + 2 * i, len(array))
                 if mid < high:
-                    merge(array, low, mid, high)
+                    merge(low, mid, high)
                 low += 2 * i
             i *= 2
-    merge_sort(array)
+    merge_sort()
