@@ -47,3 +47,26 @@ def insertion_sort(array: list, key=None, reverse: bool=False) -> None:
         array[low] = keya
         if key != None:
             compare[low] = keyc
+
+# choose knuth version for its smallest time.
+def shell_sort(array: list, key=None, reverse: bool=False) -> None:
+    '''
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
+    reverse: 是否降序, 默认采用升序。
+    '''
+    compare = list(map(key, array)) if key != None else array
+    compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
+    length = len(array)
+    gap = 1
+    while gap < length / 3:
+        gap = int(3 * gap + 1)
+    while gap >= 1:
+        for index in range(gap, length):
+            next = index
+            while next >= gap and ((compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]) if not key else cmp(compare[next - gap], compare[next], reverse)):
+                array[next], array[next - gap] = array[next - gap], array[next]
+                if key != None:
+                    compare[next], compare[next - gap] = compare[next - gap], compare[next]
+                next -= gap
+        gap = int(gap / 3)
