@@ -1,4 +1,4 @@
-from keyword_sorting import bubble_sort, insertion_sort
+from keyword_sorting import bubble_sort, insertion_sort, shell_sort
 
 '''
 We choose from the following keyword lambda functions:

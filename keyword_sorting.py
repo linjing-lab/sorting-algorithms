@@ -1,4 +1,4 @@
-from utils import cmp
+from utils import core, generate
 
 # choose flag version for its best performance.
 def bubble_sort(array: list, key=None, reverse: bool=False) -> None:
@@ -7,13 +7,12 @@ def bubble_sort(array: list, key=None, reverse: bool=False) -> None:
     key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
     reverse: 是否降序, 默认采用升序。
     '''
-    compare = list(map(key, array)) if key != None else array
-    compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
+    compare = generate(array, key)
     for i in range(len(array) - 1): # loop to access each array element
         flag = False # 旗帜
         for j in range(len(array) - i - 1): # loop to compare array elements
         # compare two adjacent elements and change > to < to sort in descending order
-            if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j + 1]) if not key else cmp(compare[j], compare[j + 1], reverse):
+            if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j + 1]) if not key else core(compare[j], compare[j + 1], reverse):
                 # swapping elements if elements are not in the intended order
                 array[j], array[j + 1] = array[j + 1], array[j]
                 flag = True # 旗帜
@@ -29,14 +28,13 @@ def insertion_sort(array: list, key=None, reverse: bool=False) -> None:
     key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
     reverse: 是否降序, 默认采用升序。
     '''
-    compare = list(map(key, array)) if key != None else array
-    compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
+    compare = generate(array, key)
     for index in range(1, len(array)):
         keyc, keya = compare[index], array[index]
         low, high = 0, index - 1
         while low <= high: # 符合单调性的序列
             mid = (low + high) // 2
-            if (keyc < compare[mid] if reverse else keyc > compare[mid]) if not keyc else cmp(keyc, compare[mid], reverse):
+            if (keyc < compare[mid] if reverse else keyc > compare[mid]) if not keyc else core(keyc, compare[mid], reverse):
                 low = mid + 1
             else:
                 high = mid - 1
@@ -55,8 +53,7 @@ def shell_sort(array: list, key=None, reverse: bool=False) -> None:
     key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
     reverse: 是否降序, 默认采用升序。
     '''
-    compare = list(map(key, array)) if key != None else array
-    compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
+    compare = generate(array, key)
     length = len(array)
     gap = 1
     while gap < length / 3:
@@ -64,7 +61,7 @@ def shell_sort(array: list, key=None, reverse: bool=False) -> None:
     while gap >= 1:
         for index in range(gap, length):
             next = index
-            while next >= gap and ((compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]) if not key else cmp(compare[next - gap], compare[next], reverse)):
+            while next >= gap and ((compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]) if not key else core(compare[next - gap], compare[next], reverse)):
                 array[next], array[next - gap] = array[next - gap], array[next]
                 if key != None:
                     compare[next], compare[next - gap] = compare[next - gap], compare[next]
