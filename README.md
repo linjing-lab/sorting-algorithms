@@ -60,23 +60,23 @@ Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you s
 
 ## Brief Description of Testing
 
-I test the performance of the sorting algorithm after adding the keyword sorting parameter in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse parameter of the sorting algorithms is designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of these.
+I test the performance of the sorting algorithm after adding the [*keyword*](./keyword.py) sorting in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse parameter of the sorting algorithms is designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of these.
 
-The design of reverse sorting of all methods is completely correct, and the design of keyword sorting based on bubble sorting optimized is feasible, which is consistent with the usage of *sorted* parameter officially released by Python.
+The design of reverse sorting of all methods is completely correct, and the design of keyword sorting is feasible, which is consistent with the usage of *sorted* parameter officially released by Python.
 
 The example of keyword sorting are underlying:
 
 ```python
-data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 89, 92, 99), ('Peter', 92, 95, 92, 96), ('Li', 97, 88, 98, 92)]
-bubble_sort(data, key=lambda x:(x[1], x[2]), reverse=True)
+data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
+insertion_sort(data, key=lambda x: (x[1], x[2]), reverse=False)
 print(data)
 
 '''
-reverse=False:
-[('Peter', 92, 95, 92, 96), ('Li', 97, 88, 98, 92), ('Jack', 97, 89, 92, 99), ('Alex', 100, 90, 98, 95)]
+reverse=False: 
+[('Peter', 92, 95, 92, 96), ('Jack', 97, 88, 98, 92), ('Li', 97, 89, 98, 92), ('Alex', 100, 90, 98, 95)]
 
-reverse=True:
-[('Alex', 100, 90, 98, 95), ('Jack', 97, 89, 92, 99), ('Li', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96)]
+reverse=True: 
+[('Alex', 100, 90, 98, 95), ('Li', 97, 89, 98, 92), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96)]
 '''
 ```
 
