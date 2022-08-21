@@ -11,7 +11,7 @@ def core(left: tuple or list, right: tuple or list, key, reverse: bool) -> bool:
     '''
     left: 左侧比较数组; right: 右侧比较数组; reverse: 是否逆序
     '''
-    if not key:
+    if key == None:
         return left < right if reverse else left > right
     for index in range(0, len(left)):
         if left[index] > right[index] and reverse:
