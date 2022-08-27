@@ -1,4 +1,4 @@
-from keyword_sorting import bubble_sort, insertion_sort, shell_sort
+from keyword_sorting import bubble_sort, heap_sort, insertion_sort, shell_sort
 
 '''
 We choose from the following keyword lambda functions:
@@ -16,7 +16,7 @@ None
 '''
 
 data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
-insertion_sort(data, key=lambda x: (x[1], x[2]), reverse=False)
+heap_sort(data, key=lambda x: (x[1], x[2]), reverse=False)
 print(data)
 
 '''
@@ -28,7 +28,7 @@ reverse=True:
 '''
 
 data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
-insertion_sort(data, key=lambda x: x[2], reverse=False)
+heap_sort(data, key=lambda x: x[2], reverse=False)
 print(data)
 
 '''
@@ -40,7 +40,7 @@ reverse=True:
 '''
 
 data = ['Lin', 'Min', 'Max', 'Jack']
-insertion_sort(data, key=str.lower, reverse=False)
+heap_sort(data, key=str.lower, reverse=False)
 print(data)
 
 '''

@@ -67,3 +67,37 @@ def shell_sort(array: list, key=None, reverse: bool=False) -> None:
                     compare[next], compare[next - gap] = compare[next - gap], compare[next]
                 next -= gap
         gap = int(gap / 3)
+
+# choose recursion version for its best performance.
+def heap_sort(array: list, key=None, reverse: bool=False) -> None:
+    '''
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
+    reverse: 是否降序, 默认采用升序。
+    '''
+    compare = generate(array, key)
+    def build(root: int, end: int) -> None:
+        '''
+        root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
+        '''
+        piv = root # 根据reverse
+        left = 2 * root + 1
+        right = 2 * root + 2
+        if left < end and core(compare[left], compare[root], key, reverse):
+            piv = left
+        if right < end and core(compare[right], compare[piv], key, reverse):
+            piv = right
+        if piv != root:
+            array[root], array[piv] = array[piv], array[root]
+            if key != None:
+                compare[root], compare[piv] = compare[piv], compare[root]
+            build(piv, end)
+    
+    length = len(array)
+    for root in range(length // 2 - 1 , -1, -1):
+        build(root, length)
+    for end in range(length - 1, 0, -1):
+        array[0], array[end] = array[end], array[0]
+        if key != None:
+            compare[0], compare[end] = compare[end], compare[0]
+        build(0, end)
