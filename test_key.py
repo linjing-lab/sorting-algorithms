@@ -1,4 +1,5 @@
-from keyword_sorting import bubble_sort, heap_sort, insertion_sort, shell_sort, quick_sort
+from heapq import merge
+from keyword_sorting import bubble_sort, heap_sort, insertion_sort, shell_sort, quick_sort, merge_sort
 
 '''
 We choose from the following keyword lambda functions:
@@ -16,7 +17,7 @@ None
 '''
 
 data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
-quick_sort(data, 1, 2, key=lambda x: (x[1], x[2]), reverse=False)
+quick_sort(data, 0, 3, key=lambda x: (x[1], x[2]), reverse=True)
 print(data)
 
 '''
@@ -28,7 +29,7 @@ reverse=True:
 '''
 
 data = [('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]
-quick_sort(data, 1, 2, key=lambda x: x[2], reverse=False)
+quick_sort(data, 0, 3, key=lambda x: x[2], reverse=True)
 print(data)
 
 '''
@@ -40,7 +41,7 @@ reverse=True:
 '''
 
 data = ['Lin', 'Min', 'Max', 'Jack']
-quick_sort(data, 1, 2, key=str.lower, reverse=False)
+quick_sort(data, 0, 3, key=str.lower, reverse=True)
 print(data)
 
 '''

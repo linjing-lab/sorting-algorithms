@@ -107,6 +107,7 @@ def quick_sort(array: list, l: int, r: int, key=None, reverse: bool=False) -> No
     '''
     array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
     l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+    key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
     reverse: 是否降序, 默认采用升序。
     '''
     compare = generate(array, key)
@@ -138,3 +139,52 @@ def quick_sort(array: list, l: int, r: int, key=None, reverse: bool=False) -> No
             compare[index + 1], compare[r] = compare[r], compare[index + 1]
         return index + 1
     solve(l, r)
+
+# choose stack version for its smallest time.
+def merge_sort(array: list, key=None, reverse: bool=False) -> None:
+    '''
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    key: lambda函数, 仅含一个参量，用于关键字排序, 例如: key=lambda x: x[1], key=lambda x: (x[0], x[1])。
+    reverse: 是否降序, 默认采用升序。
+    '''
+    compare = generate(array, key)
+    def merge(low: int, mid: int, high: int) -> None:
+        '''
+        low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
+        '''
+        left, lc = array[low: mid], compare[low: mid]
+        right, rc = array[mid: high], compare[mid: high]
+        i = 0
+        j = 0
+        result, store = [], []
+        while i < len(left) and j < len(right):
+            if core(rc[j], lc[i], key, reverse):
+                result.append(left[i])
+                store.append(lc[i])
+                i += 1
+            else:
+                result.append(right[j])
+                store.append(rc[j])
+                j += 1
+        result += left[i:]
+        store += lc[i:]
+        result += right[j:]
+        store += rc[j:]
+        array[low: high] = result
+        compare[low: high] = store
+
+    def solve() -> None:
+        '''
+        算法主体
+        '''
+        i = 1
+        while i < len(array):
+            low = 0
+            while low < len(array):
+                mid = low + i
+                high = min(low + 2 * i, len(array))
+                if mid < high:
+                    merge(low, mid, high)
+                low += 2 * i
+            i *= 2
+    solve()
