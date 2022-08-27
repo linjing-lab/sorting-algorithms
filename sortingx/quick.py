@@ -16,16 +16,16 @@ def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 	'''
 	if l >= r:
 		return None
-	def quick_sort(array: list, l: int, r: int) -> None:
+	def quick_sort(l: int, r: int) -> None:
 		'''
 		算法主体
 		'''
 		if l < r:
-			mid = partition(array, l, r)
-			quick_sort(array, l, mid - 1)
-			quick_sort(array, mid + 1, r)
+			mid = partition(l, r)
+			quick_sort(l, mid - 1)
+			quick_sort(mid + 1, r)
 	
-	def partition(array: list, l: int, r: int) -> int:
+	def partition(l: int, r: int) -> int:
 		'''
 		array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
 		'''
@@ -37,7 +37,7 @@ def recur(array: list, l: int, r: int, reverse: bool=False) -> None:
 				array[index], array[ind] = array[ind], array[index]
 		array[index + 1], array[r] = array[r], array[index + 1]
 		return index + 1
-	quick_sort(array, l, r)
+	quick_sort(l, r)
 
 # 非递归实现
 def stack(array: list, l: int, r: int, reverse: bool=False) -> None:
