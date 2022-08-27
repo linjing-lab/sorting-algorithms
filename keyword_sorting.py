@@ -101,3 +101,40 @@ def heap_sort(array: list, key=None, reverse: bool=False) -> None:
         if key != None:
             compare[0], compare[end] = compare[end], compare[0]
         build(0, end)
+
+# choose recursion version for its best performance.
+def quick_sort(array: list, l: int, r: int, key=None, reverse: bool=False) -> None:
+    '''
+    array: 支持数值型数据，如整型与浮点型混合；支持全为字符串类型的数据；不支持字符串型与数值型混合。
+    l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+    reverse: 是否降序, 默认采用升序。
+    '''
+    compare = generate(array, key)
+    if l >= r:
+        return None
+    def solve(l: int, r: int) -> None:
+        '''
+        算法主体
+        '''
+        if l < r:
+            mid = partition(l, r)
+            solve(l, mid - 1)
+            solve(mid + 1, r)
+
+    def partition(l: int, r: int) -> int:
+        '''
+        array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+        '''
+        val = compare[r]
+        index = l - 1
+        for ind in range(l, r):
+            if core(val, compare[ind], key, reverse):
+                index += 1
+                array[index], array[ind] = array[ind], array[index]
+                if key != None:
+                    compare[index], compare[ind] = compare[ind], compare[index]
+        array[index + 1], array[r] = array[r], array[index + 1]
+        if key != None:
+            compare[index + 1], compare[r] = compare[r], compare[index + 1]
+        return index + 1
+    solve(l, r)
