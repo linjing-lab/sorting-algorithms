@@ -80,7 +80,7 @@ reverse=True:
 '''
 ```
 
-you can see more methods in [*keyword_sorting*](./keyword_sorting.py) file.
+you can see more 5 methods in [*keyword_sorting*](./keyword_sorting.py) file.
 
 ## LICENSE
 
