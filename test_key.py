@@ -1,4 +1,3 @@
-from heapq import merge
 from keyword_sorting import bubble_sort, heap_sort, insertion_sort, shell_sort, quick_sort, merge_sort
 
 '''
