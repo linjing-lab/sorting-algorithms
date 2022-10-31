@@ -1,27 +1,19 @@
 # sorting-algorithms🎢
 
-常见数组排序算法的原理分析与代码实现。
-
 Theory analysis and code implementation of common array sorting algorithms.
 
-## Two Steps to Start
+## 📍 start from galley
 
-First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, and use the following command to synchronize the repository to the local folder:
-
-```git
-git clone [url]
-```
-
-For example, If I want to participate in the translation of [pola-rs/polars-book-cn](https://github.com/pola-rs/polars-book-cn), I use this command to carry out my work:
+First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, or use the following command to synchronize the repository to the local folder:
 
 ```git
-git clone https://github.com/linjing-lab/polars-book-cn
+git clone https://github.com/linjing-lab/sorting-algorithms
 ```
 
-Second, I have put different implemented versions of various sorting algorithms in the [`sortingx`](./sortingx/) folder, everyone can import it with the underlying command:
+Second, I have put different implemented versions of various sorting algorithms in the [`galley`](./galley/) folder, everyone can import it with the underlying command:
 
 ```python
-import sortingx as sx
+import galley as ge
 ```
 
 For example, If I use the `bubble` sorting algorithm to sort a real data in reverse, use the following commands:
@@ -29,13 +21,13 @@ For example, If I use the `bubble` sorting algorithm to sort a real data in reve
 ```python
 import random 
 data = [random.randint(0, 100) for _ in range(10000)]
-sx.bubble.flag(data, reverse=True)
+ge.bubble.flag(data, reverse=True)
 print(data)
 ```
 
-Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to it during the study, so that you can distinguish between `print(data)` and `print(method)`.
+Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you should pay attention to it during the study, so that you can distinguish between `print(data)` and `print(method)`. I mainly use `if... else...` to implement the reverse order of sorting algorithms in gallery and the partition of some algorithms.
 
-## Sheet of Sorting Complexity
+## 📊 sorting complexity
 
 <div align="center">
 
@@ -58,7 +50,7 @@ Lastly, many algorithms are *in-place* sorting, and a few are *out-place*, you s
 
 </div>
 
-## Brief Description of Testing
+## 🙋 test description
 
 I test the performance of the sorting algorithm after adding the [*keyword*](./keyword_sorting.py) sorting in the [*test_key*](./test_key.py) file (The [*utils*](./utils.py) file stores the most core function for keyword sorting), test the time accumulation of the sorting algorithm with respect to the large data set in the [*test_time*](./test_time.py) file, and test whether the reverse parameter of the sorting algorithms is designed correctly in the [*test_reverse*](./test_reverse.py) file, including the robustness of these.
 
@@ -82,6 +74,15 @@ reverse=True:
 ```
 
 you can see more 5 methods in [*keyword_sorting*](./keyword_sorting.py) file.
+
+## 🎒 pip install
+
+As you can see, I create a core function to drive keyword sorting just by opening up an array with the size of k (k = nums of keyword), and the type of sorting implemented by Python officially released is Timsort, which is more complicated than the other algorithms in my released packages in the future.
+
+```python
+!pip install sortingx # in jupyter
+pip install sortingx # in cmd
+```
 
 ## LICENSE
 

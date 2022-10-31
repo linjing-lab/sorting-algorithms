@@ -1,5 +1,4 @@
 # 导包
-import sortingx
 import time
 import polars as pl
 import random
@@ -13,7 +12,7 @@ class Timer:
         '''
         if part != None:
             assert len(part) == len(method)
-        self.method = 'sortingx.' + genre
+        self.method = 'galley.' + genre
         self.call = method # genre.def
         self.part = part
         self.dict = {} # 训练日志 

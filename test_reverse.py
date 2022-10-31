@@ -1,6 +1,4 @@
 # 导包
-import sortingx
-import random
 from typing import List
 
 # 测试
@@ -13,7 +11,7 @@ class Reverser:
             assert len(part) == len(method)
         if ret != None:
             assert len(ret) == len(method)
-        self.method = 'sortingx.' + genre
+        self.method = 'galley.' + genre
         self.call = method # genre.def
         self.part = part
         self.ret = ret
