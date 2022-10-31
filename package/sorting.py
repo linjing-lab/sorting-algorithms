@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__all__ = ['bubble', 'inser', 'shell', 'heap', 'quick', 'merge']
+__all__ = ['bubble', 'insert', 'shell', 'heap', 'quick', 'merge']
 
 from utils import core, generate
 from .typing import Iterable, Callable
