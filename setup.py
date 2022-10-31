@@ -1,7 +1,7 @@
 import os
 import sys
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 if sys.version_info < (3, 7, 0):
     raise OSError(f'sortingx requires Python >=3.7, but yours is {sys.version}')
@@ -37,7 +37,7 @@ except FileNotFoundError:
 
 setup(
     name=pkg_name,
-    packages=find_packages,
+    packages=['sortingx'],
     version=__version__,
     description='The powerful package designed for sorting.',
     author='林景',
