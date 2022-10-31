@@ -14,7 +14,7 @@
 
 __all__ = ['bubble', 'insert', 'shell', 'heap', 'quick', 'merge']
 
-from utils import core, generate
+from ._utils import core, generate
 from ._typing import Iterable, Callable
 
 def bubble(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
