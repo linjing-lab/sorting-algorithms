@@ -24,7 +24,6 @@ try:
     pkg_name = 'sortingx'
     libinfo_py = os.path.join(pkg_name, '__init__.py')
     libinfo_content = open(libinfo_py, 'r', encoding='utf-8').readlines()
-    print(libinfo_content)
     version_line = [l.strip() for l in libinfo_content if l.startswith('__version__')][0]
     exec(version_line) # gives __version
 except FileNotFoundError:
