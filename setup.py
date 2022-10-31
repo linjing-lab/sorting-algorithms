@@ -6,6 +6,20 @@ from setuptools import setup
 if sys.version_info < (3, 7, 0):
     raise OSError(f'sortingx requires Python >=3.7, but yours is {sys.version}')
 
+if (3, 7, 0) <= sys.version_info < (3, 8, 0):
+    # https://github.com/pypa/setuptools/issues/926#issuecomment-294369342
+    try:
+        import fastentrypoints
+    except ImportError:
+        try:
+            import pkg_resources
+            from setuptools.command import easy_install
+
+            easy_install.main(['fastentrypoints'])
+            pkg_resources.require('fastentrypoints')
+        except:
+            pass
+
 try:
     pkg_name = 'sortingx'
     libinfo_py = os.path.join('package', '__init__.py')
@@ -30,7 +44,7 @@ setup(
     description='The powerful package designed for sorting.',
     author='林景',
     author_email='linjing010729@163.com',
-    license='MIT',
+    license='Apache 2.0',
     url='https://github.com/linjing-lab/sorting-algorithms',
     download_url='https://github.com/linjing-lab/sorting-algorithms/tags',
     long_description=_long_description,
@@ -49,7 +63,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
-        'License :: OSI Approved :: MIT Software License',
+        'License :: OSI Approved :: Apache Software License',
         'Topic :: Software Development',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
