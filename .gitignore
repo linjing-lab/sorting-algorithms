@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+upload.pypirc
 
 # C extensions
 *.so

@@ -1,6 +1,10 @@
 import os
+import sys
 
 from setuptools import setup
+
+if sys.version_info < (3, 7, 0):
+    raise OSError(f'sortingx requires Python >=3.7, but yours is {sys.version}')
 
 try:
     pkg_name = 'sortingx'

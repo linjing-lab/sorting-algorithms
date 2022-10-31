@@ -83,6 +83,7 @@ As you can see, I create a core function to drive keyword sorting just by openin
 !pip install sortingx # in jupyter
 pip install sortingx # in cmd
 ```
+sortingx can do whatever `list.sort()` do, and support more methods.
 
 ## LICENSE
 
