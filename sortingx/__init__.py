@@ -15,7 +15,7 @@
 import sys
 
 from .sorting import bubble, insert, shell, heap, quick, merge
-from .typing import *
+from ._typing import *
 
 __version__ = '1.0.1'
 

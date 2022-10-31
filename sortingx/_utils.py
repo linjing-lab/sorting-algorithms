@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .typing import Iterable, Callable
+from ._typing import Iterable, Callable
 
 def generate(array: Iterable, key: Callable=None) -> list:
     compare = list(map(key, array)) if key != None else array

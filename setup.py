@@ -1,7 +1,7 @@
 import os
 import sys
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 if sys.version_info < (3, 7, 0):
     raise OSError(f'sortingx requires Python >=3.7, but yours is {sys.version}')
@@ -37,9 +37,7 @@ except FileNotFoundError:
 
 setup(
     name=pkg_name,
-    packages=[
-        "sortingx"
-    ],
+    packages=find_packages,
     version=__version__,
     description='The powerful package designed for sorting.',
     author='林景',
@@ -52,7 +50,7 @@ setup(
     zip_safe=False,
     setup_requires=['setuptools>=18.0', 'wheel'],
     project_urls={
-        'Source': 'https://github.com/linjing-lab/sorting-algorithms/package/',
+        'Source': 'https://github.com/linjing-lab/sorting-algorithms/sortingx/',
         'Tracker': 'https://github.com/linjing-lab/sorting-algorithms/issues',
     },
     classifiers=[
