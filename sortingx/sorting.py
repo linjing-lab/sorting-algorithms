@@ -19,7 +19,7 @@ from ._typing import Iterable, Callable
 
 def bubble(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -37,7 +37,7 @@ def bubble(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
 def insert(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -45,13 +45,13 @@ def insert(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     for index in range(1, len(array)):
         keyc, keya = compare[index], array[index]
         low, high = 0, index - 1
-        while low <= high: # 符合单调性的序列
+        while low <= high: # sequence conforming to monotonicity
             mid = (low + high) // 2
             if core(keyc, compare[mid], key, reverse):
                 low = mid + 1
             else:
                 high = mid - 1
-        for pre in range(index, low, -1): # 从后往前
+        for pre in range(index, low, -1): # from back to front
             array[pre] = array[pre - 1]
             if key != None:
                 compare[pre] = compare[pre - 1]
@@ -61,7 +61,7 @@ def insert(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
 def shell(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -82,14 +82,14 @@ def shell(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
 def heap(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
     compare = generate(array, key)
     def build(root: int, end: int) -> None:
         '''
-        root: 指示根节点的游标(整型), end: 指示数组末尾的游标(整型)
+        Root: cursor indicating the root node (integer), end: cursor indicating the end of the array (integer)
         '''
         piv = root
         left = 2 * root + 1
@@ -115,14 +115,14 @@ def heap(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
 def quick(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
     compare = generate(array, key)
     def solve(l: int, r: int) -> None:
         '''
-        算法主体
+        main
         '''
         if l < r:
             mid = partition(l, r)
@@ -131,7 +131,7 @@ def quick(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
     def partition(l: int, r: int) -> int:
         '''
-        array: 数据(列表), l: 数据左侧游标(整型), r: 数据右侧游标(整型)
+        l: The left cursor of array (integer), r: The right cursor of array (integer)
         '''
         val = compare[r]
         index = l - 1
@@ -149,14 +149,14 @@ def quick(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
 def merge(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported.
+    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
     compare = generate(array, key)
     def merge(low: int, mid: int, high: int) -> None:
         '''
-        low: 数据低侧游标(整型), mid: 数据中间游标(整型), high: 数据高侧游标(整型)
+        low: The low-side cursor of array (integer), mid: The middle-side cursor of array (integer), high: The high-side cursor of array (integer)
         '''
         left, lc = array[low: mid], compare[low: mid]
         right, rc = array[mid: high], compare[mid: high]
@@ -181,7 +181,7 @@ def merge(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
 
     def solve() -> None:
         '''
-        算法主体
+        main
         '''
         i = 1
         while i < len(array):
