@@ -19,7 +19,7 @@ def generate(array: Iterable, key: Callable=None) -> list:
     compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
     return compare
 
-def core(left: list, right: list, key: Callable=None, reverse: bool=False) -> bool:
+def core(left: Iterable, right: Iterable, key: Callable=None, reverse: bool=False) -> bool:
     if key == None:
         return left < right if reverse else left > right
     for index in range(0, len(left)):
