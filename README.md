@@ -10,7 +10,7 @@ First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-alg
 git clone https://github.com/linjing-lab/sorting-algorithms
 ```
 
-Second, I have put different implemented versions of various sorting algorithms in the [`galley`](./galley/) folder, everyone can import it with the underlying command:
+Second, I have put different implemented versions of various sorting algorithms in the [`galley`](./docs/galley/) folder, everyone can import it with the underlying command:
 
 ```python
 import galley as ge
