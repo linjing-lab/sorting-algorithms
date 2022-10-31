@@ -38,7 +38,7 @@ except FileNotFoundError:
 setup(
     name=pkg_name,
     packages=[
-        "package"
+        "sortingx"
     ],
     version=__version__,
     description='The powerful package designed for sorting.',
