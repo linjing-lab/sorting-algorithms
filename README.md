@@ -87,4 +87,4 @@ sortingx can do whatever `list.sort()` do, and support more methods.
 
 ## LICENSE
 
-[MIT LICENSE](./LICENSE)
+[Apache 2.0](./LICENSE)
