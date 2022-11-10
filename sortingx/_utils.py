@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ._typing import Iterable, Callable
+from ._typing import Iterable, Callable, Optional
 
-def generate(array: Iterable, key: Callable=None) -> list:
+def generate(array: Iterable, key: Optional[Callable]=None) -> list:
     compare = list(map(key, array)) if key != None else array
     compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
     return compare
 
-def core(left: Iterable, right: Iterable, key: Callable=None, reverse: bool=False) -> bool:
+def core(left: Iterable, right: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> bool:
     if key == None:
         return left < right if reverse else left > right
     for index in range(0, len(left)):

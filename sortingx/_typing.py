@@ -14,5 +14,6 @@
 
 from typing import (
     Iterable,
-    Callable
+    Callable,
+    Optional
 )

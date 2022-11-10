@@ -50,10 +50,11 @@ setup(
     zip_safe=False,
     setup_requires=['setuptools>=18.0', 'wheel'],
     project_urls={
-        'Source': 'https://github.com/linjing-lab/sorting-algorithms/sortingx/',
+        'Source': 'https://github.com/linjing-lab/sorting-algorithms/tree/main/sortingx',
         'Tracker': 'https://github.com/linjing-lab/sorting-algorithms/issues',
     },
     classifiers=[
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',

@@ -14,10 +14,12 @@
 
 __all__ = ['bubble', 'insert', 'shell', 'heap', 'quick', 'merge']
 
+from numba import jit
 from ._utils import core, generate
-from ._typing import Iterable, Callable
+from ._typing import Iterable, Callable, Optional
 
-def bubble(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+@jit(nopython=True)
+def bubble(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
@@ -35,7 +37,8 @@ def bubble(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
         if not flag:
             break
 
-def insert(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+@jit(nopython=True)
+def insert(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
@@ -59,7 +62,7 @@ def insert(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
         if key != None:
             compare[low] = keyc
 
-def shell(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+def shell(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
@@ -80,7 +83,8 @@ def shell(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
                 next -= gap
         gap = int(gap / 3)
 
-def heap(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+@jit(nopython=True)
+def heap(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
@@ -113,7 +117,8 @@ def heap(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
             compare[0], compare[end] = compare[end], compare[0]
         build(0, end)
 
-def quick(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+@jit(nopython=True)
+def quick(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
@@ -147,6 +152,7 @@ def quick(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
         return index + 1
     solve(0, len(array)-1)
 
+@jit(nopython=True)
 def merge(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
