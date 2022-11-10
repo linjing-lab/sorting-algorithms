@@ -13,7 +13,12 @@
 # limitations under the License.
 
 from typing import (
+    Any,
     Iterable,
     Callable,
     Optional
 )
+
+from abc import _T # TODO 保证导入正确
+
+SupportsRichComparison = Any # TODO 补全SupportRichComparison

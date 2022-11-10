@@ -12,16 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__all__ = ['bubble', 'insert', 'shell', 'heap', 'quick', 'merge']
-
-from numba import jit
 from ._utils import core, generate
-from ._typing import Iterable, Callable, Optional
-
-@jit(nopython=True)
-def bubble(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
+from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison
+# TODO 加速六种方法
+def bubble(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -37,10 +33,9 @@ def bubble(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -
         if not flag:
             break
 
-@jit(nopython=True)
-def insert(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
+def insert(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -62,9 +57,9 @@ def insert(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -
         if key != None:
             compare[low] = keyc
 
-def shell(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
+def shell(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -83,17 +78,17 @@ def shell(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) ->
                 next -= gap
         gap = int(gap / 3)
 
-@jit(nopython=True)
-def heap(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
+def heap(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
     compare = generate(array, key)
     def build(root: int, end: int) -> None:
         '''
-        Root: cursor indicating the root node (integer), end: cursor indicating the end of the array (integer)
+        :param root: cursor indicating the root node (int).
+        :param end: cursor indicating the end of the array (int).
         '''
         piv = root
         left = 2 * root + 1
@@ -117,10 +112,9 @@ def heap(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> 
             compare[0], compare[end] = compare[end], compare[0]
         build(0, end)
 
-@jit(nopython=True)
-def quick(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) -> None:
+def quick(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
@@ -136,7 +130,8 @@ def quick(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) ->
 
     def partition(l: int, r: int) -> int:
         '''
-        l: The left cursor of array (integer), r: The right cursor of array (integer)
+        :param l: The left cursor of array (int).
+        :param r: The right cursor of array (int).
         '''
         val = compare[r]
         index = l - 1
@@ -152,17 +147,18 @@ def quick(array: Iterable, key: Optional[Callable]=None, reverse: bool=False) ->
         return index + 1
     solve(0, len(array)-1)
 
-@jit(nopython=True)
-def merge(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
+def merge(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
-    :param array: iterable data, support numeric data, such as mixing integer and floating point data; support all data of string type; mixing string and numeric types is not supported on the same column.
+    :param array: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
     compare = generate(array, key)
     def merge(low: int, mid: int, high: int) -> None:
         '''
-        low: The low-side cursor of array (integer), mid: The middle-side cursor of array (integer), high: The high-side cursor of array (integer)
+        :param low: The low-side cursor of array (int).
+        :param mid: The middle-side cursor of array (int).
+        :param high: The high-side cursor of array (int).
         '''
         left, lc = array[low: mid], compare[low: mid]
         right, rc = array[mid: high], compare[mid: high]
@@ -200,3 +196,5 @@ def merge(array: Iterable, key: Callable=None, reverse: bool=False) -> None:
                 low += 2 * i
             i *= 2
     solve()
+
+__all__ = [bubble, insert, shell, heap, quick, merge]
