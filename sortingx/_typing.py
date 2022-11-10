@@ -16,9 +16,24 @@ from typing import (
     Any,
     Iterable,
     Callable,
-    Optional
+    Optional,
+    Protocol,
+    TypeVar, 
+    Union
 )
 
-from abc import _T # TODO 保证导入正确
+from typing_extensions import (
+    TypeAlias
+)
 
-SupportsRichComparison = Any # TODO 补全SupportRichComparison
+_T = TypeVar("_T")
+
+_T_contra = TypeVar("_T_contra", contravariant=True)
+
+class SupportsDunderLT(Protocol[_T_contra]):
+    def __lt__(self, __other: _T_contra) -> bool: ...
+
+class SupportsDunderGT(Protocol[_T_contra]):
+    def __gt__(self, __other: _T_contra) -> bool: ...
+    
+SupportsRichComparison: TypeAlias = Union[SupportsDunderLT[Any], SupportsDunderGT[Any]]

@@ -67,5 +67,7 @@ setup(
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    # TODO 补全下载依赖项
+    install_requires = [
+        'typing_extensions>=3.10.0.2'
+    ]
 )

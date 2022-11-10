@@ -1,1 +1,5 @@
-# TODO 规定项目运作依赖项及版本
+matplotlib>=3.2.0
+polars>=0.14.26
+setuptools>=18.0
+typing_extensions>=3.10.0.2
+python>=3.7

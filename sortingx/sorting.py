@@ -14,7 +14,7 @@
 
 from ._utils import core, generate
 from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison
-# TODO 加速六种方法
+
 def bubble(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> None:
     '''
     :param array: iterable data.
