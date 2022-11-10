@@ -14,9 +14,9 @@
 
 from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison
 
-def generate(array: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None) -> list:
-    compare = list(map(key, array)) if key != None else array
-    compare = ([[value] for value in compare] if compare and compare[0] is not list else compare) if key != None else array
+def generate(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None) -> list:
+    compare = list(map(key, __iterable)) if key != None else __iterable
+    compare = ([[value] for value in compare] if (compare and not isinstance(compare[0], Iterable)) else compare) if key != None else __iterable
     return compare
 
 def core(left: Iterable[_T], right: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> bool:
@@ -32,3 +32,8 @@ def core(left: Iterable[_T], right: Iterable[_T], key: Optional[Callable[[_T], S
         elif left[index] < right[index] and not reverse:
             return False
     return False
+
+def convert(__iterable: Iterable[_T]) -> list:
+    if isinstance(__iterable, (tuple, str, set, dict)):
+        return list(__iterable)
+    return __iterable

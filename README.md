@@ -83,7 +83,12 @@ As you can see, I create a core function to drive keyword sorting just by openin
 !pip install sortingx # in jupyter
 pip install sortingx # in cmd
 ```
-sortingx can do whatever `list.sort()` do, and support more methods.
+sortingx can do whatever `list.sort()` do, and support more methods and more data types.
+
+explain:
+- sortingx-1.1.0 is the first version aligned with the `list.sort()` usage method.
+- sortingx-1.1.1 is the first stable version accelerated with typing_extensions.
+- sortingx-1.1.2 is the first stable version that has a return value and extends the iterable data types.
 
 ## LICENSE
 
