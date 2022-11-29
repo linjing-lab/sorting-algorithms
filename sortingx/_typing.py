@@ -19,7 +19,8 @@ from typing import (
     Optional,
     Protocol,
     TypeVar, 
-    Union
+    Union,
+    List
 )
 
 from typing_extensions import (

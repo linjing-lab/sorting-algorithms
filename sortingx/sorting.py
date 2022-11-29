@@ -13,41 +13,43 @@
 # limitations under the License.
 
 from ._utils import core, generate, convert
-from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison
+from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison, List
 
-def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
     for i in range(len(__iterable) - 1):
-        flag = False # early stop by adding a bool value named flag
+        flag: bool = False # early stop by adding a bool value named flag
         for j in range(len(__iterable) - i - 1):
             if core(compare[j], compare[j + 1], key, reverse):
                 __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
-                flag = True
+                flag: bool = True
                 if key != None:
                     compare[j], compare[j + 1] = compare[j + 1], compare[j]
         if not flag:
             break
     return __iterable
 
-def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
     for index in range(1, len(__iterable)):
-        keyc, keya = compare[index], __iterable[index]
-        low, high = 0, index - 1
+        keyc: _T = compare[index]
+        keya: _T = __iterable[index]
+        low : int = 0
+        high: int = index - 1
         while low <= high: # sequence conforming to monotonicity
-            mid = (low + high) // 2
+            mid: int = (low + high) // 2
             if core(keyc, compare[mid], key, reverse):
                 low = mid + 1
             else:
@@ -61,57 +63,57 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
             compare[low] = keyc
     return __iterable
 
-def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
-    length = len(__iterable)
-    gap = 1
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
+    length: int = len(__iterable)
+    gap: int = 1
     while gap < length / 3:
-        gap = int(3 * gap + 1)
+        gap: int = int(3 * gap + 1)
     while gap >= 1:
         for index in range(gap, length):
-            next = index
+            next: int = index
             while next >= gap and core(compare[next - gap], compare[next], key, reverse):
                 __iterable[next], __iterable[next - gap] = __iterable[next - gap], __iterable[next]
                 if key != None:
                     compare[next], compare[next - gap] = compare[next - gap], compare[next]
                 next -= gap
-        gap = int(gap / 3)
+        gap: int = int(gap / 3)
     return __iterable
     
 
-def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
     def build(root: int, end: int) -> None:
         '''
         :param root: cursor indicating the root node (int).
         :param end: cursor indicating the end of the __iterable (int).
         '''
-        piv = root
-        left = 2 * root + 1
-        right = 2 * root + 2
+        piv: int = root
+        left: int = 2 * root + 1
+        right: int = 2 * root + 2
         if left < end and core(compare[left], compare[root], key, reverse):
-            piv = left
+            piv: int = left
         if right < end and core(compare[right], compare[piv], key, reverse):
-            piv = right
+            piv: int = right
         if piv != root:
             __iterable[root], __iterable[piv] = __iterable[piv], __iterable[root]
             if key != None:
                 compare[root], compare[piv] = compare[piv], compare[root]
             build(piv, end)
     
-    length = len(__iterable)
+    length: int = len(__iterable)
     for root in range(length // 2 - 1 , -1, -1):
         build(root, length)
     for end in range(length - 1, 0, -1):
@@ -121,20 +123,20 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
         build(0, end)
     return __iterable
 
-def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
     def solve(l: int, r: int) -> None:
         '''
         main
         '''
         if l < r:
-            mid = partition(l, r)
+            mid: int = partition(l, r)
             solve(l, mid - 1)
             solve(mid + 1, r)
 
@@ -143,8 +145,8 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         :param l: The left cursor of __iterable (int).
         :param r: The right cursor of __iterable (int).
         '''
-        val = compare[r]
-        index = l - 1
+        val: _T = compare[r]
+        index: int = l - 1
         for ind in range(l, r):
             if core(val, compare[ind], key, reverse):
                 index += 1
@@ -155,28 +157,31 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         if key != None:
             compare[index + 1], compare[r] = compare[r], compare[index + 1]
         return index + 1
-    solve(0, len(__iterable)-1)
+    solve(0, len(__iterable) - 1)
     return __iterable
 
-def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> list:
+def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
     :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
     :param reverse: whether to use descending order. The default is ascending order.
     '''
-    __iterable = convert(__iterable)
-    compare = generate(__iterable, key)
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
     def merg(low: int, mid: int, high: int) -> None:
         '''
         :param low: The low-side cursor of __iterable (int).
         :param mid: The middle-side cursor of __iterable (int).
         :param high: The high-side cursor of __iterable (int).
         '''
-        left, lc = __iterable[low: mid], compare[low: mid]
-        right, rc = __iterable[mid: high], compare[mid: high]
-        i = 0
-        j = 0
-        result, store = [], []
+        left: Iterable[_T] = __iterable[low: mid]
+        lc: List[_T] = compare[low: mid]
+        right: Iterable[_T] = __iterable[mid: high]
+        rc: List[_T] = compare[mid: high]
+        i: int = 0
+        j: int = 0
+        result: List[_T] = []
+        store: List[_T] = []
         while i < len(left) and j < len(right):
             if core(rc[j], lc[i], key, reverse):
                 result.append(left[i])
@@ -190,19 +195,19 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         store += lc[i:]
         result += right[j:]
         store += rc[j:]
-        __iterable[low: high] = result
-        compare[low: high] = store
+        __iterable[low: high]: List[_T] = result
+        compare[low: high]: List[_T] = store
 
     def solve() -> None:
         '''
         main
         '''
-        i = 1
+        i: int = 1
         while i < len(__iterable):
-            low = 0
+            low: int = 0
             while low < len(__iterable):
-                mid = low + i
-                high = min(low + 2 * i, len(__iterable))
+                mid: int = low + i
+                high: int = min(low + 2 * i, len(__iterable))
                 if mid < high:
                     merg(low, mid, high)
                 low += 2 * i
