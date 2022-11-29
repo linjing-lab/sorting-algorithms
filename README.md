@@ -89,6 +89,7 @@ explain:
 - sortingx-1.1.0 is the first version aligned with the `list.sort()` usage method.
 - sortingx-1.1.1 is the first stable version accelerated with typing_extensions.
 - sortingx-1.1.2 is the first stable version that has a return value and extends the iterable data types.
+- sortingx-1.1.3 is the stable version that complete the typing of local variables and align with `sorted()` usage method.
 
 ## LICENSE
 

@@ -51,9 +51,9 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
         while low <= high: # sequence conforming to monotonicity
             mid: int = (low + high) // 2
             if core(keyc, compare[mid], key, reverse):
-                low = mid + 1
+                low: int = mid + 1
             else:
-                high = mid - 1
+                high: int = mid - 1
         for pre in range(index, low, -1): # from back to front
             __iterable[pre] = __iterable[pre - 1]
             if key != None:
