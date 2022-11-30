@@ -174,9 +174,9 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         :param mid: The middle-side cursor of __iterable (int).
         :param high: The high-side cursor of __iterable (int).
         '''
-        left: Iterable[_T] = __iterable[low: mid]
+        left: List[_T] = __iterable[low: mid]
         lc: List[_T] = compare[low: mid]
-        right: Iterable[_T] = __iterable[mid: high]
+        right: List[_T] = __iterable[mid: high]
         rc: List[_T] = compare[mid: high]
         i: int = 0
         j: int = 0
