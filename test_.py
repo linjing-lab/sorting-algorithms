@@ -1,5 +1,6 @@
 from operator import attrgetter
 import sortingx as six
+# reference: https://docs.python.org/3/howto/sorting.html
 
 class Student:
     def __init__(self, name, grade, age):
@@ -10,13 +11,11 @@ class Student:
         return repr((self.name, self.grade, self.age))
 
 student_objects = (
-    Student('john', 'A', 15),
-    Student('jane', 'B', 12),
-    Student('dave', 'B', 10),
+    Student('Joo', 'A', 15),
+    Student('Jack', 'B', 12),
+    Student('Peter', 'B', 10),
 )
 
-test = six.merge(student_objects, key=lambda student: student.age)
-output = sorted(student_objects, key=lambda student: student.age)
+test = six.merge(student_objects, key=lambda student: student.name)
+output = sorted(student_objects, key=lambda student: student.name)
 print(test, '\n', output)
-
-# reference: https://docs.python.org/3/howto/sorting.html
