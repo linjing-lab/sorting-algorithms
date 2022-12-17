@@ -1,6 +1,22 @@
+from operator import attrgetter
 import sortingx as six
 
-data = {('Alex', 100, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)}
-test = six.bubble(data, key=lambda x: (x[0], x[1]), reverse=True)
-output = sorted(data, key=lambda x: (x[0], x[1]), reverse=True)
+class Student:
+    def __init__(self, name, grade, age):
+        self.name = name
+        self.grade = grade
+        self.age = age
+    def __repr__(self):
+        return repr((self.name, self.grade, self.age))
+
+student_objects = [
+    Student('john', 'A', 15),
+    Student('jane', 'B', 12),
+    Student('dave', 'B', 10),
+]
+
+test = six.merge(student_objects, key=lambda student: student.age)
+output = sorted(student_objects, key=lambda student: student.age)
 print(test, '\n', output)
+
+# reference: https://docs.python.org/3/howto/sorting.html
