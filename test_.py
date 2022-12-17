@@ -9,11 +9,11 @@ class Student:
     def __repr__(self):
         return repr((self.name, self.grade, self.age))
 
-student_objects = [
+student_objects = (
     Student('john', 'A', 15),
     Student('jane', 'B', 12),
     Student('dave', 'B', 10),
-]
+)
 
 test = six.merge(student_objects, key=lambda student: student.age)
 output = sorted(student_objects, key=lambda student: student.age)
