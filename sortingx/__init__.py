@@ -16,6 +16,6 @@ import sys
 
 from .sorting import bubble, insert, shell, heap, quick, merge
 
-__version__ = '1.1.3'
+__version__ = '1.2.0'
 
 assert sys.version_info >= (3, 7, 0)

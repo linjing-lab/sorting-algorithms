@@ -86,7 +86,6 @@ def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         gap: int = int(gap / 3)
     return __iterable
     
-
 def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data.
