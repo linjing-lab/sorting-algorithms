@@ -86,12 +86,12 @@ pip install sortingx # in cmd
 sortingx can do whatever `list.sort()` do, and support more methods and more data types.
 
 explain:
-- sortingx-1.1.0 is the first version aligned with the `list.sort()` usage method.
-- sortingx-1.1.1 is the first stable version accelerated with typing_extensions.
-- sortingx-1.1.2 is the first stable version that has a return value and extends the iterable data types.
-- sortingx-1.1.3 is the version that complete the typing of local variables and align with `sorted()` usage method.
-- sortingx-1.2.0 is the end version of sorting series, which optimize the kernel of generate.
-- sortingx-1.2.1 is the portable version that comparison is faster than ever, the generate is more portable.
+- [sortingx-1.1.0](https://github.com/linjing-lab/sorting-algorithms/tree/v1.1.0) is the first version aligned with the `list.sort()` usage method.
+- [sortingx-1.1.1](https://github.com/linjing-lab/sorting-algorithms/tree/v1.1.1) is the first stable version accelerated with typing_extensions.
+- [sortingx-1.1.2](https://github.com/linjing-lab/sorting-algorithms/tree/v1.1.2) is the first stable version that has a return value and extends the iterable data types.
+- [sortingx-1.1.3](https://github.com/linjing-lab/sorting-algorithms/tree/v1.1.3) is the version that complete the typing of local variables and align with `sorted()` usage method.
+- [sortingx-1.2.0](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.0) is the end version of sorting series, which optimize the kernel of generate.
+- [sortingx-1.2.1](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.1) is the portable version that comparison is faster than ever, the generate is more portable.
 
 ## LICENSE
 
