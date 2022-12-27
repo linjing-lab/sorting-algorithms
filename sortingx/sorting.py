@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ._utils import core, generate, convert
+from ._utils import generate, convert
 from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison, List
 
 def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -26,7 +26,7 @@ def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
     for i in range(len(__iterable) - 1):
         flag: bool = False # early stop by adding a bool value named flag
         for j in range(len(__iterable) - i - 1):
-            if core(compare[j], compare[j + 1], key, reverse):
+            if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j+1]):
                 __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
                 flag: bool = True
                 if key != None:
@@ -50,7 +50,7 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
         high: int = index - 1
         while low <= high: # sequence conforming to monotonicity
             mid: int = (low + high) // 2
-            if core(keyc, compare[mid], key, reverse):
+            if (keyc < compare[mid] if reverse else keyc > compare[mid]):
                 low: int = mid + 1
             else:
                 high: int = mid - 1
@@ -78,7 +78,7 @@ def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
     while gap >= 1:
         for index in range(gap, length):
             next: int = index
-            while next >= gap and core(compare[next - gap], compare[next], key, reverse):
+            while next >= gap and (compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]):
                 __iterable[next], __iterable[next - gap] = __iterable[next - gap], __iterable[next]
                 if key != None:
                     compare[next], compare[next - gap] = compare[next - gap], compare[next]
@@ -102,9 +102,9 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
         piv: int = root
         left: int = 2 * root + 1
         right: int = 2 * root + 2
-        if left < end and core(compare[left], compare[root], key, reverse):
+        if left < end and (compare[left] < compare[root] if reverse else compare[left] > compare[root]):
             piv: int = left
-        if right < end and core(compare[right], compare[piv], key, reverse):
+        if right < end and (compare[right] < compare[piv] if reverse else compare[right] > compare[piv]):
             piv: int = right
         if piv != root:
             __iterable[root], __iterable[piv] = __iterable[piv], __iterable[root]
@@ -147,7 +147,7 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         val: _T = compare[r]
         index: int = l - 1
         for ind in range(l, r):
-            if core(val, compare[ind], key, reverse):
+            if (val < compare[ind] if reverse else val > compare[ind]):
                 index += 1
                 __iterable[index], __iterable[ind] = __iterable[ind], __iterable[index]
                 if key != None:
@@ -182,7 +182,7 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         result: List[_T] = []
         store: List[_T] = []
         while i < len(left) and j < len(right):
-            if core(rc[j], lc[i], key, reverse):
+            if (rc[j] < lc[i] if reverse else rc[j] > lc[i]):
                 result.append(left[i])
                 store.append(lc[i])
                 i += 1

@@ -9,5 +9,6 @@
 |v1.1.2|`pip install sortingx==1.1.2`|Support More Iterative Data Types|√|
 |v1.1.3|`pip install sortingx==1.1.3`|Typing Check with More Local Variables|√|
 |v1.2.0|`pip install sortingx==1.2.0`|Optimize Generate Function's Kernel|√|
+|v1.2.1|`pip install sortingx==1.2.1`|Delete Core Function to Make Builtin First|√|
 
 </div>
