@@ -21,6 +21,6 @@ def generate(__iterable: List[_T], key: Optional[Callable[[_T], SupportsRichComp
 
 # Uniformly Convert `Iterable` into `List`: Facilitate the Execution of Sorting Algorithms.
 def convert(__iterable: Iterable[_T]) -> List[_T]:
-    if isinstance(__iterable, (tuple, str, set, dict)):
+    if isinstance(__iterable, (tuple, str, set, dict)): # more iterable data: bytes, bytearray, range, zip, not support dict_keys, dict_values, dict_items.
         return list(__iterable)
     return __iterable
