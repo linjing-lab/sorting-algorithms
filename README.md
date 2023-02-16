@@ -93,7 +93,7 @@ explain:
 - [sortingx-1.2.0](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.0) is the end version of sorting series, which optimize the kernel of generate.
 - [sortingx-1.2.1](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.1) is the portable version that comparison is faster than ever, the generate is more portable.
 
-By the way, I didn't complete all the iterative data types, in order to develop a more targeted scenario. If you are **interested** in other iterative data types, please add them in the `convert` function of the `_utils.py` file, for example: bytes, bytearray, range, zip.
+By the way, I didn't complete all the iterative data types, in order to develop a more targeted scenario. If you are **interested** in other iterative data types, please add them in the `convert` function of the `_utils.py` file, for example: bytes, bytearray, range, zip. If you need to deal with `dict_keys`, `dict_values`, `dict_items`, please use `list()` to convert the variables of these data types before using any method of sortingx.
 
 ## LICENSE
 
