@@ -15,11 +15,15 @@
 from ._utils import generate, convert
 from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison, List
 
+__all__ = ["bubble", "insert", "shell", "heap", "quick", "merge"]
+
 def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: bubble's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
@@ -28,18 +32,20 @@ def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
         for j in range(len(__iterable) - i - 1):
             if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j+1]):
                 __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
-                flag: bool = True
                 if key != None:
                     compare[j], compare[j + 1] = compare[j + 1], compare[j]
+                flag: bool = True
         if not flag:
             break
     return __iterable
 
 def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: insert's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
@@ -65,9 +71,11 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
 
 def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: shell's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
@@ -88,9 +96,11 @@ def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
     
 def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: heap's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
@@ -124,9 +134,11 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
 
 def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: quick's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
@@ -161,17 +173,19 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
 
 def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
-    :param __iterable: iterable data.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]).
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
     :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: merge's sorted result in a list.
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
     def merg(low: int, mid: int, high: int) -> None:
         '''
-        :param low: The low-side cursor of __iterable (int).
-        :param mid: The middle-side cursor of __iterable (int).
-        :param high: The high-side cursor of __iterable (int).
+        :param low: The low cursor of __iterable (int).
+        :param mid: The middle cursor of __iterable (int).
+        :param high: The high cursor of __iterable (int).
         '''
         left: List[_T] = __iterable[low: mid]
         lc: List[_T] = compare[low: mid]
@@ -213,5 +227,3 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
             i *= 2
     solve()
     return __iterable
-
-__all__ = [bubble, insert, shell, heap, quick, merge]

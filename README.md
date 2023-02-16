@@ -95,6 +95,8 @@ explain:
 
 By the way, I didn't complete all the iterative data types, in order to develop a more targeted scenario. If you are **interested** in other iterative data types, please add them in the `convert` function of the `_utils.py` file, for example: bytes, bytearray, range, zip. If you need to deal with `dict_keys`, `dict_values`, `dict_items`, please use `list()` to convert the variables of these data types before using any method of sortingx.
 
+- [sortingx-1.2.2](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.2) is the package that support `range`, `zip`, `dict_keys`, `dict_values`, `dict_items` additionally, you can choose what suitable data you want to input.
+
 ## LICENSE
 
 [Apache 2.0](./LICENSE)
