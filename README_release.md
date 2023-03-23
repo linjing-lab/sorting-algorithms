@@ -11,5 +11,6 @@
 |v1.2.0|`pip install sortingx==1.2.0`|Optimize Generate Function's Kernel|√|
 |v1.2.1|`pip install sortingx==1.2.1`|Delete Core Function to Make Builtin First|√|
 |v1.2.2|`pip install sortingx==1.2.2`|Change Convert Function to Make it More Robust|√|
+|v1.2.3|`pip install sortingx==1.2.3`|Add Verify Function to Solve Comparison of Equal|√|
 
 </div>

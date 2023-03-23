@@ -96,6 +96,7 @@ explain:
 By the way, I didn't complete all the iterative data types, in order to develop a more targeted scenario. If you are **interested** in other iterative data types, please add them in the `convert` function of the `_utils.py` file, for example: bytes, bytearray, range, zip. If you need to deal with `dict_keys`, `dict_values`, `dict_items`, please use `list()` to convert the variables of these data types before using any method of sortingx.
 
 - [sortingx-1.2.2](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.2) is the package that support `range`, `zip`, `dict_keys`, `dict_values`, `dict_items` additionally, you can choose what suitable data you want to input.
+- [sortingx-1.2.3](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.3) is the package that corrected the situation where elements are equal in `compare`, support more input data, like data as `[['Jack', (98, 100)], ['Bob', (98, 99)], ['Jessi', (98, 97)]]` and key as `lambda x: x[1][0]`.
 
 ## LICENSE
 

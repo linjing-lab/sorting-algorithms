@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ._utils import generate, convert
+from ._utils import generate, convert, verify
 from ._typing import Iterable, Callable, Optional, _T, SupportsRichComparison, List
 
 __all__ = ["bubble", "insert", "shell", "heap", "quick", "merge"]
@@ -27,16 +27,17 @@ def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
-    for i in range(len(__iterable) - 1):
-        flag: bool = False # early stop by adding a bool value named flag
-        for j in range(len(__iterable) - i - 1):
-            if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j+1]):
-                __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
-                if key != None:
-                    compare[j], compare[j + 1] = compare[j + 1], compare[j]
-                flag: bool = True
-        if not flag:
-            break
+    if compare and not verify(compare):
+        for i in range(len(__iterable) - 1):
+            flag: bool = False # early stop by adding a bool value named flag
+            for j in range(len(__iterable) - i - 1):
+                if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j+1]):
+                    __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
+                    if key != None:
+                        compare[j], compare[j + 1] = compare[j + 1], compare[j]
+                    flag: bool = True
+            if not flag:
+                break
     return __iterable
 
 def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -49,24 +50,25 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
-    for index in range(1, len(__iterable)):
-        keyc: _T = compare[index]
-        keya: _T = __iterable[index]
-        low : int = 0
-        high: int = index - 1
-        while low <= high: # sequence conforming to monotonicity
-            mid: int = (low + high) // 2
-            if (keyc < compare[mid] if reverse else keyc > compare[mid]):
-                low: int = mid + 1
-            else:
-                high: int = mid - 1
-        for pre in range(index, low, -1): # from back to front
-            __iterable[pre] = __iterable[pre - 1]
+    if compare and not verify(compare):
+        for index in range(1, len(__iterable)):
+            keyc: _T = compare[index]
+            keya: _T = __iterable[index]
+            low : int = 0
+            high: int = index - 1
+            while low <= high: # sequence conforming to monotonicity
+                mid: int = (low + high) // 2
+                if (keyc < compare[mid] if reverse else keyc > compare[mid]):
+                    low: int = mid + 1
+                else:
+                    high: int = mid - 1
+            for pre in range(index, low, -1): # from back to front
+                __iterable[pre] = __iterable[pre - 1]
+                if key != None:
+                    compare[pre] = compare[pre - 1]
+            __iterable[low] = keya
             if key != None:
-                compare[pre] = compare[pre - 1]
-        __iterable[low] = keya
-        if key != None:
-            compare[low] = keyc
+                compare[low] = keyc
     return __iterable
 
 def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -79,19 +81,20 @@ def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
     '''
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
-    length: int = len(__iterable)
-    gap: int = 1
-    while gap < length / 3:
-        gap: int = int(3 * gap + 1)
-    while gap >= 1:
-        for index in range(gap, length):
-            next: int = index
-            while next >= gap and (compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]):
-                __iterable[next], __iterable[next - gap] = __iterable[next - gap], __iterable[next]
-                if key != None:
-                    compare[next], compare[next - gap] = compare[next - gap], compare[next]
-                next -= gap
-        gap: int = int(gap / 3)
+    if compare and not verify(compare):
+        length: int = len(__iterable)
+        gap: int = 1
+        while gap < length / 3:
+            gap: int = int(3 * gap + 1)
+        while gap >= 1:
+            for index in range(gap, length):
+                next: int = index
+                while next >= gap and (compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]):
+                    __iterable[next], __iterable[next - gap] = __iterable[next - gap], __iterable[next]
+                    if key != None:
+                        compare[next], compare[next - gap] = compare[next - gap], compare[next]
+                    next -= gap
+            gap: int = int(gap / 3)
     return __iterable
     
 def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -121,15 +124,15 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
             if key != None:
                 compare[root], compare[piv] = compare[piv], compare[root]
             build(piv, end)
-    
-    length: int = len(__iterable)
-    for root in range(length // 2 - 1 , -1, -1):
-        build(root, length)
-    for end in range(length - 1, 0, -1):
-        __iterable[0], __iterable[end] = __iterable[end], __iterable[0]
-        if key != None:
-            compare[0], compare[end] = compare[end], compare[0]
-        build(0, end)
+    if compare and not verify(compare):
+        length: int = len(__iterable)
+        for root in range(length // 2 - 1 , -1, -1):
+            build(root, length)
+        for end in range(length - 1, 0, -1):
+            __iterable[0], __iterable[end] = __iterable[end], __iterable[0]
+            if key != None:
+                compare[0], compare[end] = compare[end], compare[0]
+            build(0, end)
     return __iterable
 
 def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -168,7 +171,8 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         if key != None:
             compare[index + 1], compare[r] = compare[r], compare[index + 1]
         return index + 1
-    solve(0, len(__iterable) - 1)
+    if compare and not verify(compare):
+        solve(0, len(__iterable) - 1)
     return __iterable
 
 def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -225,5 +229,6 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
                     merg(low, mid, high)
                 low += 2 * i
             i *= 2
-    solve()
+    if compare and not verify(compare):
+        solve()
     return __iterable
