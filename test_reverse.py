@@ -1,5 +1,6 @@
 # 导包
 from typing import List
+import sortingx
 
 # 测试
 class Reverser:
@@ -11,7 +12,7 @@ class Reverser:
             assert len(part) == len(method)
         if ret != None:
             assert len(ret) == len(method)
-        self.method = 'galley.' + genre
+        self.method = 'sortingx.' + genre
         self.call = method # genre.def
         self.part = part
         self.ret = ret

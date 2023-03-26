@@ -58,7 +58,7 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
             high: int = index - 1
             while low <= high: # sequence conforming to monotonicity
                 mid: int = (low + high) // 2
-                if (keyc < compare[mid] if reverse else keyc > compare[mid]):
+                if (keyc <= compare[mid] if reverse else keyc >= compare[mid]):
                     low: int = mid + 1
                 else:
                     high: int = mid - 1
@@ -129,9 +129,10 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
         for root in range(length // 2 - 1 , -1, -1):
             build(root, length)
         for end in range(length - 1, 0, -1):
-            __iterable[0], __iterable[end] = __iterable[end], __iterable[0]
-            if key != None:
-                compare[0], compare[end] = compare[end], compare[0]
+            if compare[0] != compare[end]:
+                __iterable[0], __iterable[end] = __iterable[end], __iterable[0]
+                if key != None:
+                    compare[0], compare[end] = compare[end], compare[0]
             build(0, end)
     return __iterable
 
@@ -164,12 +165,14 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         for ind in range(l, r):
             if (val < compare[ind] if reverse else val > compare[ind]):
                 index += 1
-                __iterable[index], __iterable[ind] = __iterable[ind], __iterable[index]
-                if key != None:
-                    compare[index], compare[ind] = compare[ind], compare[index]
-        __iterable[index + 1], __iterable[r] = __iterable[r], __iterable[index + 1]
-        if key != None:
-            compare[index + 1], compare[r] = compare[r], compare[index + 1]
+                if compare[index] != compare[ind]:
+                    __iterable[index], __iterable[ind] = __iterable[ind], __iterable[index]
+                    if key != None:
+                        compare[index], compare[ind] = compare[ind], compare[index]
+        if compare[index + 1] != compare[r]:
+            __iterable[index + 1], __iterable[r] = __iterable[r], __iterable[index + 1]
+            if key != None:
+                compare[index + 1], compare[r] = compare[r], compare[index + 1]
         return index + 1
     if compare and not verify(compare):
         solve(0, len(__iterable) - 1)
@@ -200,7 +203,7 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         result: List[_T] = []
         store: List[_T] = []
         while i < len(left) and j < len(right):
-            if (rc[j] < lc[i] if reverse else rc[j] > lc[i]):
+            if (rc[j] <= lc[i] if reverse else rc[j] >= lc[i]):
                 result.append(left[i])
                 store.append(lc[i])
                 i += 1
