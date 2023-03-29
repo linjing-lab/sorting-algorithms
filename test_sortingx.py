@@ -5,4 +5,5 @@ with open('./data/test.txt', 'rt', encoding='utf-8') as fout:
     data = [string.strip('\n') for string in strings]
 
 for value in data:
-    print(sortingx.heap(eval(value)))
+    input_ = eval(value)
+    print(input_, sortingx.heap(input_))
