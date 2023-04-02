@@ -15,3 +15,14 @@
 |v1.3.0|`pip install sortingx==1.3.0`|Revamp Redundant Data Exchanging About Equal Elements|√|
 
 </div>
+
+download latest version:
+```text
+git clone https://github.com/linjing-lab/sorting-algorithms.git
+cd sortingx
+pip install -e . --verbose
+```
+download stable version:
+```text
+pip install sortingx --upgrade
+```

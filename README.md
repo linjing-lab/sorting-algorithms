@@ -99,6 +99,8 @@ By the way, I didn't complete all the iterative data types, in order to develop 
 - [sortingx-1.2.3](https://github.com/linjing-lab/sorting-algorithms/tree/v1.2.3) is the package that corrected the situation where elements are equal in `compare`, support more input data, like data as `[['Jack', (98, 100)], ['Bob', (98, 99)], ['Jessi', (98, 97)]]` and key as `lambda x: x[1][0]`.
 - [sortingx-1.3.0](https://github.com/linjing-lab/sorting-algorithms/tree/v1.3.0) is the final version that fully aligned with the `sorted`', reduces redundant data exchanging. like data as `[('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)]` and key as `key=lambda x: x[1]`.
 
+refer to [this](./README_release.md) for downloaded info.
+
 ## LICENSE
 
 [Apache 2.0](./LICENSE)
