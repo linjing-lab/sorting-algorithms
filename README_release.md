@@ -19,7 +19,7 @@
 download latest version:
 ```text
 git clone https://github.com/linjing-lab/sorting-algorithms.git
-cd sortingx
+cd sorting-algorithms
 pip install -e . --verbose
 ```
 download stable version:
