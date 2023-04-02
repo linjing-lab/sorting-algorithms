@@ -7,7 +7,7 @@ Theory analysis and code implementation of common array sorting algorithms.
 First, You need to click the [`fork`](https://github.com/linjing-lab/sorting-algorithms/fork) button to create your own sub repository, or use the following command to synchronize the repository to the local folder:
 
 ```git
-git clone https://github.com/linjing-lab/sorting-algorithms
+git clone https://github.com/linjing-lab/sorting-algorithms.git
 ```
 
 Second, I have put different implemented versions of various sorting algorithms in the [`galley`](./docs/galley/) folder, everyone can import it with the underlying command:
