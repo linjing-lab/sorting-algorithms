@@ -16,6 +16,6 @@ student_objects = (
     Student('Peter', 'B', 10),
 )
 
-output = sorted(student_objects, key=attrgetter('grade', 'age'))
-test = six.merge(student_objects, key=attrgetter('grade', 'age'))
+output = sorted(student_objects, key=attrgetter('age'))
+test = six.merge(student_objects, key=attrgetter('age'))
 print(test, '\n', output)

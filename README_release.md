@@ -13,6 +13,7 @@
 |v1.2.2|`pip install sortingx==1.2.2`|Change Convert Function to Make it More Robust|√|
 |v1.2.3|`pip install sortingx==1.2.3`|Add Verify Function to Solve Comparison of Equal|√|
 |v1.3.0|`pip install sortingx==1.3.0`|Revamp Redundant Data Exchanging About Equal Elements|√|
+|v1.3.1|`pip install sortingx==1.3.1`|Reduce Shallow Replication in Pre-operations during Runtime|√|
 
 </div>
 
