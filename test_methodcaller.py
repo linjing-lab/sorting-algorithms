@@ -10,6 +10,10 @@ class Point:
 		self.d = d
 	def __repr__(self):
 		return 'Point({!r:},{!r:},{!r:},{!r:})'.format(self.a, self.b, self.c, self.d)
+	def __lt__(self, other):
+		return (self.a < other.a if self.a != other.a else (self.b < other.b if self.b != other.b else (self.c < other.c if self.c != other.c else self.d < other.d)))
+	def __gt__(self, other):
+		return (self.a > other.a if self.a != other.a else (self.b > other.b if self.b != other.b else (self.c > other.c if self.c != other.c else self.d > other.d)))
 	def distance(self, a, b, c, d):
 		return math.hypot(self.a - a, self.b - b, self.c - c, self.d - d)
 
@@ -26,3 +30,5 @@ points = [
 ]
 
 print(sortingx.heap(points, key=methodcaller('distance', 0, 0, 0, 0)))
+# print(sortingx.merge(points))
+# print(sortingx.insert(points, reverse=True))
