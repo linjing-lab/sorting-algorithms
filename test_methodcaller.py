@@ -36,5 +36,5 @@ points = [
 ]
 
 print(sortingx.heap(points, key=methodcaller('distance', 0, 0, 0, 0)))
-# print(sortingx.merge(points))
-# print(sortingx.insert(points, reverse=True))
+# print(sortingx.heap(points))
+# print(sortingx.heap(points, reverse=True))
