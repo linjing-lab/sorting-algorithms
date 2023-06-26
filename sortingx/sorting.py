@@ -28,9 +28,10 @@ def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
     if compare and not verify(compare):
-        for i in range(len(__iterable) - 1):
+        length: int = len(__iterable)
+        for i in range(length - 1):
             flag: bool = False # early stop by adding a bool value named flag
-            for j in range(len(__iterable) - i - 1):
+            for j in range(length - i - 1):
                 if (compare[j] < compare[j + 1] if reverse else compare[j] > compare[j+1]):
                     __iterable[j], __iterable[j + 1] = __iterable[j + 1], __iterable[j]
                     if key != None:
@@ -51,7 +52,8 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
     __iterable: List[_T] = convert(__iterable)
     compare: List[_T] = generate(__iterable, key)
     if compare and not verify(compare):
-        for index in range(1, len(__iterable)):
+        length: int = len(__iterable)
+        for index in range(1, length):
             keyc: _T = compare[index]
             keya: _T = __iterable[index]
             low : int = 0
@@ -175,7 +177,8 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
                 compare[index + 1], compare[r] = compare[r], compare[index + 1]
         return index + 1
     if compare and not verify(compare):
-        solve(0, len(__iterable) - 1)
+        length: int = len(__iterable)
+        solve(0, length - 1)
     return __iterable
 
 def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -195,14 +198,16 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         :param high: The high cursor of __iterable (int).
         '''
         left: List[_T] = __iterable[low: mid]
+        lnl: int = len(left)
         lc: List[_T] = compare[low: mid]
         right: List[_T] = __iterable[mid: high]
+        lnr: int = len(right)
         rc: List[_T] = compare[mid: high]
         i: int = 0
         j: int = 0
         result: List[_T] = []
         store: List[_T] = []
-        while i < len(left) and j < len(right):
+        while i < lnl and j < lnr:
             if (rc[j] <= lc[i] if reverse else rc[j] >= lc[i]):
                 result.append(left[i])
                 store.append(lc[i])
@@ -223,11 +228,12 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         main
         '''
         i: int = 1
-        while i < len(__iterable):
+        length: int = len(__iterable)
+        while i < length:
             low: int = 0
-            while low < len(__iterable):
+            while low < length:
                 mid: int = low + i
-                high: int = min(low + 2 * i, len(__iterable))
+                high: int = min(low + 2 * i, length)
                 if mid < high:
                     merg(low, mid, high)
                 low += 2 * i
