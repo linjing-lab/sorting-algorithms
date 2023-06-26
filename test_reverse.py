@@ -44,7 +44,7 @@ class Reverser:
                 value = func(value, 0, len(value) - 1, reverse=True)
                 self.count += (value == result)
 
-    def collect(self) -> bool:
+    def collect(self) -> str:
         '''
         收集测试结果。
         '''
