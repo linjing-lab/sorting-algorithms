@@ -57,7 +57,8 @@ class Reverser:
             self.__compare(func, index, nopart, noret)
             if self.count == len(self.data):
                 self.success += 1
-        return 'The Design of Reverse of ' + self.method + ' Is Correct!' if self.success == len(self.call) else 'Error!'
+        succ_fal = self.success == len(self.call)
+        return self.method, succ_fal
 
 # 测试实例1
 '''
