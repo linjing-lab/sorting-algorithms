@@ -1,9 +1,12 @@
 from joblib import Parallel, delayed
 from sortingx.sorting import Iterable, Callable, Optional, _T, SupportsRichComparison, List, generate, convert, verify
+import sortingx, random
 
 '''
 Provide all cases about how to accelerate functions when define function to process the predefined buffers.
 '''
+
+data = [[random.randint(0, 10), random.randint(0, 10)] for _ in range(10000)]
 
 def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
@@ -186,6 +189,14 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         solve()
     return __iterable
 
-data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92), ('IO', 98, 92, 93, 91), ('IY', 98, 92, 90, 91), ('OP', 97, 92, 90, 91), ('YT', 97, 92, 93, 90)] # list
-output = merge(data, key=lambda x: x[1], reverse=True)
-print(output)
+def quick_test():
+    quick_data = [data for _ in range(7)]
+    Parallel(n_jobs=-1, backend="loky", prefer="processes")(delayed(sortingx.quick)(data, lambda x: x[1], True) for data in quick_data)
+
+def other_test():
+    # data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92), ('IO', 98, 92, 93, 91), ('IY', 98, 92, 90, 91), ('OP', 97, 92, 90, 91), ('YT', 97, 92, 93, 90)] # list
+    output = merge(data, lambda x: x[1], reverse=True)
+    print(output)
+
+quick_test()
+# other_test()
