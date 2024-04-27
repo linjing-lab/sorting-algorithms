@@ -125,50 +125,6 @@ def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComp
         Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(end) for end in range(length - 1, 0, -1))
     return __iterable
 
-def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
-    '''
-    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
-    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
-    :param reverse: whether to use descending order. The default is ascending order.
-
-    :return: quick's sorted result in a list.
-    '''
-    __iterable: List[_T] = convert(__iterable)
-    compare: List[_T] = generate(__iterable, key)
-    def solve(l: int, r: int) -> None:
-        '''
-        main
-        '''
-        if l < r:
-            mid: int = partition(l, r)
-            solve(l, mid - 1)
-            solve(mid + 1, r)
-
-    def partition(l: int, r: int) -> int:
-        '''
-        :param l: The left cursor of __iterable (int).
-        :param r: The right cursor of __iterable (int).
-        '''
-        val: _T = compare[r]
-        index: int = l - 1
-        def acc(ind: int):
-            if (val < compare[ind] if reverse else val > compare[ind]):
-                index += 1
-                if compare[index] != compare[ind]:
-                    __iterable[index], __iterable[ind] = __iterable[ind], __iterable[index]
-                    if key != None:
-                        compare[index], compare[ind] = compare[ind], compare[index]
-        Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(ind) for ind in range(l, r))
-        if compare[index + 1] != compare[r]:
-            __iterable[index + 1], __iterable[r] = __iterable[r], __iterable[index + 1]
-            if key != None:
-                compare[index + 1], compare[r] = compare[r], compare[index + 1]
-        return index + 1
-    if compare and not verify(compare):
-        length: int = len(__iterable)
-        solve(0, length - 1)
-    return __iterable
-
 def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
     '''
     :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
