@@ -169,8 +169,67 @@ def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         solve(0, length - 1)
     return __iterable
 
-# update steps as i, 2*i, 4*i, ...(i computed with mid, min(), low), and low updates as low += 2*i in merge method, uncompatible with update strategy of "for i in range".
+def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
+    '''
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
+    :param reverse: whether to use descending order. The default is ascending order.
 
-data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)] # list
-output = heap(data, key=lambda x: x[1], reverse=True)
+    :return: merge's sorted result in a list.
+    '''
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
+    def merg(low: int, mid: int, high: int) -> None:
+        '''
+        :param low: The low cursor of __iterable (int).
+        :param mid: The middle cursor of __iterable (int).
+        :param high: The high cursor of __iterable (int).
+        '''
+        left: List[_T] = __iterable[low: mid]
+        lnl: int = len(left)
+        lc: List[_T] = compare[low: mid]
+        right: List[_T] = __iterable[mid: high]
+        lnr: int = len(right)
+        rc: List[_T] = compare[mid: high]
+        i: int = 0
+        j: int = 0
+        result: List[_T] = []
+        store: List[_T] = []
+        while i < lnl and j < lnr:
+            if (rc[j] <= lc[i] if reverse else rc[j] >= lc[i]):
+                result.append(left[i])
+                store.append(lc[i])
+                i += 1
+            else:
+                result.append(right[j])
+                store.append(rc[j])
+                j += 1
+        result += left[i:]
+        store += lc[i:]
+        result += right[j:]
+        store += rc[j:]
+        __iterable[low: high]: List[_T] = result
+        compare[low: high]: List[_T] = store
+
+    def solve() -> None:
+        '''
+        main
+        '''
+        i: int = 1
+        length: int = len(__iterable)
+        def acc(low: int):
+            mid: int = low + i
+            high: int = min(low + 2 * i, length)
+            if mid < high:
+                merg(low, mid, high)
+        while i < length:
+            low: int = 0
+            Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(low) for low in range(low, length, 2*i))
+            i *= 2
+    if compare and not verify(compare):
+        solve()
+    return __iterable
+
+data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92), ('IO', 98, 92, 93, 91), ('IY', 98, 92, 90, 91), ('OP', 97, 92, 90, 91), ('YT', 97, 92, 93, 90)] # list
+output = merge(data, key=lambda x: x[1], reverse=True)
 print(output)
