@@ -1,3 +1,5 @@
+# Copyright (c) 2024 linjing-lab
+
 from joblib import Parallel, delayed
 from sortingx.sorting import Iterable, Callable, Optional, _T, SupportsRichComparison, List, generate, convert, verify
 import sortingx, random
