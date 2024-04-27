@@ -2,7 +2,7 @@ from joblib import Parallel, delayed
 from sortingx.sorting import Iterable, Callable, Optional, _T, SupportsRichComparison, List, generate, convert, verify
 
 '''
-Provide 2 cases about how to accelerate functions when define function to process the predefined buffers.
+Provide all cases about how to accelerate functions when define function to process the predefined buffers.
 '''
 
 def bubble(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
@@ -59,5 +59,118 @@ def insert(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCo
         Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(i) for i in range(1, length))
     return __iterable
 
+def shell(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
+    '''
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
+    :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: shell's sorted result in a list.
+    '''
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
+    if compare and not verify(compare):
+        length: int = len(__iterable)
+        gap: int = 1
+        while gap < length / 3:
+            gap: int = int(3 * gap + 1)
+        def acc(index: int):
+            next: int = index
+            while next >= gap and (compare[next - gap] < compare[next] if reverse else compare[next - gap] > compare[next]):
+                __iterable[next], __iterable[next - gap] = __iterable[next - gap], __iterable[next]
+                if key != None:
+                    compare[next], compare[next - gap] = compare[next - gap], compare[next]
+                next -= gap
+        while gap >= 1:
+            Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(i) for i in range(gap, length))
+            gap: int = int(gap / 3)
+    return __iterable
+
+def heap(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
+    '''
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
+    :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: heap's sorted result in a list.
+    '''
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
+    def build(root: int, end: int) -> None:
+        '''
+        :param root: cursor indicating the root node (int).
+        :param end: cursor indicating the end of the __iterable (int).
+        '''
+        piv: int = root
+        left: int = 2 * root + 1
+        right: int = 2 * root + 2
+        if left < end and (compare[left] < compare[root] if reverse else compare[left] > compare[root]):
+            piv: int = left
+        if right < end and (compare[right] < compare[piv] if reverse else compare[right] > compare[piv]):
+            piv: int = right
+        if piv != root:
+            __iterable[root], __iterable[piv] = __iterable[piv], __iterable[root]
+            if key != None:
+                compare[root], compare[piv] = compare[piv], compare[root]
+            build(piv, end)
+    if compare and not verify(compare):
+        length: int = len(__iterable)
+        def acc(end: int):
+            if compare[0] != compare[end]:
+                __iterable[0], __iterable[end] = __iterable[end], __iterable[0]
+                if key != None:
+                    compare[0], compare[end] = compare[end], compare[0]
+            build(0, end)
+        Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(build)(root, length) for root in range(length // 2 - 1 , -1, -1))
+        Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(end) for end in range(length - 1, 0, -1))
+    return __iterable
+
+def quick(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichComparison]]=None, reverse: bool=False) -> List[_T]:
+    '''
+    :param __iterable: iterable data, mainly refers to `list`, `tuple`, `set`, `dict`, `str`, `zip`, `range`.
+    :param key: callable function, for example: key=lambda x: x[1], key=lambda x: (x[0], x[1]), key=str.lower.
+    :param reverse: whether to use descending order. The default is ascending order.
+
+    :return: quick's sorted result in a list.
+    '''
+    __iterable: List[_T] = convert(__iterable)
+    compare: List[_T] = generate(__iterable, key)
+    def solve(l: int, r: int) -> None:
+        '''
+        main
+        '''
+        if l < r:
+            mid: int = partition(l, r)
+            solve(l, mid - 1)
+            solve(mid + 1, r)
+
+    def partition(l: int, r: int) -> int:
+        '''
+        :param l: The left cursor of __iterable (int).
+        :param r: The right cursor of __iterable (int).
+        '''
+        val: _T = compare[r]
+        index: int = l - 1
+        def acc(ind: int):
+            if (val < compare[ind] if reverse else val > compare[ind]):
+                index += 1
+                if compare[index] != compare[ind]:
+                    __iterable[index], __iterable[ind] = __iterable[ind], __iterable[index]
+                    if key != None:
+                        compare[index], compare[ind] = compare[ind], compare[index]
+        Parallel(n_jobs=-1, backend="threading", prefer="threads")(delayed(acc)(ind) for ind in range(l, r))
+        if compare[index + 1] != compare[r]:
+            __iterable[index + 1], __iterable[r] = __iterable[r], __iterable[index + 1]
+            if key != None:
+                compare[index + 1], compare[r] = compare[r], compare[index + 1]
+        return index + 1
+    if compare and not verify(compare):
+        length: int = len(__iterable)
+        solve(0, length - 1)
+    return __iterable
+
+# update steps as i, 2*i, 4*i, ...(i computed with mid, min(), low), and low updates as low += 2*i in merge method, uncompatible with update strategy of "for i in range".
+
 data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92)] # list
-output = bubble(data, key=lambda x: x[1], reverse=True)
+output = heap(data, key=lambda x: x[1], reverse=True)
+print(output)
