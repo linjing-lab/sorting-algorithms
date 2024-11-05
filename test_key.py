@@ -2,7 +2,7 @@ from keyword_sorting import bubble_sort, heap_sort, insertion_sort, shell_sort, 
 import sortingx as six
 
 '''
-We choose from the following keyword lambda functions:
+Choose from underlined lambda functions:
 1. one keyword
 lambda x: x[0]
 

@@ -191,14 +191,16 @@ def merge(__iterable: Iterable[_T], key: Optional[Callable[[_T], SupportsRichCom
         solve()
     return __iterable
 
-def quick_test():
-    quick_data = [data for _ in range(7)]
-    Parallel(n_jobs=-1, backend="loky", prefer="processes")(delayed(sortingx.quick)(data, lambda x: x[1], True) for data in quick_data)
+def test_out_of_core():
+    all_data = [data for _ in range(7)]
+    # push multiple groups (data, lambda function, sort state) to list, sort from group index in iterator.
+    Parallel(n_jobs=-1, backend="loky", prefer="processes")(delayed(sortingx.quick)(data, lambda x: x[1], True) for data in all_data)
+    # method of sortingx can replace sortingx.quick, like sortingx.merge, sortingx.heap, and so on.
 
-def other_test():
-    # data = [('Alex', 97, 90, 98, 95), ('Jack', 97, 88, 98, 92), ('Peter', 92, 95, 92, 96), ('Li', 97, 89, 98, 92), ('IO', 98, 92, 93, 91), ('IY', 98, 92, 90, 91), ('OP', 97, 92, 90, 91), ('YT', 97, 92, 93, 90)] # list
+def test_in_of_core():
+    # data = [('IO', 98, 92, 93, 91), ('IY', 98, 92, 90, 91), ('OP', 97, 92, 90, 91), ('YT', 97, 92, 93, 90)] # list
     output = merge(data, lambda x: x[1], reverse=True)
     print(output)
 
-quick_test()
-# other_test()
+test_out_of_core()
+# test_in_of_core()
