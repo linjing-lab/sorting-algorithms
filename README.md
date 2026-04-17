@@ -1,5 +1,17 @@
 # sorting-algorithms🎢
 
+<p align='center'>
+    <a href='https://pepy.tech/project/sortingx'>
+        <img src="https://pepy.tech/badge/sortingx" alt="Total Downloads" height="20"/>
+    </a>
+    <a href='https://pepy.tech/project/sortingx'>
+        <img src="https://pepy.tech/badge/sortingx/month" alt="Monthly Downloads" height="20"/> 
+    </a>
+    <a href='https://pepy.tech/project/sortingx'>
+        <img src="https://pepy.tech/badge/sortingx/week" alt="Weekly Downloads" height="20"/> 
+    </a>
+</p>
+
 Theory analysis and code implementation of common array sorting algorithms.
 
 ## 📍 start from galley
